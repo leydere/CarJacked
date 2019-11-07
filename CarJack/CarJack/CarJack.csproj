@@ -94,33 +94,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\ParkingGarage.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\ToyotaCorollaWhite.png" />
-    <Resource Include="images\ToyotaCorollaWhiteHatch.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\bear1.png" />
-    <Resource Include="images\bear2.png" />
-    <Resource Include="images\bear3.png" />
-    <Resource Include="images\bear4.png" />
-    <Resource Include="images\CarViewer.png" />
-    <Resource Include="images\checkerback.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\toyotaLogo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\SteeringWheel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\DodgeChargerWhite.png" />
-    <Resource Include="images\DodgeLogo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\ToyotaLogoTrans.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

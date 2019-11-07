@@ -10,9 +10,9 @@
     <Window.Resources>
         <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
 
-        <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#EEE" />
+        <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#EEE" />       
 
-        <SolidColorBrush x:Key="DisabledBorderBrush" Color="#AAA" />
+        <SolidColorBrush x:Key="DisabledBorderBrush" Color="#AAA" />        
 
         <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888" />
 
@@ -56,92 +56,22 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style>        
     </Window.Resources>
-    <Window.Background>
-        <ImageBrush ImageSource="images/ParkingGarage.jpg"/>
-    </Window.Background>
-
-    <TabControl Name="tabControlExt" TabStripPlacement="Left" Margin="0" Padding="0,0,0,0" Background="{x:Null}" SelectionChanged="TabControlExt_SelectionChanged">
+    
+    <TabControl Name="tabControlExt" TabStripPlacement="Left" Margin="0" Padding="0,0,0,0">
+        <TabControl.Background>
+            <ImageBrush ImageSource="images/checkerback.png" TileMode="Tile" Stretch="None" ViewportUnits="Absolute" Viewport="0,0,20,20"/>
+        </TabControl.Background>
         <TabItem x:Name="Tab1" Width="58" Height="64" Background="#FF3C3C3C" BorderBrush="#FF818181" IsSelected="True" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" HorizontalContentAlignment="Stretch">
             <TabItem.Header>
                 <Image Height="60" Source="images/bear1.png"/>
             </TabItem.Header>
-
         </TabItem>
         <TabItem Width="58" Height="64" Background="#FF3C3C3C" BorderBrush="#FF818181" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
             <TabItem.Header>
                 <Image Height="60" Source="images/bear2.png"/>
             </TabItem.Header>
-            <Grid Margin="-23,10,23.8,-10.4">
-                <Image HorizontalAlignment="Left" Height="253" x:Name="carView" VerticalAlignment="Top" Width="381" Margin="65,115,0,0" />
-                <Image HorizontalAlignment="Left" Height="532" VerticalAlignment="Top" Width="736" Margin="-4,10,0,-124" Source="images/CarViewer.png" Opacity="0.85"/>
-
-
-
-                <Grid HorizontalAlignment="Left" Height="230"   VerticalAlignment="Top" Width="214" Margin="475,62,0,0">
-                    <StackPanel>
-                        <Label Content="Choose A Brand" HorizontalAlignment="Center" Width="96"/>
-
-                        <Grid Height="195" Margin="10,0,9.6,0">
-                            <TabControl Margin="-37,-2,-49,0" Background="{x:Null}">
-                                <TabItem Header="Brand" Margin="0,0,3,-0.2">
-                                    <Grid Margin="0,0,23.4,-3.8">
-
-                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="51" BorderBrush="White" Opacity="0.85" Click="Button_Toyota">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="images/ToyotaLogoTrans.png"/>
-                                            </Button.Background>
-                                        </Button>
-                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="62" Height="52" BorderBrush="White" Opacity="0.85" Click="Button_Dodge" Margin="60,0,0,0">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="images/DodgeLogo.png"/>
-                                            </Button.Background>
-                                        </Button>
-
-                                    </Grid>
-                                </TabItem>
-                                <TabItem Header="Make" Margin="-12,0,16.6,-0.2" Background="{x:Null}">
-                                    <Grid>
-                                        <Button HorizontalAlignment="Left" x:Name="firstMake" Content="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Corolla"  VerticalAlignment="Top" Width="122" Height="65" BorderBrush="{x:Null}" Opacity="0.85" Click="Button_firstMake" RenderTransformOrigin="0.514,0.495">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="images/ToyotaCorollaWhite.png"/>
-                                            </Button.Background>
-                                        </Button>
-                                    </Grid>
-                                </TabItem>
-                                <TabItem Header="Body" Margin="-23.6,0,23.8,-0.2" Background="{x:Null}">
-                                    <Grid Margin="0,0,18.4,0.2">
-                                        <Button HorizontalAlignment="Left" x:Name="Sedan"  Content="&#xA;&#xA;&#xA;Sedan" VerticalAlignment="Top" Width="122" Height="65" BorderBrush="{x:Null}" Opacity="0.85" Click="Button_Sedan" RenderTransformOrigin="0.514,0.495">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="images/ToyotaCorollaWhite.png"/>
-                                            </Button.Background>
-                                        </Button>
-                                        <Button HorizontalAlignment="Left" x:Name="HatchBack" Content="&#xA;&#xA;&#xA;HatchBack" VerticalAlignment="Top" Width="122" Height="65" BorderBrush="{x:Null}" Opacity="0.85" Click="Button_HatchBack" RenderTransformOrigin="0.514,0.495" Margin="0,65,0,0">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="images/ToyotaCorollaWhiteHatch.png"/>
-                                            </Button.Background>
-                                        </Button>
-                                    </Grid>
-                                </TabItem>
-                                <TabItem Header="Engine" Margin="-30.8,0,34.6,-0.2" Background="{x:Null}">
-                                    <Grid/>
-                                </TabItem>
-                                <TabItem Header="Color" Margin="-40.4,0,27.8,-0.2" Background="{x:Null}">
-                                    <Grid Margin="0,0,18.4,0.2"/>
-                                </TabItem>
-
-                            </TabControl>
-                        </Grid>
-
-
-                    </StackPanel>
-                </Grid>
-                <Grid HorizontalAlignment="Left" Height="102" VerticalAlignment="Top" Width="269" Margin="97,243,0,0">
-                    <Label Content="Compatibility &amp; Stats" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                </Grid>
-
-            </Grid>
         </TabItem>
         <TabItem Width="58" Height="64" BorderBrush="#FF818181" Background="#FF3C3C3C" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
             <TabItem.Header>
