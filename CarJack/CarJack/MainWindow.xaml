@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
+    <!--#region tabBrushControls-->
+    <!--comment: "this section exists mainly to select a color aside from white for a selected tab to be displayed as -ERL"-->
     <Window.Resources>
         <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
 
@@ -58,17 +60,21 @@
             </Setter>
         </Style>
     </Window.Resources>
+    <!--#endregion-->
     <Window.Background>
         <ImageBrush ImageSource="images/ParkingGarage.jpg"/>
     </Window.Background>
 
     <TabControl Name="tabControlExt" TabStripPlacement="Left" Margin="0" Padding="0,0,0,0" Background="{x:Null}" SelectionChanged="TabControlExt_SelectionChanged">
+        <!--#region tab1(undeclared)-->
         <TabItem x:Name="Tab1" Width="58" Height="64" Background="#FF3C3C3C" BorderBrush="#FF818181" IsSelected="True" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" HorizontalContentAlignment="Stretch">
             <TabItem.Header>
                 <Image Height="60" Source="images/bear1.png"/>
             </TabItem.Header>
 
         </TabItem>
+        <!--#endregion-->
+        <!--#region tab2(Anthony's fancything)-->
         <TabItem Width="58" Height="64" Background="#FF3C3C3C" BorderBrush="#FF818181" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
             <TabItem.Header>
                 <Image Height="60" Source="images/bear2.png"/>
@@ -143,16 +149,142 @@
 
             </Grid>
         </TabItem>
-        <TabItem Width="58" Height="64" BorderBrush="#FF818181" Background="#FF3C3C3C" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
+        <!--#endregion-->
+        <!--#region tab3(activity calculator)-->
+        <TabItem x:Name="ActivityCalc_Tab" Width="58" Height="64" BorderBrush="#FF818181" Background="#FF3C3C3C" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Initialized="ActivityCalc_Tab_Initialized">
             <TabItem.Header>
                 <Image Height="60" Source="images/bear3.png"/>
             </TabItem.Header>
+            <Grid Margin="10,10,2,3">
+                <TextBox x:Name="TripDescript1" Height="23" TextWrapping="Wrap" Margin="44,86,471,295"/>
+                <TextBox x:Name="TripMiles1" HorizontalAlignment="Left" Height="23" Margin="269,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripsPerWeek1" HorizontalAlignment="Left" Height="23" Margin="390,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="WeeksPerYear1" HorizontalAlignment="Left" Height="23" Margin="515,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripDescript2" Height="23" TextWrapping="Wrap" Margin="44,114,471,267"/>
+                <TextBox x:Name="TripMiles2" HorizontalAlignment="Left" Height="23" Margin="269,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripsPerWeek2" HorizontalAlignment="Left" Height="23" Margin="390,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="WeeksPerYear2" HorizontalAlignment="Left" Height="23" Margin="515,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripDescript3" Height="23" TextWrapping="Wrap" Margin="44,142,471,239"/>
+                <TextBox x:Name="TripMiles3" HorizontalAlignment="Left" Height="23" Margin="269,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripsPerWeek3" HorizontalAlignment="Left" Height="23" Margin="390,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="WeeksPerYear3" HorizontalAlignment="Left" Height="23" Margin="515,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripDescript4" Height="23" TextWrapping="Wrap" Margin="44,170,471,211"/>
+                <TextBox x:Name="TripMiles4" HorizontalAlignment="Left" Height="23" Margin="269,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripsPerWeek4" HorizontalAlignment="Left" Height="23" Margin="390,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="WeeksPerYear4" HorizontalAlignment="Left" Height="23" Margin="515,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripDescript5" Height="23" TextWrapping="Wrap" Margin="44,198,471,183"/>
+                <TextBox x:Name="TripMiles5" HorizontalAlignment="Left" Height="23" Margin="269,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripsPerWeek5" HorizontalAlignment="Left" Height="23" Margin="390,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="WeeksPerYear5" HorizontalAlignment="Left" Height="23" Margin="515,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripDescript6" Height="23" TextWrapping="Wrap" Margin="44,226,471,155"/>
+                <TextBox x:Name="TripMiles6" HorizontalAlignment="Left" Height="23" Margin="269,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripsPerWeek6" HorizontalAlignment="Left" Height="23" Margin="390,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="WeeksPerYear6" HorizontalAlignment="Left" Height="23" Margin="515,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripDescript7" Height="23" TextWrapping="Wrap" Margin="44,254,471,127"/>
+                <TextBox x:Name="TripMiles7" HorizontalAlignment="Left" Height="23" Margin="269,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripsPerWeek7" HorizontalAlignment="Left" Height="23" Margin="390,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="WeeksPerYear7" HorizontalAlignment="Left" Height="23" Margin="515,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripDescript8" Height="23" TextWrapping="Wrap" Margin="44,282,471,99"/>
+                <TextBox x:Name="TripMiles8" HorizontalAlignment="Left" Height="23" Margin="269,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripsPerWeek8" HorizontalAlignment="Left" Height="23" Margin="390,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="WeeksPerYear8" HorizontalAlignment="Left" Height="23" Margin="515,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripDescript9" Height="23" TextWrapping="Wrap" Margin="44,310,471,71"/>
+                <TextBox x:Name="TripMiles9" HorizontalAlignment="Left" Height="23" Margin="269,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="TripsPerWeek9" HorizontalAlignment="Left" Height="23" Margin="390,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBox x:Name="WeeksPerYear9" HorizontalAlignment="Left" Height="23" Margin="515,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+                <TextBlock HorizontalAlignment="Left" Margin="44,65,0,0" TextWrapping="Wrap" Text="Description of trip" VerticalAlignment="Top" Width="181" FontWeight="Bold" Foreground="White">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Left" Margin="269,65,0,0" TextWrapping="Wrap" Text="Miles per Trip" VerticalAlignment="Top" Width="96" Foreground="White" FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Left" Margin="390,65,0,0" TextWrapping="Wrap" Text="Trips per Week" VerticalAlignment="Top" Width="96" Foreground="White" FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Left" Margin="515,65,0,0" TextWrapping="Wrap" Text="Weeks per Year" VerticalAlignment="Top" Width="96" Foreground="White" FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Left" Margin="573,345,0,0" TextWrapping="Wrap" Text="TOTAL:   " VerticalAlignment="Top" Width="45" Foreground="White" FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock x:Name="TotalBlock" HorizontalAlignment="Left" Margin="629,345,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" Foreground="White" FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <Button x:Name="Calc_Save" Content="calculate &amp; save" HorizontalAlignment="Left" Margin="616,375,0,0" VerticalAlignment="Top" Width="92" Click="Calc_Save_Click"/>
+                <TextBlock x:Name="subtotal1" HorizontalAlignment="Left" Margin="629,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.51,0" Width="79" Foreground="White" FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock x:Name="subtotal2" HorizontalAlignment="Left" Margin="629,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.51,0" Width="79" Foreground="White" FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock x:Name="subtotal3" HorizontalAlignment="Left" Margin="629,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.51,0" Width="79" Foreground="White" FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock x:Name="subtotal4" HorizontalAlignment="Left" Margin="629,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.51,0" Width="79" Foreground="White" FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock x:Name="subtotal5" HorizontalAlignment="Left" Margin="629,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.51,0" Width="79" Foreground="White" FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock x:Name="subtotal6" HorizontalAlignment="Left" Margin="629,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.51,0" Width="79" Foreground="White" FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock x:Name="subtotal7" HorizontalAlignment="Left" Margin="629,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.51,0" Width="79" Foreground="White" FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock x:Name="subtotal8" HorizontalAlignment="Left" Margin="629,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.51,0" Width="79" Foreground="White" FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock x:Name="subtotal9" HorizontalAlignment="Left" Margin="629,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.51,0" Width="79" Foreground="White" FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+
+            </Grid>
+
+
         </TabItem>
+        <!--#endregion-->
+        <!--#region tab4(undeclared)-->
         <TabItem Background="#FF3C3C3C" BorderBrush="#FF818181" Height="64" HorizontalAlignment="Center" VerticalAlignment="Center" Width="58" Margin="0">
             <TabItem.Header>
                 <Image Height="60" Source="images/bear4.png"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </TabItem.Header>
         </TabItem>
+        <!--#endregion-->
+
+
+
+
     </TabControl>
 
 </Window>
