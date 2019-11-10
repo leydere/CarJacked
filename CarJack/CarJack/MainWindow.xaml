@@ -151,7 +151,7 @@
         </TabItem>
         <!--#endregion-->
         <!--#region tab3(activity calculator)-->
-        <TabItem Width="58" Height="64" BorderBrush="#FF818181" Background="#FF3C3C3C" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
+        <TabItem x:Name="ActivityCalc_Tab" Width="58" Height="64" BorderBrush="#FF818181" Background="#FF3C3C3C" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Initialized="ActivityCalc_Tab_Initialized">
             <TabItem.Header>
                 <Image Height="60" Source="images/bear3.png"/>
             </TabItem.Header>
@@ -212,12 +212,17 @@
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <TextBlock HorizontalAlignment="Left" Margin="573,345,0,0" TextWrapping="Wrap" Text="TOTAL:   " VerticalAlignment="Top" Width="118" Foreground="White" FontWeight="Bold">
+                <TextBlock HorizontalAlignment="Left" Margin="573,345,0,0" TextWrapping="Wrap" Text="TOTAL:   " VerticalAlignment="Top" Width="45" Foreground="White" FontWeight="Bold">
                     <TextBlock.Effect>
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <Button x:Name="Calc_Save" Content="calculate &amp; save" HorizontalAlignment="Left" Margin="616,375,0,0" VerticalAlignment="Top" Width="92"/>
+                <TextBlock x:Name="TotalBlock" HorizontalAlignment="Left" Margin="629,345,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" Foreground="White" FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <Button x:Name="Calc_Save" Content="calculate &amp; save" HorizontalAlignment="Left" Margin="616,375,0,0" VerticalAlignment="Top" Width="92" Click="Calc_Save_Click"/>
                 <TextBlock x:Name="subtotal1" HorizontalAlignment="Left" Margin="629,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.51,0" Width="79" Foreground="White" FontWeight="Bold">
                     <TextBlock.Effect>
                         <DropShadowEffect/>
