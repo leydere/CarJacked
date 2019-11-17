@@ -138,5 +138,24 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Dash.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\CarViewerDetails.png" />
+    <Resource Include="images\CarViewerSelection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="images\Charger\2005\" />
+    <Folder Include="images\Charger\2010\" />
+    <Folder Include="images\Charger\2015\" />
+    <Folder Include="images\Charger\2019\" />
+    <Folder Include="images\Corolla\2010\" />
+    <Folder Include="images\Corolla\2015\" />
+    <Folder Include="images\Corolla\2019\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Corolla\2005\2005-corolla-engine.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

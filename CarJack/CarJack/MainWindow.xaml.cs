@@ -29,6 +29,9 @@ namespace CarJack
         public string engine;
         public string color;
         public string firstMakeImg = null;
+        public int year=2019;
+        public int creditScores = 750;
+        public int carPrice;
 
         public MainWindow()
         {
@@ -36,10 +39,31 @@ namespace CarJack
 
 
         }
-        private void TabControlExt_SelectionChanged(object sender, RoutedEventArgs e)
-        {
 
+
+        void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.Source is TabControl)
+            {
+                choiceTitle.Content = "Choose A " + this.Content;
+            }
         }
+        /*
+       private void TabControlExt_SelectionChanged(object sender, RoutedEventArgs e)
+       {
+
+            if (ActivityCalc_Tab.IsSelected == true)
+           {
+               Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\Dash.jpg")));
+            }
+            else
+            {
+                Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ParkingGarage.jpg")));
+
+            }
+            
+        }
+        */
 
         private void Button_Toyota(object sender, RoutedEventArgs e)
         {
@@ -63,6 +87,105 @@ namespace CarJack
         {
             if (brand == "Toyota")
             {
+                switch (year)
+                {
+                    case 2005:
+                        make = "Corolla";
+                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                        carPrice = 8000;
+                        break;
+                    case 2006:
+                        make = "Corolla";
+                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                        carPrice = 7000;
+                        break;
+                    case 2007:
+                        make = "Corolla";
+                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                        carPrice = 6000;
+                        break;
+                    case 2008:
+                        make = "Corolla";
+                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                        carPrice = 5500;
+                        break;
+                    case 2009:
+                        make = "Corolla";
+                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                        carPrice = 8000;
+                        break;
+                    case 2010:
+                        make = "Corolla";
+                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                        carPrice = 9000;
+                        break;
+                    case 2011:
+                        make = "Corolla";
+                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                        carPrice = 9000;
+                        break;
+                    case 2012:
+                        make = "Corolla";
+                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                        carPrice = 10700;
+                        break;
+                    case 2013:
+                        make = "Corolla";
+                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                        carPrice = 11500;
+                        break;
+                    case 2014:
+                        make = "Corolla";
+                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                        carPrice = 11500;   //needsActualPrice
+                        break;
+                    case 2015:
+                        make = "Corolla";
+                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                        carPrice = 11500;   //needsActualPrice
+
+                        break;
+                    case 2016:
+                        make = "Corolla";
+                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                        carPrice = 15000;
+                        break;
+                    case 2017:
+                        make = "Corolla";
+                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                        carPrice = 11500;   //needsActualPrice
+
+                        break;
+                    case 2018:
+                        make = "Corolla";
+                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                        carPrice = 11500;   //needsActualPrice
+
+                        break;
+                    case 2019:
+                        make = "Corolla";
+                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                        carPrice = 11500;   //needsActualPrice
+
+                        break;
+                    default:
+                        break;
+                }
                 make = "Corolla";
                 Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                 HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
@@ -243,6 +366,60 @@ namespace CarJack
             TotalBlock.Text = splitActivityInfo[45];
             #endregion
 
+        }
+
+        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Y2005_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void InterestCalc_Click(object sender, RoutedEventArgs e)
+        {
+            if(carSelectionGrid.Visibility == Visibility.Visible)
+            {
+                carSelectionGrid.Visibility = Visibility.Hidden;
+                interestGrid.Visibility = Visibility.Visible;
+            }
+            else {
+                carSelectionGrid.Visibility = Visibility.Visible;
+                interestGrid.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void IntCalc_Click(object sender, RoutedEventArgs e)
+        {
+            string input = creditScore.Text;
+            if (!(creditScore.Text == null))
+            {
+                creditScores = Convert.ToInt32(input);
+            }
+            else
+            {
+                MessageBox.Show("Please Insert a numerical value into the credit score box");
+            }
+            if (!(carAmount.Text == null))
+            {
+                creditScores = Convert.ToInt32(input);
+            }
+            else
+            {
+                MessageBox.Show("Please Insert a numerical value into the credit score box");
+            }
         }
     }
 }
