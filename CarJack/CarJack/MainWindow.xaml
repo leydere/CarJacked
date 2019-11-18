@@ -334,39 +334,39 @@
                     <RowDefinition Height="107*"/>
                     <RowDefinition Height="28*"/>
                 </Grid.RowDefinitions>
-                <TextBox x:Name="TripDescript1" Height="23" TextWrapping="Wrap" Margin="44,86,470.8,212.1"/>
+                <TextBox x:Name="TripDescript1" Height="23" TextWrapping="Wrap" Margin="44,86,471,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="TripMiles1" HorizontalAlignment="Left" Height="23" Margin="269,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="TripsPerWeek1" HorizontalAlignment="Left" Height="23" Margin="390,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="WeeksPerYear1" HorizontalAlignment="Left" Height="23" Margin="515,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
-                <TextBox x:Name="TripDescript2" Height="23" TextWrapping="Wrap" Margin="44,114,470.8,184.1"/>
+                <TextBox x:Name="TripDescript2" Height="23" TextWrapping="Wrap" Margin="44,114,471,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="TripMiles2" HorizontalAlignment="Left" Height="23" Margin="269,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="TripsPerWeek2" HorizontalAlignment="Left" Height="23" Margin="390,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="WeeksPerYear2" HorizontalAlignment="Left" Height="23" Margin="515,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
-                <TextBox x:Name="TripDescript3" Height="23" TextWrapping="Wrap" Margin="44,142,470.8,156.1"/>
+                <TextBox x:Name="TripDescript3" Height="23" TextWrapping="Wrap" Margin="44,142,471,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="TripMiles3" HorizontalAlignment="Left" Height="23" Margin="269,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="TripsPerWeek3" HorizontalAlignment="Left" Height="23" Margin="390,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="WeeksPerYear3" HorizontalAlignment="Left" Height="23" Margin="515,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
-                <TextBox x:Name="TripDescript4" Height="23" TextWrapping="Wrap" Margin="44,170,470.8,128.1"/>
+                <TextBox x:Name="TripDescript4" Height="23" TextWrapping="Wrap" Margin="44,170,471,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="TripMiles4" HorizontalAlignment="Left" Height="23" Margin="269,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="TripsPerWeek4" HorizontalAlignment="Left" Height="23" Margin="390,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="WeeksPerYear4" HorizontalAlignment="Left" Height="23" Margin="515,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
-                <TextBox x:Name="TripDescript5" Height="23" TextWrapping="Wrap" Margin="44,198,470.8,100.1"/>
+                <TextBox x:Name="TripDescript5" Height="23" TextWrapping="Wrap" Margin="44,198,471,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="TripMiles5" HorizontalAlignment="Left" Height="23" Margin="269,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="TripsPerWeek5" HorizontalAlignment="Left" Height="23" Margin="390,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="WeeksPerYear5" HorizontalAlignment="Left" Height="23" Margin="515,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
-                <TextBox x:Name="TripDescript6" Height="23" TextWrapping="Wrap" Margin="44,226,470.8,72.1"/>
+                <TextBox x:Name="TripDescript6" Height="23" TextWrapping="Wrap" Margin="44,226,471,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="TripMiles6" HorizontalAlignment="Left" Height="23" Margin="269,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="TripsPerWeek6" HorizontalAlignment="Left" Height="23" Margin="390,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="WeeksPerYear6" HorizontalAlignment="Left" Height="23" Margin="515,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
-                <TextBox x:Name="TripDescript7" Height="23" TextWrapping="Wrap" Margin="44,254,470.8,44.1"/>
+                <TextBox x:Name="TripDescript7" Height="23" TextWrapping="Wrap" Margin="44,254,471,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="TripMiles7" HorizontalAlignment="Left" Height="23" Margin="269,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="TripsPerWeek7" HorizontalAlignment="Left" Height="23" Margin="390,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="WeeksPerYear7" HorizontalAlignment="Left" Height="23" Margin="515,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
-                <TextBox x:Name="TripDescript8" Height="23" TextWrapping="Wrap" Margin="44,282,470.8,16.1"/>
+                <TextBox x:Name="TripDescript8" TextWrapping="Wrap" Margin="44,282,471,0" Height="23" VerticalAlignment="Top"/>
                 <TextBox x:Name="TripMiles8" HorizontalAlignment="Left" Height="23" Margin="269,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="TripsPerWeek8" HorizontalAlignment="Left" Height="23" Margin="390,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="WeeksPerYear8" HorizontalAlignment="Left" Height="23" Margin="515,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
-                <TextBox x:Name="TripDescript9" Height="23" TextWrapping="Wrap" Margin="44,310,470.8,71.6" Grid.RowSpan="2"/>
+                <TextBox x:Name="TripDescript9" TextWrapping="Wrap" Margin="44,311,471,0" Grid.RowSpan="2" Height="23" VerticalAlignment="Top"/>
                 <TextBox x:Name="TripMiles9" HorizontalAlignment="Left" Height="23" Margin="269,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Grid.RowSpan="2"/>
                 <TextBox x:Name="TripsPerWeek9" HorizontalAlignment="Left" Height="23" Margin="390,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Grid.RowSpan="2"/>
                 <TextBox x:Name="WeeksPerYear9" HorizontalAlignment="Left" Height="23" Margin="515,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Grid.RowSpan="2"/>
@@ -459,10 +459,10 @@
             </TabItem.Header>
         </TabItem>
         <!--#endregion-->
-
-
-
-
+        
     </TabControl>
+
+
+
 
 </Window>
