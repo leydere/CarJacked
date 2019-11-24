@@ -320,6 +320,7 @@
                     <TextBox HorizontalAlignment="Left" Height="23" Margin="126,216,0,0" x:Name="creditScore_Copy2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
 
                 </Grid>
+                <Button x:Name="LongevityButton" Content="Longevity Calculator" HorizontalAlignment="Left" Margin="596,376,0,0" VerticalAlignment="Top" Width="125" Click="LongevityButton_Click"/>
 
             </Grid>
         </TabItem>
@@ -459,7 +460,7 @@
             </TabItem.Header>
         </TabItem>
         <!--#endregion-->
-        
+
     </TabControl>
 
 
