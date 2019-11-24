@@ -31,7 +31,8 @@ namespace CarJack
         public string firstMakeImg = null;
         public int year = 2019;
         public int creditScores = 750;
-        public int carPrice;
+        public int carPrice = -1;
+        public int carMileage = -1;
 
         public MainWindow()
         {
@@ -93,95 +94,106 @@ namespace CarJack
                         make = "Corolla";
                         Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                         HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 8000;
+                        carPrice = 4776;
+                        carMileage = 146181;
                         break;
                     case 2006:
                         make = "Corolla";
                         Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                         HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 7000;
+                        carPrice = 5676;
+                        carMileage = 141664;
                         break;
                     case 2007:
                         make = "Corolla";
                         Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                         HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 6000;
+                        carPrice = 5826;
+                        carMileage = 136393;
                         break;
                     case 2008:
                         make = "Corolla";
                         Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                         HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 5500;
+                        carPrice = 6311;
+                        carMileage = 130381;
                         break;
                     case 2009:
                         make = "Corolla";
                         Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                         HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 8000;
+                        carPrice = 6712;
+                        carMileage = 123490;
                         break;
                     case 2010:
                         make = "Corolla";
                         Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                         HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 9000;
+                        carPrice = 7612;
+                        carMileage = 116004;
                         break;
                     case 2011:
                         make = "Corolla";
                         Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                         HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 9000;
+                        carPrice = 8465;
+                        carMileage = 107756;
                         break;
                     case 2012:
                         make = "Corolla";
                         Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                         HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 10700;
+                        carPrice = 8761;
+                        carMileage = 98767;
                         break;
                     case 2013:
                         make = "Corolla";
                         Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                         HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 11500;
+                        carPrice = 9171;
+                        carMileage = 89036;
                         break;
                     case 2014:
                         make = "Corolla";
                         Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                         HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 11500;   //needsActualPrice
+                        carPrice = 10711;
+                        carMileage = 78385;
                         break;
                     case 2015:
                         make = "Corolla";
                         Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                         HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 11500;   //needsActualPrice
-
+                        carPrice = 10849;
+                        carMileage = 67160;
                         break;
                     case 2016:
                         make = "Corolla";
                         Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                         HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 15000;
+                        carPrice = 12867;
+                        carMileage = 55193;
                         break;
                     case 2017:
                         make = "Corolla";
                         Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                         HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 11500;   //needsActualPrice
-
+                        carPrice = 13664;
+                        carMileage = 42485;
                         break;
                     case 2018:
                         make = "Corolla";
                         Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                         HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 11500;   //needsActualPrice
-
+                        carPrice = 15785;
+                        carMileage = 29075;
                         break;
                     case 2019:
                         make = "Corolla";
                         Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                         HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 11500;   //needsActualPrice
-
+                        carPrice = 17305;
+                        carMileage = 14886;
                         break;
                     default:
                         break;
@@ -231,6 +243,36 @@ namespace CarJack
         /// </summary>
         private void Calc_Save_Click(object sender, RoutedEventArgs e)
         {
+            #region Repaint All Text Black
+            TripMiles1.Foreground = Brushes.Black;
+            TripMiles2.Foreground = Brushes.Black;
+            TripMiles3.Foreground = Brushes.Black;
+            TripMiles4.Foreground = Brushes.Black;
+            TripMiles5.Foreground = Brushes.Black;
+            TripMiles6.Foreground = Brushes.Black;
+            TripMiles7.Foreground = Brushes.Black;
+            TripMiles8.Foreground = Brushes.Black;
+            TripMiles9.Foreground = Brushes.Black;
+            TripsPerWeek1.Foreground = Brushes.Black;
+            TripsPerWeek2.Foreground = Brushes.Black;
+            TripsPerWeek3.Foreground = Brushes.Black;
+            TripsPerWeek4.Foreground = Brushes.Black;
+            TripsPerWeek5.Foreground = Brushes.Black;
+            TripsPerWeek6.Foreground = Brushes.Black;
+            TripsPerWeek7.Foreground = Brushes.Black;
+            TripsPerWeek8.Foreground = Brushes.Black;
+            TripsPerWeek9.Foreground = Brushes.Black;
+            WeeksPerYear1.Foreground = Brushes.Black;
+            WeeksPerYear2.Foreground = Brushes.Black;
+            WeeksPerYear3.Foreground = Brushes.Black;
+            WeeksPerYear4.Foreground = Brushes.Black;
+            WeeksPerYear5.Foreground = Brushes.Black;
+            WeeksPerYear6.Foreground = Brushes.Black;
+            WeeksPerYear7.Foreground = Brushes.Black;
+            WeeksPerYear8.Foreground = Brushes.Black;
+            WeeksPerYear9.Foreground = Brushes.Black;
+            #endregion
+
             #region Check For and Remove Semicolons
             bool foundSemiColonCheck = false;
             if (CheckForSemiColons(TripDescript1.Text)) { TripDescript1.Text = TrimSemiColons(TripDescript1.Text); foundSemiColonCheck = true; }
@@ -245,39 +287,73 @@ namespace CarJack
             if (foundSemiColonCheck) { MessageBox.Show("One or more semicolons were detected and removed.", "Semicolon Detected"); }
             #endregion
 
+            #region Check For Blank Boxes
+            bool foundBlankBoxes = false;
+            if (CheckForBlankBoxes(TripMiles1.Text)) { foundBlankBoxes = true; TripMiles1.Text = "0"; }
+            if (CheckForBlankBoxes(TripMiles2.Text)) { foundBlankBoxes = true; TripMiles2.Text = "0"; }
+            if (CheckForBlankBoxes(TripMiles3.Text)) { foundBlankBoxes = true; TripMiles3.Text = "0"; }
+            if (CheckForBlankBoxes(TripMiles4.Text)) { foundBlankBoxes = true; TripMiles4.Text = "0"; }
+            if (CheckForBlankBoxes(TripMiles5.Text)) { foundBlankBoxes = true; TripMiles5.Text = "0"; }
+            if (CheckForBlankBoxes(TripMiles6.Text)) { foundBlankBoxes = true; TripMiles6.Text = "0"; }
+            if (CheckForBlankBoxes(TripMiles7.Text)) { foundBlankBoxes = true; TripMiles7.Text = "0"; }
+            if (CheckForBlankBoxes(TripMiles8.Text)) { foundBlankBoxes = true; TripMiles8.Text = "0"; }
+            if (CheckForBlankBoxes(TripMiles9.Text)) { foundBlankBoxes = true; TripMiles9.Text = "0"; }
+
+            if (CheckForBlankBoxes(TripsPerWeek1.Text)) { foundBlankBoxes = true; TripsPerWeek1.Text = "0"; }
+            if (CheckForBlankBoxes(TripsPerWeek2.Text)) { foundBlankBoxes = true; TripsPerWeek2.Text = "0"; }
+            if (CheckForBlankBoxes(TripsPerWeek3.Text)) { foundBlankBoxes = true; TripsPerWeek3.Text = "0"; }
+            if (CheckForBlankBoxes(TripsPerWeek4.Text)) { foundBlankBoxes = true; TripsPerWeek4.Text = "0"; }
+            if (CheckForBlankBoxes(TripsPerWeek5.Text)) { foundBlankBoxes = true; TripsPerWeek5.Text = "0"; }
+            if (CheckForBlankBoxes(TripsPerWeek6.Text)) { foundBlankBoxes = true; TripsPerWeek6.Text = "0"; }
+            if (CheckForBlankBoxes(TripsPerWeek7.Text)) { foundBlankBoxes = true; TripsPerWeek7.Text = "0"; }
+            if (CheckForBlankBoxes(TripsPerWeek8.Text)) { foundBlankBoxes = true; TripsPerWeek8.Text = "0"; }
+            if (CheckForBlankBoxes(TripsPerWeek9.Text)) { foundBlankBoxes = true; TripsPerWeek9.Text = "0"; }
+
+            if (CheckForBlankBoxes(WeeksPerYear1.Text)) { foundBlankBoxes = true; WeeksPerYear1.Text = "0"; }
+            if (CheckForBlankBoxes(WeeksPerYear2.Text)) { foundBlankBoxes = true; WeeksPerYear2.Text = "0"; }
+            if (CheckForBlankBoxes(WeeksPerYear3.Text)) { foundBlankBoxes = true; WeeksPerYear3.Text = "0"; }
+            if (CheckForBlankBoxes(WeeksPerYear4.Text)) { foundBlankBoxes = true; WeeksPerYear4.Text = "0"; }
+            if (CheckForBlankBoxes(WeeksPerYear5.Text)) { foundBlankBoxes = true; WeeksPerYear5.Text = "0"; }
+            if (CheckForBlankBoxes(WeeksPerYear6.Text)) { foundBlankBoxes = true; WeeksPerYear6.Text = "0"; }
+            if (CheckForBlankBoxes(WeeksPerYear7.Text)) { foundBlankBoxes = true; WeeksPerYear7.Text = "0"; }
+            if (CheckForBlankBoxes(WeeksPerYear8.Text)) { foundBlankBoxes = true; WeeksPerYear8.Text = "0"; }
+            if (CheckForBlankBoxes(WeeksPerYear9.Text)) { foundBlankBoxes = true; WeeksPerYear9.Text = "0"; }
+            if (foundBlankBoxes) { MessageBox.Show("One or more empty boxes was detected in the numberic columns. A value of '0' was entered into the field(s).", "Empty Box Detected"); }
+            #endregion
+
             #region Whole Number Check
             bool foundNonWholeTripMiles = false;
-            if (CheckForWholeNumbers(TripMiles1.Text)) foundNonWholeTripMiles = true;
-            if (CheckForWholeNumbers(TripMiles2.Text)) foundNonWholeTripMiles = true;
-            if (CheckForWholeNumbers(TripMiles3.Text)) foundNonWholeTripMiles = true;
-            if (CheckForWholeNumbers(TripMiles4.Text)) foundNonWholeTripMiles = true;
-            if (CheckForWholeNumbers(TripMiles5.Text)) foundNonWholeTripMiles = true;
-            if (CheckForWholeNumbers(TripMiles6.Text)) foundNonWholeTripMiles = true;
-            if (CheckForWholeNumbers(TripMiles7.Text)) foundNonWholeTripMiles = true;
-            if (CheckForWholeNumbers(TripMiles8.Text)) foundNonWholeTripMiles = true;
-            if (CheckForWholeNumbers(TripMiles9.Text)) foundNonWholeTripMiles = true;
+            if (CheckForWholeNumbers(TripMiles1.Text)) { foundNonWholeTripMiles = true; TripMiles1.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripMiles2.Text)) { foundNonWholeTripMiles = true; TripMiles2.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripMiles3.Text)) { foundNonWholeTripMiles = true; TripMiles3.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripMiles4.Text)) { foundNonWholeTripMiles = true; TripMiles4.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripMiles5.Text)) { foundNonWholeTripMiles = true; TripMiles5.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripMiles6.Text)) { foundNonWholeTripMiles = true; TripMiles6.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripMiles7.Text)) { foundNonWholeTripMiles = true; TripMiles7.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripMiles8.Text)) { foundNonWholeTripMiles = true; TripMiles8.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripMiles9.Text)) { foundNonWholeTripMiles = true; TripMiles9.Foreground = Brushes.Red; }
             if (foundNonWholeTripMiles) { MessageBox.Show("One or more non whole numbers was detected in the 'Trip Miles' column.  Whole positive numbers are the expected input for these fields.  Please correct.", "Non-Whole Number Value Detected"); }
             bool foundNonWholeTripsPerWeek = false;
-            if (CheckForWholeNumbers(TripsPerWeek1.Text)) foundNonWholeTripsPerWeek = true;
-            if (CheckForWholeNumbers(TripsPerWeek2.Text)) foundNonWholeTripsPerWeek = true;
-            if (CheckForWholeNumbers(TripsPerWeek3.Text)) foundNonWholeTripsPerWeek = true;
-            if (CheckForWholeNumbers(TripsPerWeek4.Text)) foundNonWholeTripsPerWeek = true;
-            if (CheckForWholeNumbers(TripsPerWeek5.Text)) foundNonWholeTripsPerWeek = true;
-            if (CheckForWholeNumbers(TripsPerWeek6.Text)) foundNonWholeTripsPerWeek = true;
-            if (CheckForWholeNumbers(TripsPerWeek7.Text)) foundNonWholeTripsPerWeek = true;
-            if (CheckForWholeNumbers(TripsPerWeek8.Text)) foundNonWholeTripsPerWeek = true;
-            if (CheckForWholeNumbers(TripsPerWeek9.Text)) foundNonWholeTripsPerWeek = true;
+            if (CheckForWholeNumbers(TripsPerWeek1.Text)) { foundNonWholeTripsPerWeek = true; TripsPerWeek1.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripsPerWeek2.Text)) { foundNonWholeTripsPerWeek = true; TripsPerWeek2.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripsPerWeek3.Text)) { foundNonWholeTripsPerWeek = true; TripsPerWeek3.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripsPerWeek4.Text)) { foundNonWholeTripsPerWeek = true; TripsPerWeek4.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripsPerWeek5.Text)) { foundNonWholeTripsPerWeek = true; TripsPerWeek5.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripsPerWeek6.Text)) { foundNonWholeTripsPerWeek = true; TripsPerWeek6.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripsPerWeek7.Text)) { foundNonWholeTripsPerWeek = true; TripsPerWeek7.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripsPerWeek8.Text)) { foundNonWholeTripsPerWeek = true; TripsPerWeek8.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(TripsPerWeek9.Text)) { foundNonWholeTripsPerWeek = true; TripsPerWeek9.Foreground = Brushes.Red; }
             if (foundNonWholeTripsPerWeek) { MessageBox.Show("One or more non whole numbers was detected in the 'Trips per Week' column.  Whole positive numbers are the expected input for these fields.  Please correct.", "Non-Whole Number Value Detected"); }
             bool foundNonWholeWeeksPerYear = false;
-            if (CheckForWholeNumbers(WeeksPerYear1.Text)) foundNonWholeWeeksPerYear = true;
-            if (CheckForWholeNumbers(WeeksPerYear2.Text)) foundNonWholeWeeksPerYear = true;
-            if (CheckForWholeNumbers(WeeksPerYear3.Text)) foundNonWholeWeeksPerYear = true;
-            if (CheckForWholeNumbers(WeeksPerYear4.Text)) foundNonWholeWeeksPerYear = true;
-            if (CheckForWholeNumbers(WeeksPerYear5.Text)) foundNonWholeWeeksPerYear = true;
-            if (CheckForWholeNumbers(WeeksPerYear6.Text)) foundNonWholeWeeksPerYear = true;
-            if (CheckForWholeNumbers(WeeksPerYear7.Text)) foundNonWholeWeeksPerYear = true;
-            if (CheckForWholeNumbers(WeeksPerYear8.Text)) foundNonWholeWeeksPerYear = true;
-            if (CheckForWholeNumbers(WeeksPerYear9.Text)) foundNonWholeWeeksPerYear = true;
+            if (CheckForWholeNumbers(WeeksPerYear1.Text)) { foundNonWholeWeeksPerYear = true; WeeksPerYear1.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(WeeksPerYear2.Text)) { foundNonWholeWeeksPerYear = true; WeeksPerYear2.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(WeeksPerYear3.Text)) { foundNonWholeWeeksPerYear = true; WeeksPerYear3.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(WeeksPerYear4.Text)) { foundNonWholeWeeksPerYear = true; WeeksPerYear4.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(WeeksPerYear5.Text)) { foundNonWholeWeeksPerYear = true; WeeksPerYear5.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(WeeksPerYear6.Text)) { foundNonWholeWeeksPerYear = true; WeeksPerYear6.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(WeeksPerYear7.Text)) { foundNonWholeWeeksPerYear = true; WeeksPerYear7.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(WeeksPerYear8.Text)) { foundNonWholeWeeksPerYear = true; WeeksPerYear8.Foreground = Brushes.Red; }
+            if (CheckForWholeNumbers(WeeksPerYear9.Text)) { foundNonWholeWeeksPerYear = true; WeeksPerYear9.Foreground = Brushes.Red; }
             if (foundNonWholeWeeksPerYear) { MessageBox.Show("One or more non whole numbers was detected in the 'Weeks per Year' column.  Whole positive numbers are the expected input for these fields.  Please correct.", "Non-Whole Number Value Detected"); }
             #endregion
 
@@ -285,43 +361,43 @@ namespace CarJack
             bool foundNegativeTripMiles = false;
             if (!foundNonWholeTripMiles)
             {
-                if (CheckForNegativeValues(TripMiles1.Text)) foundNegativeTripMiles = true;
-                if (CheckForNegativeValues(TripMiles2.Text)) foundNegativeTripMiles = true;
-                if (CheckForNegativeValues(TripMiles3.Text)) foundNegativeTripMiles = true;
-                if (CheckForNegativeValues(TripMiles4.Text)) foundNegativeTripMiles = true;
-                if (CheckForNegativeValues(TripMiles5.Text)) foundNegativeTripMiles = true;
-                if (CheckForNegativeValues(TripMiles6.Text)) foundNegativeTripMiles = true;
-                if (CheckForNegativeValues(TripMiles7.Text)) foundNegativeTripMiles = true;
-                if (CheckForNegativeValues(TripMiles8.Text)) foundNegativeTripMiles = true;
-                if (CheckForNegativeValues(TripMiles9.Text)) foundNegativeTripMiles = true;
+                if (CheckForNegativeValues(TripMiles1.Text)) { foundNegativeTripMiles = true; TripMiles1.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripMiles2.Text)) { foundNegativeTripMiles = true; TripMiles2.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripMiles3.Text)) { foundNegativeTripMiles = true; TripMiles3.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripMiles4.Text)) { foundNegativeTripMiles = true; TripMiles4.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripMiles5.Text)) { foundNegativeTripMiles = true; TripMiles5.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripMiles6.Text)) { foundNegativeTripMiles = true; TripMiles6.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripMiles7.Text)) { foundNegativeTripMiles = true; TripMiles7.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripMiles8.Text)) { foundNegativeTripMiles = true; TripMiles8.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripMiles9.Text)) { foundNegativeTripMiles = true; TripMiles9.Foreground = Brushes.Red; }
             }
             if (foundNegativeTripMiles) { MessageBox.Show("One or more negative numbers was detected in the 'Trip Miles' column.  Whole positive numbers are the expected input for these fields.  Please correct.", "Negative Value Detected"); }
             bool foundNegativeTripsPerWeek = false;
             if (!foundNonWholeTripsPerWeek)
             {
-                if (CheckForNegativeValues(TripsPerWeek1.Text)) foundNegativeTripsPerWeek = true;
-                if (CheckForNegativeValues(TripsPerWeek2.Text)) foundNegativeTripsPerWeek = true;
-                if (CheckForNegativeValues(TripsPerWeek3.Text)) foundNegativeTripsPerWeek = true;
-                if (CheckForNegativeValues(TripsPerWeek4.Text)) foundNegativeTripsPerWeek = true;
-                if (CheckForNegativeValues(TripsPerWeek5.Text)) foundNegativeTripsPerWeek = true;
-                if (CheckForNegativeValues(TripsPerWeek6.Text)) foundNegativeTripsPerWeek = true;
-                if (CheckForNegativeValues(TripsPerWeek7.Text)) foundNegativeTripsPerWeek = true;
-                if (CheckForNegativeValues(TripsPerWeek8.Text)) foundNegativeTripsPerWeek = true;
-                if (CheckForNegativeValues(TripsPerWeek9.Text)) foundNegativeTripsPerWeek = true;
+                if (CheckForNegativeValues(TripsPerWeek1.Text)) { foundNegativeTripsPerWeek = true; TripsPerWeek1.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripsPerWeek2.Text)) { foundNegativeTripsPerWeek = true; TripsPerWeek2.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripsPerWeek3.Text)) { foundNegativeTripsPerWeek = true; TripsPerWeek3.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripsPerWeek4.Text)) { foundNegativeTripsPerWeek = true; TripsPerWeek4.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripsPerWeek5.Text)) { foundNegativeTripsPerWeek = true; TripsPerWeek5.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripsPerWeek6.Text)) { foundNegativeTripsPerWeek = true; TripsPerWeek6.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripsPerWeek7.Text)) { foundNegativeTripsPerWeek = true; TripsPerWeek7.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripsPerWeek8.Text)) { foundNegativeTripsPerWeek = true; TripsPerWeek8.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(TripsPerWeek9.Text)) { foundNegativeTripsPerWeek = true; TripsPerWeek9.Foreground = Brushes.Red; }
             }
             if (foundNegativeTripsPerWeek) { MessageBox.Show("One or more negative numbers was detected in the 'Trips per Week' column.  Whole positive numbers are the expected input for these fields.  Please correct.", "Negative Value Detected"); }
             bool foundNegativeWeeksPerYear = false;
             if (!foundNonWholeWeeksPerYear)
             {
-                if (CheckForNegativeValues(WeeksPerYear1.Text)) foundNegativeWeeksPerYear = true;
-                if (CheckForNegativeValues(WeeksPerYear2.Text)) foundNegativeWeeksPerYear = true;
-                if (CheckForNegativeValues(WeeksPerYear3.Text)) foundNegativeWeeksPerYear = true;
-                if (CheckForNegativeValues(WeeksPerYear4.Text)) foundNegativeWeeksPerYear = true;
-                if (CheckForNegativeValues(WeeksPerYear5.Text)) foundNegativeWeeksPerYear = true;
-                if (CheckForNegativeValues(WeeksPerYear6.Text)) foundNegativeWeeksPerYear = true;
-                if (CheckForNegativeValues(WeeksPerYear7.Text)) foundNegativeWeeksPerYear = true;
-                if (CheckForNegativeValues(WeeksPerYear8.Text)) foundNegativeWeeksPerYear = true;
-                if (CheckForNegativeValues(WeeksPerYear9.Text)) foundNegativeWeeksPerYear = true;
+                if (CheckForNegativeValues(WeeksPerYear1.Text)) { foundNegativeWeeksPerYear = true; WeeksPerYear1.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(WeeksPerYear2.Text)) { foundNegativeWeeksPerYear = true; WeeksPerYear2.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(WeeksPerYear3.Text)) { foundNegativeWeeksPerYear = true; WeeksPerYear3.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(WeeksPerYear4.Text)) { foundNegativeWeeksPerYear = true; WeeksPerYear4.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(WeeksPerYear5.Text)) { foundNegativeWeeksPerYear = true; WeeksPerYear5.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(WeeksPerYear6.Text)) { foundNegativeWeeksPerYear = true; WeeksPerYear6.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(WeeksPerYear7.Text)) { foundNegativeWeeksPerYear = true; WeeksPerYear7.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(WeeksPerYear8.Text)) { foundNegativeWeeksPerYear = true; WeeksPerYear8.Foreground = Brushes.Red; }
+                if (CheckForNegativeValues(WeeksPerYear9.Text)) { foundNegativeWeeksPerYear = true; WeeksPerYear9.Foreground = Brushes.Red; }
             }
             if (foundNegativeWeeksPerYear) { MessageBox.Show("One or more negative numbers was detected in the 'Weeks per Year' column.  Whole positive numbers are the expected input for these fields.  Please correct.", "Negative Value Detected"); }
             #endregion
@@ -331,15 +407,15 @@ namespace CarJack
             bool greaterThan1000 = false;
             if (!foundNonWholeTripMiles)
             {
-                if (CheckForUnreasonablyLargeValue(TripMiles1.Text)) { greaterThan1000 = true; } else if (CheckForLargeValue(TripMiles1.Text)) { greaterThan100 = true; }
-                if (CheckForUnreasonablyLargeValue(TripMiles2.Text)) { greaterThan1000 = true; } else if (CheckForLargeValue(TripMiles2.Text)) { greaterThan100 = true; }
-                if (CheckForUnreasonablyLargeValue(TripMiles3.Text)) { greaterThan1000 = true; } else if (CheckForLargeValue(TripMiles3.Text)) { greaterThan100 = true; }
-                if (CheckForUnreasonablyLargeValue(TripMiles4.Text)) { greaterThan1000 = true; } else if (CheckForLargeValue(TripMiles4.Text)) { greaterThan100 = true; }
-                if (CheckForUnreasonablyLargeValue(TripMiles5.Text)) { greaterThan1000 = true; } else if (CheckForLargeValue(TripMiles5.Text)) { greaterThan100 = true; }
-                if (CheckForUnreasonablyLargeValue(TripMiles6.Text)) { greaterThan1000 = true; } else if (CheckForLargeValue(TripMiles6.Text)) { greaterThan100 = true; }
-                if (CheckForUnreasonablyLargeValue(TripMiles7.Text)) { greaterThan1000 = true; } else if (CheckForLargeValue(TripMiles7.Text)) { greaterThan100 = true; }
-                if (CheckForUnreasonablyLargeValue(TripMiles8.Text)) { greaterThan1000 = true; } else if (CheckForLargeValue(TripMiles8.Text)) { greaterThan100 = true; }
-                if (CheckForUnreasonablyLargeValue(TripMiles9.Text)) { greaterThan1000 = true; } else if (CheckForLargeValue(TripMiles9.Text)) { greaterThan100 = true; }
+                if (CheckForUnreasonablyLargeValue(TripMiles1.Text)) { greaterThan1000 = true; TripMiles1.Foreground = Brushes.LightBlue; } else if (CheckForLargeValue(TripMiles1.Text)) { greaterThan100 = true; TripMiles1.Foreground = Brushes.LightBlue; }
+                if (CheckForUnreasonablyLargeValue(TripMiles2.Text)) { greaterThan1000 = true; TripMiles2.Foreground = Brushes.LightBlue; } else if (CheckForLargeValue(TripMiles2.Text)) { greaterThan100 = true; TripMiles2.Foreground = Brushes.LightBlue; }
+                if (CheckForUnreasonablyLargeValue(TripMiles3.Text)) { greaterThan1000 = true; TripMiles3.Foreground = Brushes.LightBlue; } else if (CheckForLargeValue(TripMiles3.Text)) { greaterThan100 = true; TripMiles3.Foreground = Brushes.LightBlue; }
+                if (CheckForUnreasonablyLargeValue(TripMiles4.Text)) { greaterThan1000 = true; TripMiles4.Foreground = Brushes.LightBlue; } else if (CheckForLargeValue(TripMiles4.Text)) { greaterThan100 = true; TripMiles4.Foreground = Brushes.LightBlue; }
+                if (CheckForUnreasonablyLargeValue(TripMiles5.Text)) { greaterThan1000 = true; TripMiles5.Foreground = Brushes.LightBlue; } else if (CheckForLargeValue(TripMiles5.Text)) { greaterThan100 = true; TripMiles5.Foreground = Brushes.LightBlue; }
+                if (CheckForUnreasonablyLargeValue(TripMiles6.Text)) { greaterThan1000 = true; TripMiles6.Foreground = Brushes.LightBlue; } else if (CheckForLargeValue(TripMiles6.Text)) { greaterThan100 = true; TripMiles6.Foreground = Brushes.LightBlue; }
+                if (CheckForUnreasonablyLargeValue(TripMiles7.Text)) { greaterThan1000 = true; TripMiles7.Foreground = Brushes.LightBlue; } else if (CheckForLargeValue(TripMiles7.Text)) { greaterThan100 = true; TripMiles7.Foreground = Brushes.LightBlue; }
+                if (CheckForUnreasonablyLargeValue(TripMiles8.Text)) { greaterThan1000 = true; TripMiles8.Foreground = Brushes.LightBlue; } else if (CheckForLargeValue(TripMiles8.Text)) { greaterThan100 = true; TripMiles8.Foreground = Brushes.LightBlue; }
+                if (CheckForUnreasonablyLargeValue(TripMiles9.Text)) { greaterThan1000 = true; TripMiles9.Foreground = Brushes.LightBlue; } else if (CheckForLargeValue(TripMiles9.Text)) { greaterThan100 = true; TripMiles9.Foreground = Brushes.LightBlue; }
 
             }
             if (greaterThan100) { MessageBox.Show("A value >= 100 was detected in the 'Trip Miles' column.  Results were saved, but if this was not intended please correct.", "Large Value Detected"); }
@@ -350,15 +426,15 @@ namespace CarJack
             bool unreasonableYears = false;
             if (!foundNonWholeWeeksPerYear)
             {
-                if (CheckForZeroThrough52(WeeksPerYear1.Text)) unreasonableYears = true;
-                if (CheckForZeroThrough52(WeeksPerYear2.Text)) unreasonableYears = true;
-                if (CheckForZeroThrough52(WeeksPerYear3.Text)) unreasonableYears = true;
-                if (CheckForZeroThrough52(WeeksPerYear4.Text)) unreasonableYears = true;
-                if (CheckForZeroThrough52(WeeksPerYear5.Text)) unreasonableYears = true;
-                if (CheckForZeroThrough52(WeeksPerYear6.Text)) unreasonableYears = true;
-                if (CheckForZeroThrough52(WeeksPerYear7.Text)) unreasonableYears = true;
-                if (CheckForZeroThrough52(WeeksPerYear8.Text)) unreasonableYears = true;
-                if (CheckForZeroThrough52(WeeksPerYear9.Text)) unreasonableYears = true;
+                if (CheckForZeroThrough52(WeeksPerYear1.Text)) { unreasonableYears = true; WeeksPerYear1.Foreground = Brushes.Red; }
+                if (CheckForZeroThrough52(WeeksPerYear2.Text)) { unreasonableYears = true; WeeksPerYear2.Foreground = Brushes.Red; }
+                if (CheckForZeroThrough52(WeeksPerYear3.Text)) { unreasonableYears = true; WeeksPerYear3.Foreground = Brushes.Red; }
+                if (CheckForZeroThrough52(WeeksPerYear4.Text)) { unreasonableYears = true; WeeksPerYear4.Foreground = Brushes.Red; }
+                if (CheckForZeroThrough52(WeeksPerYear5.Text)) { unreasonableYears = true; WeeksPerYear5.Foreground = Brushes.Red; }
+                if (CheckForZeroThrough52(WeeksPerYear6.Text)) { unreasonableYears = true; WeeksPerYear6.Foreground = Brushes.Red; }
+                if (CheckForZeroThrough52(WeeksPerYear7.Text)) { unreasonableYears = true; WeeksPerYear7.Foreground = Brushes.Red; }
+                if (CheckForZeroThrough52(WeeksPerYear8.Text)) { unreasonableYears = true; WeeksPerYear8.Foreground = Brushes.Red; }
+                if (CheckForZeroThrough52(WeeksPerYear9.Text)) { unreasonableYears = true; WeeksPerYear9.Foreground = Brushes.Red; }
             }
             if (unreasonableYears) { MessageBox.Show("A value outside the range of 0 - 52 was detected in the 'Weeks per Year' column.  Value between 0 and 52 expected.  Please correct.", "Illogical Year Value Detected"); }
             #endregion
@@ -411,6 +487,12 @@ namespace CarJack
 
         }
 
+        private static bool CheckForBlankBoxes(string inputText)
+        {
+            if (inputText == "") return true;
+            return false;
+        }
+
         /// <summary>
         /// Checks for values outside the range of 0 - 52.  Does this as the input is expected to represent a number of weeks in one year.
         /// </summary>
@@ -461,36 +543,6 @@ namespace CarJack
             try { Int32.Parse(inputText); }
             catch { return true; }
             return false;
-        }
-
-        /*
-         * *** LIKELY TO DELETE CHECKTRIPMILESCOLUMN FUNCTION *** -ERL
-         */
-        private static bool CheckTripMilesColumn(string milesText)
-        {
-            bool goodCheck = true;
-
-            try
-            {
-                int milesNum = Int32.Parse(milesText);
-                if (milesNum < 0) { MessageBox.Show("A negative value was detected in the 'Trip Miles' column.  Whole positive numbers are the expected input for these fields.  Please correct.", "Negative Value Detected"); }
-                if (milesNum >= 1000) { MessageBox.Show("A value of 1000 or greater was detected in the 'Trip Miles' column.  Are you sure this is the value you meant to enter?", "Value >= 1000 Detected"); }
-                else { if (milesNum >= 100) { MessageBox.Show("A value of 100 or greater was detected in the 'Trip Miles' column.  Are you sure this is the value you meant to enter?", "Value >= 100 Detected"); } }
-            }
-            catch
-            {
-                try
-                {
-                    float milesFloat = float.Parse(milesText);
-                    MessageBox.Show("A non-whole number value was detected in the 'Trip Miles' column.  Whole positive numbers are the expected input for these fields.  Please correct.", "Non-Whole Number Value Detected");
-                }
-                catch
-                {
-                    MessageBox.Show("An issue was detected in the 'Trip Miles' column.  Whole positive numbers are the expected input for these fields.  Please correct.", "Issue Detected");
-                }
-            }
-
-            return goodCheck;
         }
 
         /// <summary>
@@ -669,6 +721,24 @@ namespace CarJack
             {
                 MessageBox.Show("Please Insert a numerical value into the credit score box");
             }
+        }
+
+        private void LongevityButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (carPrice != -1 && carMileage != -1 && TotalBlock.Text != "")
+            {
+                try
+                {
+                    float remainingMiles = 250000 - Convert.ToSingle(carMileage);
+                    float yearsLongevity = remainingMiles / Convert.ToSingle(TotalBlock.Text);
+                    float annualCostValue = Convert.ToSingle(carPrice) / yearsLongevity;
+                    string printLongevity = Math.Round(yearsLongevity, 1).ToString();
+                    string printCostValue = Math.Round(annualCostValue, 2).ToString();
+                    MessageBox.Show("With an assumed maximum mileage of 250,000:\r\rThis vehicle will last " + printLongevity + " years.\r\rThe annual cost:value is $" + printCostValue + ".", "Longevity/Cost Projections");
+                }
+                catch { MessageBox.Show("One or more issues prevented the expected calculation from taking place.  Actual issue not identified.", "Action Failed"); }
+            }
+            else MessageBox.Show("The calculation cannot complete without a vehicle selected and the activity calculator filled in and saved.  Please correct and try again.", "Unable to Calculate");
         }
     }
 }
