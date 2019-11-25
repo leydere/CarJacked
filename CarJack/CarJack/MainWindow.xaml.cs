@@ -1113,23 +1113,32 @@ namespace CarJack
 
             //merge loaded data into objects
             int i = -1;
-            foreach (string line in vehicleData_1)
+            if (vehicleData_1 != null)
             {
-                i++;
-                MergeCarInfo(line, i, 1);
+                foreach (string line in vehicleData_1)
+                {
+                    i++;
+                    MergeCarInfo(line, i, 1);
+                }
             }
 
             i = -1;
-            foreach (string line in vehicleData_2)
+            if (vehicleData_2 != null)
             {
-                i++;
-                MergeCarInfo(line, i, 2);
+                foreach (string line in vehicleData_2)
+                {
+                    i++;
+                    MergeCarInfo(line, i, 2);
+                }
             }
             i = -1;
-            foreach (string line in vehicleData_3)
+            if (vehicleData_3 != null)
             {
-                i++;
-                MergeCarInfo(line, i, 3);
+                foreach (string line in vehicleData_3)
+                {
+                    i++;
+                    MergeCarInfo(line, i, 3);
+                }
             }
         }
 
@@ -1200,56 +1209,56 @@ namespace CarJack
             //vehicle2 data merged
 
 
-            if ((y == 0) && (car == 1))
+            if ((y == 0) && (car == 2))
             {
                 savVehicle2.Make = x;
                 tempName = x;
             }
-            else if ((y == 1) && (car == 1))
+            else if ((y == 1) && (car == 2))
             {
                 savVehicle2.Model = x;
 
                 tempName = tempName + " " + x;
             }
-            else if ((y == 2) && (car == 1))
+            else if ((y == 2) && (car == 2))
             {
                 savVehicle2.Body = x;
             }
-            else if ((y == 3) && (car == 1))
+            else if ((y == 3) && (car == 2))
             {
                 savVehicle2.Engine = x;
                 carPricing2.Content = x;
             }
-            else if ((y == 4) && (car == 1))
+            else if ((y == 4) && (car == 2))
             {
                 savVehicle2.Color = x;
             }
-            else if ((y == 5) && (car == 1))
+            else if ((y == 5) && (car == 2))
             {
                 savVehicle2.Year = Convert.ToInt32(x);
                 Car2Info.Content = x + " " + tempName;
             }
-            else if ((y == 6) && (car == 1))
+            else if ((y == 6) && (car == 2))
             {
                 savVehicle2.Price = Convert.ToInt32(x);
                 carPricing2.Content = x;
             }
-            else if ((y == 7) && (car == 1))
+            else if ((y == 7) && (car == 2))
             {
                 savVehicle2.Payments = Convert.ToDouble(x);
                 carPayment2.Content = x;
             }
-            else if ((y == 8) && (car == 1))
+            else if ((y == 8) && (car == 2))
             {
                 savVehicle2.MilesGal = Convert.ToInt32(x);
                 MilesPerGal2.Content = x;
             }
-            else if ((y == 9) && (car == 1))
+            else if ((y == 9) && (car == 2))
             {
                 savVehicle2.Mileage = Convert.ToInt32(x);
                 carMileage2.Content = x;
             }
-            else if ((y == 10) && (car == 1))
+            else if ((y == 10) && (car == 2))
             {
                 MyVehicle2.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + x));
                 MyVehicle2.Visibility = Visibility.Visible;
@@ -1259,56 +1268,56 @@ namespace CarJack
             //vehicle3 data merged
 
 
-            if ((y == 0) && (car == 1))
+            if ((y == 0) && (car == 3))
             {
                 savVehicle3.Make = x;
                 tempName = x;
             }
-            else if ((y == 1) && (car == 1))
+            else if ((y == 1) && (car == 3))
             {
                 savVehicle3.Model = x;
 
                 tempName = tempName + " " + x;
             }
-            else if ((y == 2) && (car == 1))
+            else if ((y == 2) && (car == 3))
             {
                 savVehicle3.Body = x;
             }
-            else if ((y == 3) && (car == 1))
+            else if ((y == 3) && (car == 3))
             {
                 savVehicle3.Engine = x;
                 carPricing3.Content = x;
             }
-            else if ((y == 4) && (car == 1))
+            else if ((y == 4) && (car == 3))
             {
                 savVehicle3.Color = x;
             }
-            else if ((y == 5) && (car == 1))
+            else if ((y == 5) && (car == 3))
             {
                 savVehicle3.Year = Convert.ToInt32(x);
                 Car3Info.Content = x + " " + tempName;
             }
-            else if ((y == 6) && (car == 1))
+            else if ((y == 6) && (car == 3))
             {
                 savVehicle3.Price = Convert.ToInt32(x);
                 carPricing3.Content = x;
             }
-            else if ((y == 7) && (car == 1))
+            else if ((y == 7) && (car == 3))
             {
                 savVehicle3.Payments = Convert.ToDouble(x);
                 carPayment3.Content = x;
             }
-            else if ((y == 8) && (car == 1))
+            else if ((y == 8) && (car == 3))
             {
                 savVehicle3.MilesGal = Convert.ToInt32(x);
                 MilesPerGal3.Content = x;
             }
-            else if ((y == 9) && (car == 1))
+            else if ((y == 9) && (car == 3))
             {
                 savVehicle3.Mileage = Convert.ToInt32(x);
                 carMileage3.Content = x;
             }
-            else if ((y == 10) && (car == 1))
+            else if ((y == 10) && (car == 3))
             {
                 MyVehicle3.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + x));
                 MyVehicle3.Visibility = Visibility.Visible;
@@ -1457,6 +1466,7 @@ namespace CarJack
             {
                 case 1:
                     File.WriteAllText(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle1.txt", String.Empty); break;
+                  
 
                 case 2:
                     File.WriteAllText(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle2.txt", String.Empty);

@@ -69,7 +69,7 @@
         <!--#region tab1(undeclared)-->
         <TabItem x:Name="Tab1" Width="58" Height="64" Background="#FF3C3C3C" BorderBrush="#FF818181" IsSelected="True" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" HorizontalContentAlignment="Stretch">
             <TabItem.Header>
-                <Image Height="60" Source="images/bear1.png"/>
+                <Image Height="60" Source="images/garage.png"/>
             </TabItem.Header>
             <Grid HorizontalAlignment="Left" Height="417" VerticalAlignment="Top" Width="731">
                 <Image HorizontalAlignment="Center" Height="110" Margin="0,0,0,0" VerticalAlignment="Top" Width="210" Source="images/CarViewerDetails.png" Opacity="0.65"/>
@@ -432,13 +432,14 @@
         <!--#region tab3(activity calculator)-->
         <TabItem x:Name="ActivityCalc_Tab" Width="58" Height="64" BorderBrush="#FF818181" Background="#FF3C3C3C" HorizontalAlignment="Center" VerticalAlignment="Center" IsSelected="True" Margin="0" Initialized="ActivityCalc_Tab_Initialized">
             <TabItem.Header>
-                <Image Height="60" Source="images/bear3.png"/>
+                <Image Height="60" Source="images/Odometer.png"/>
             </TabItem.Header>
             <Grid Margin="10,10,2,3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="107*"/>
                     <RowDefinition Height="28*"/>
                 </Grid.RowDefinitions>
+
                 <TextBox x:Name="TripDescript1" Height="23" TextWrapping="Wrap" Margin="44,86,471,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="TripMiles1" HorizontalAlignment="Left" Height="23" Margin="269,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
                 <TextBox x:Name="TripsPerWeek1" HorizontalAlignment="Left" Height="23" Margin="390,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
@@ -558,11 +559,7 @@
         </TabItem>
         <!--#endregion-->
         <!--#region tab4(undeclared)-->
-        <TabItem Background="#FF3C3C3C" BorderBrush="#FF818181" Height="64" HorizontalAlignment="Center" VerticalAlignment="Center" Width="58" Margin="0">
-            <TabItem.Header>
-                <Image Height="60" Source="images/bear4.png"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </TabItem.Header>
-        </TabItem>
+        <TabItem Background="#FF3C3C3C" BorderBrush="#FF818181" Height="64" IsEnabled="False" HorizontalAlignment="Center" VerticalAlignment="Center" Width="58" Margin="0"/>
         <!--#endregion-->
 
     </TabControl>

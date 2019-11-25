@@ -163,5 +163,8 @@
     <Resource Include="images\tire.png" />
     <Resource Include="images\xMark.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\garage.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
