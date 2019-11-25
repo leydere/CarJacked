@@ -71,6 +71,93 @@
             <TabItem.Header>
                 <Image Height="60" Source="images/bear1.png"/>
             </TabItem.Header>
+            <Grid HorizontalAlignment="Left" Height="417" VerticalAlignment="Top" Width="731">
+                <Image HorizontalAlignment="Center" Height="110" Margin="0,0,0,0" VerticalAlignment="Top" Width="210" Source="images/CarViewerDetails.png" Opacity="0.65"/>
+                <Label Content="Welcome To Your Garage" HorizontalAlignment="Center" Margin="0,32,0,0" VerticalAlignment="Top"/>
+                <Image HorizontalAlignment="Left" x:Name="MyVehicle1" Height="225" Margin="-71,176,0,0" VerticalAlignment="Top" Width="457" Source="images/DodgeChargerWhite.png" RenderTransformOrigin="0.5,0.5" MouseEnter="MyVehicle1_MouseEnter" MouseLeave="MyVehicle1_MouseLeave">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1" ScaleX="1"/>
+                            <SkewTransform AngleY="0" AngleX="0"/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image HorizontalAlignment="Left" x:Name="MyVehicle2" Height="225" Margin="135,175,0,0" VerticalAlignment="Top" Width="428" Source="images/ToyotaCorollaWhite.png" RenderTransformOrigin="0.5,0.5" MouseEnter="MyVehicle2_MouseEnter" MouseLeave="MyVehicle2_MouseLeave">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1" ScaleX="1"/>
+                            <SkewTransform AngleY="0" AngleX="0"/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image HorizontalAlignment="Left" Height="225" x:Name="MyVehicle3" Margin="378,175,-75,0" VerticalAlignment="Top" Width="428" Source="images/ToyotaCorollaWhite.png" RenderTransformOrigin="0.5,0.5" MouseEnter="MyVehicle3_MouseEnter" MouseLeave="MyVehicle3_MouseLeave">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1" ScaleX="1"/>
+                            <SkewTransform AngleY="0" AngleX="0"/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Grid Margin="-25,93,484,177" x:Name="Stats1" Visibility="Hidden">
+                    <Image HorizontalAlignment="Center" Height="147" Margin="0,0,0.2,-0.2" VerticalAlignment="Top" Width="272" Source="images/CarViewerDetails.png" Opacity="0.65"/>
+                    <Label Content="Miles/Gal:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0"/>
+                    <Label Content="28" x:Name="MilesPerGal1" HorizontalAlignment="Left" Margin="80,25,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="Mileage:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,38,0,0"/>
+                    <Label Content="Payments:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="138,75,0,0"/>
+                    <Label Content="Engine:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,50,0,0"/>
+                    <Label Content="Color:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,62,0,0"/>
+                    <Label Content="Price:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,75,0,0"/>
+                    <Label Content="Title:" x:Name="Car1Info" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="98,10,0,0"/>
+                    <Label Content="20000" x:Name="carMileage1" HorizontalAlignment="Left" Margin="73,40,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="v8" x:Name="carEngine1" HorizontalAlignment="Left" Margin="66,50,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="White" x:Name="carColor1" HorizontalAlignment="Left" Margin="58,62,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="60000" x:Name="carPricing1" HorizontalAlignment="Left" Margin="54,76,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="240/Month" x:Name="carPayment1" HorizontalAlignment="Left" Margin="193,75,-7.8,0" VerticalAlignment="Top" Width="87"/>
+
+                </Grid>
+                <Grid Margin="220,93,239,177" x:Name="Stats2" Visibility="Hidden">
+                    <Image HorizontalAlignment="Center" Height="147" Margin="0,0,0.2,-0.2" VerticalAlignment="Top" Width="272" Source="images/CarViewerDetails.png" Opacity="0.65"/>
+                    <Label Content="MPG:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0"/>
+                    <Label Content="28" x:Name="MilesPerGal2" HorizontalAlignment="Left" Margin="54,25,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="Mileage:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,38,0,0"/>
+                    <Label Content="Payments:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="138,75,0,0"/>
+                    <Label Content="Engine:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,50,0,0"/>
+                    <Label Content="Color:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,62,0,0"/>
+                    <Label Content="Price:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,75,0,0"/>
+                    <Label Content="Title:" x:Name="Car2Info" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                    <Label Content="20000" x:Name="carMileage2" HorizontalAlignment="Left" Margin="73,40,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="v8" x:Name="carEngine2" HorizontalAlignment="Left" Margin="66,50,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="White" x:Name="carColor2" HorizontalAlignment="Left" Margin="58,62,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="60000" x:Name="carPricing2" HorizontalAlignment="Left" Margin="54,76,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="240/Month" x:Name="carPayment2" HorizontalAlignment="Left" Margin="193,75,-7.8,0" VerticalAlignment="Top" Width="87"/>
+                </Grid>
+                <Grid Margin="471,93,-12,177" x:Name="Stats3" Visibility="Hidden">
+                    <Image HorizontalAlignment="Center" Height="147" Margin="0,0,0.2,-0.2" VerticalAlignment="Top" Width="272" Source="images/CarViewerDetails.png" Opacity="0.65"/>
+                    <Label Content="MPG:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0"/>
+                    <Label Content="28" x:Name="MilesPerGal3" HorizontalAlignment="Left" Margin="54,25,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="Mileage:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,38,0,0"/>
+                    <Label Content="Payments:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="138,75,0,0"/>
+                    <Label Content="Engine:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,50,0,0"/>
+                    <Label Content="Color:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,62,0,0"/>
+                    <Label Content="Price:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,75,0,0"/>
+                    <Label Content="Title:" x:Name="Car3Info" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                    <Label Content="20000" x:Name="carMileage3" HorizontalAlignment="Left" Margin="73,40,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="v8" x:Name="carEngine3" HorizontalAlignment="Left" Margin="66,50,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="White" x:Name="carColor3" HorizontalAlignment="Left" Margin="58,62,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="60000" x:Name="carPricing3" HorizontalAlignment="Left" Margin="54,76,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="240/Month" x:Name="carPayment3" HorizontalAlignment="Left" Margin="193,75,-7.8,0" VerticalAlignment="Top" Width="87"/>
+
+                </Grid>
+                <Button Content="Remove" x:Name="Remove1" HorizontalAlignment="Left" Margin="0,367,0,0" VerticalAlignment="Top" Width="75" Click="Remove1_Click"/>
+                <Button Content="Remove" x:Name="Remove2" HorizontalAlignment="Left" Margin="203,367,0,0" VerticalAlignment="Top" Width="75" Click="Remove2_Click"/>
+                <Button Content="Remove" x:Name="Remove3" HorizontalAlignment="Left" Margin="488,367,0,0" VerticalAlignment="Top" Width="75" Click="Remove3_Click"/>
+            </Grid>
 
         </TabItem>
         <!--#endregion-->
@@ -305,8 +392,24 @@
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="102" VerticalAlignment="Top" Width="269" Margin="97,243,0,0">
                     <Label Content="Compatibility &amp; Stats" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Label Content="Miles/Gal:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0"/>
+                    <Label Content="28" x:Name="MilesPerGal" HorizontalAlignment="Left" Margin="80,25,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="Mileage:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,38,0,0"/>
+                    <Label Content="Engine:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,50,0,0"/>
+                    <Label Content="Color:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,62,0,0"/>
+                    <Label Content="Price:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,75,0,0"/>
+                    <Label Content="Title:" x:Name="CarInfo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="98,10,0,0"/>
+                    <Label Content="Year:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="194,26,0,0"/>
+                    <Label Content="0" x:Name="carYear" HorizontalAlignment="Left" Margin="225,26.5,0,0" VerticalAlignment="Top" Width="40" Height="25"/>
+                    <Label Content="20000" x:Name="carMileageComp" HorizontalAlignment="Left" Margin="73,40,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="v8" x:Name="carEngine" HorizontalAlignment="Left" Margin="66,50,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="White" x:Name="carColor" HorizontalAlignment="Left" Margin="58,62,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="0" x:Name="carPricing" HorizontalAlignment="Left" Margin="54,76,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Button x:Name="interestCalc" Content="Interest Calc" HorizontalAlignment="Left" Margin="194,81,0,2" Width="75" Click="InterestCalc_Click"/>
+                    <Button x:Name="SaveCar" Content="Add To Cars" HorizontalAlignment="Left" Margin="194,57,0,0" VerticalAlignment="Top" Width="75" Click="SaveCar_Click"/>
+
                 </Grid>
-                <Button x:Name="interestCalc" Content="Interest Calc" HorizontalAlignment="Left" Margin="291,325,0,0" VerticalAlignment="Top" Width="75" Click="InterestCalc_Click"/>
+
                 <Grid HorizontalAlignment="Left" x:Name="interestGrid"  Visibility="Hidden" Height="263" Margin="446,52,0,0" VerticalAlignment="Top" Width="276">
                     <Label Content="Interest Calculator" HorizontalAlignment="Center" Margin="0,8,0,0" VerticalAlignment="Top"/>
                     <Label Content="Credit Score" HorizontalAlignment="Left" Margin="24,34,0,0" VerticalAlignment="Top"/>
@@ -317,12 +420,13 @@
                     <TextBox HorizontalAlignment="Left" Height="23" Margin="99,94,0,0" x:Name="carAmount" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
                     <Button Content="Calculate" x:Name="intCalc" HorizontalAlignment="Center" Margin="0,244,0,0" VerticalAlignment="Top" Width="75" Click="IntCalc_Click"/>
                     <Label Content="Payment Amount" HorizontalAlignment="Left" Margin="24,213,0,0" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="126,216,0,0" x:Name="creditScore_Copy2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="126,216,0,0" x:Name="paymentBox" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
 
                 </Grid>
                 <Button x:Name="LongevityButton" Content="Longevity Calculator" HorizontalAlignment="Left" Margin="596,376,0,0" VerticalAlignment="Top" Width="125" Click="LongevityButton_Click"/>
 
             </Grid>
+
         </TabItem>
         <!--#endregion-->
         <!--#region tab3(activity calculator)-->

@@ -157,5 +157,11 @@
   <ItemGroup>
     <Resource Include="images\Corolla\2005\2005-corolla-engine.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\checkmark.png" />
+    <Resource Include="images\Odometer.png" />
+    <Resource Include="images\tire.png" />
+    <Resource Include="images\xMark.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

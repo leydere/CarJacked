@@ -25,19 +25,41 @@ namespace CarJack
         //intitialize values
         public string brand;
         public string make;
+        public string prevMake;
         public string body;
+        public string prevBody;
         public string engine;
-        public string color;
+        public string color = "white";
         public string firstMakeImg = null;
         public int year = 2019;
+        public int mileage;
+        public int milesPerGallon;
+        public int activityMileage;
+        public string vPicture;
+
+        public Vehicle savVehicle1 = new Vehicle();
+        public Vehicle savVehicle2 = new Vehicle();
+        public Vehicle savVehicle3 = new Vehicle();
+
+        public string v1txtPath;
+        public string v2txtPath;
+        public string v3txtPath;
+        public List<string> vehicleData_1 = new List<string>();
+        public List<string> vehicleData_2 = new List<string>();
+        public List<string> vehicleData_3 = new List<string>();
+
+
+        //interest and payment values
         public int creditScores = 750;
+        public double interestRateN = 7.5;
         public int carPrice = -1;
+        public double payments;
         public int carMileage = -1;
 
         public MainWindow()
         {
             InitializeComponent();
-
+            LoadVehicles();
 
         }
 
@@ -82,126 +104,17 @@ namespace CarJack
 
             firstMake.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\DodgeChargerWhite.png")));
             HatchBack.Visibility = System.Windows.Visibility.Hidden;
-
+            UpdateCarDetails();
         }
         private void Button_firstMake(object sender, RoutedEventArgs e)
         {
             if (brand == "Toyota")
             {
-                switch (year)
-                {
-                    case 2005:
-                        make = "Corolla";
-                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 4776;
-                        carMileage = 146181;
-                        break;
-                    case 2006:
-                        make = "Corolla";
-                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 5676;
-                        carMileage = 141664;
-                        break;
-                    case 2007:
-                        make = "Corolla";
-                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 5826;
-                        carMileage = 136393;
-                        break;
-                    case 2008:
-                        make = "Corolla";
-                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 6311;
-                        carMileage = 130381;
-                        break;
-                    case 2009:
-                        make = "Corolla";
-                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 6712;
-                        carMileage = 123490;
-                        break;
-                    case 2010:
-                        make = "Corolla";
-                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 7612;
-                        carMileage = 116004;
-                        break;
-                    case 2011:
-                        make = "Corolla";
-                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 8465;
-                        carMileage = 107756;
-                        break;
-                    case 2012:
-                        make = "Corolla";
-                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 8761;
-                        carMileage = 98767;
-                        break;
-                    case 2013:
-                        make = "Corolla";
-                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 9171;
-                        carMileage = 89036;
-                        break;
-                    case 2014:
-                        make = "Corolla";
-                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 10711;
-                        carMileage = 78385;
-                        break;
-                    case 2015:
-                        make = "Corolla";
-                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 10849;
-                        carMileage = 67160;
-                        break;
-                    case 2016:
-                        make = "Corolla";
-                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 12867;
-                        carMileage = 55193;
-                        break;
-                    case 2017:
-                        make = "Corolla";
-                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 13664;
-                        carMileage = 42485;
-                        break;
-                    case 2018:
-                        make = "Corolla";
-                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 15785;
-                        carMileage = 29075;
-                        break;
-                    case 2019:
-                        make = "Corolla";
-                        Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                        HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-                        carPrice = 17305;
-                        carMileage = 14886;
-                        break;
-                    default:
-                        break;
-                }
                 make = "Corolla";
+                prevMake = brand;
                 Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
                 HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
-
+                UpdateCarDetails();
             }
             if (brand == "Dodge")
             {
@@ -215,7 +128,173 @@ namespace CarJack
         {
             if (brand == "Toyota" && make == "Corolla")
             {
-                carView.Source = new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png"));
+                switch (year)
+                {
+                    case 2005:
+                        make = "Corolla";
+                        body = "Sedan";
+                        carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
+                        vPicture = "\\images\\ToyotaCorollaWhite.png";
+                        carPrice = 4813;
+                        carAmount.Text = Convert.ToString(carPrice);
+                        mileage = 100;
+                        milesPerGallon = 30;
+                        break;
+                    case 2006:
+                        make = "Corolla";
+                        body = "Sedan";
+
+                        carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
+                        vPicture = "\\images\\ToyotaCorollaWhite.png";
+                        carPrice = 5000;
+                        carAmount.Text = Convert.ToString(carPrice);
+                        mileage = 100;
+                        milesPerGallon = 30;
+                        break;
+                    case 2007:
+                        make = "Corolla";
+                        body = "Sedan";
+
+                        carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
+                        vPicture = "\\images\\ToyotaCorollaWhite.png";
+                        carPrice = 6000;
+                        carAmount.Text = Convert.ToString(carPrice);
+                        mileage = 100;
+                        milesPerGallon = 30;
+                        break;
+                    case 2008:
+                        make = "Corolla";
+                        body = "Sedan";
+
+                        carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
+                        vPicture = "\\images\\ToyotaCorollaWhite.png";
+                        carPrice = 6500;
+                        carAmount.Text = Convert.ToString(carPrice);
+                        mileage = 100;
+                        milesPerGallon = 30;
+                        break;
+                    case 2009:
+                        make = "Corolla";
+                        body = "Sedan";
+
+                        carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
+                        vPicture = "\\images\\ToyotaCorollaWhite.png";
+                        carPrice = 8000;
+                        carAmount.Text = Convert.ToString(carPrice);
+                        mileage = 100;
+                        milesPerGallon = 30;
+                        break;
+                    case 2010:
+                        make = "Corolla";
+                        body = "Sedan";
+
+                        carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
+                        vPicture = "\\images\\ToyotaCorollaWhite.png";
+                        carPrice = 8500;
+                        carAmount.Text = Convert.ToString(carPrice);
+                        mileage = 100;
+                        milesPerGallon = 30;
+                        break;
+                    case 2011:
+                        make = "Corolla";
+                        body = "Sedan";
+
+                        carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
+                        vPicture = "\\images\\ToyotaCorollaWhite.png";
+                        carPrice = 9000;
+                        carAmount.Text = Convert.ToString(carPrice);
+                        mileage = 100;
+                        milesPerGallon = 30;
+                        break;
+                    case 2012:
+                        make = "Corolla";
+                        body = "Sedan";
+
+                        carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
+                        vPicture = "\\images\\ToyotaCorollaWhite.png";
+                        carPrice = 10700;
+                        carAmount.Text = Convert.ToString(carPrice);
+                        mileage = 100;
+                        milesPerGallon = 30;
+                        break;
+                    case 2013:
+                        make = "Corolla";
+                        body = "Sedan";
+
+                        carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
+                        vPicture = "\\images\\ToyotaCorollaWhite.png";
+                        carPrice = 11500;
+                        carAmount.Text = Convert.ToString(carPrice);
+                        mileage = 100;
+                        milesPerGallon = 30;
+                        break;
+                    case 2014:
+                        make = "Corolla";
+                        body = "Sedan";
+
+                        carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
+                        vPicture = "\\images\\ToyotaCorollaWhite.png";
+                        carPrice = 12500;   //needsActualPrice
+                        carAmount.Text = Convert.ToString(carPrice);
+                        mileage = 32448;
+                        milesPerGallon = 30;
+                        break;
+                    case 2015:
+                        make = "Corolla";
+                        body = "Sedan";
+
+                        carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
+                        vPicture = "\\images\\ToyotaCorollaWhite.png";
+                        carPrice = 13025;   //needsActualPrice
+                        carAmount.Text = Convert.ToString(carPrice);
+                        mileage = 100;
+                        milesPerGallon = 30;
+                        break;
+                    case 2016:
+                        make = "Corolla";
+                        carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
+                        vPicture = "\\images\\ToyotaCorollaWhite.png";
+                        carPrice = 14130;
+                        carAmount.Text = Convert.ToString(carPrice);
+                        mileage = 100;
+                        milesPerGallon = 30;
+                        break;
+                    case 2017:
+                        make = "Corolla";
+                        body = "Sedan";
+
+                        carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
+                        vPicture = "\\images\\ToyotaCorollaWhite.png";
+                        carPrice = 14843;   //needsActualPrice
+                        carAmount.Text = Convert.ToString(carPrice);
+                        mileage = 100;
+                        milesPerGallon = 30;
+                        break;
+                    case 2018:
+                        make = "Corolla";
+                        body = "Sedan";
+
+                        carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
+                        vPicture = "\\images\\ToyotaCorollaWhite.png";
+                        carPrice = 15525;   //needsActualPrice
+                        mileage = 100;
+                        milesPerGallon = 30;
+                        break;
+                    case 2019:
+                        make = "Corolla";
+                        body = "Sedan";
+
+                        carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
+                        vPicture = "\\images\\ToyotaCorollaWhite.png";
+                        carPrice = 19000;   //needsActualPrice
+                        carAmount.Text = Convert.ToString(carPrice);
+                        mileage = 100;
+                        milesPerGallon = 30;
+                        break;
+                    default:
+                        break;
+                }
+
             }
             else
             if (brand == "Dodge" && make == "Charger")
@@ -229,6 +308,11 @@ namespace CarJack
             if (brand == "Toyota" && make == "Corolla")
             {
                 carView.Source = new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png"));
+
+                Engine.IsEnabled = false;
+                Color.IsEnabled = false;
+                carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhiteHatch.png"));
+                vPicture = "\\images\\ToyotaCorollaWhiteHatch.png";
             }
         }
 
@@ -680,6 +764,8 @@ namespace CarJack
 
         private void Y2005_Click(object sender, RoutedEventArgs e)
         {
+            Color.IsEnabled = false;
+            year = 2005;
 
         }
 
@@ -689,6 +775,7 @@ namespace CarJack
             {
                 carSelectionGrid.Visibility = Visibility.Hidden;
                 interestGrid.Visibility = Visibility.Visible;
+                carAmount.Text = Convert.ToString(carPrice);
             }
             else
             {
@@ -704,24 +791,985 @@ namespace CarJack
 
         private void IntCalc_Click(object sender, RoutedEventArgs e)
         {
-            string input = creditScore.Text;
-            if (!(creditScore.Text == null))
+
+            string creditRating = "good";
+
+            //applies textbox info to creditScore integer to be used with the payment calculation 
+            if (creditScore.Text != "")
             {
+                string input = creditScore.Text;
                 creditScores = Convert.ToInt32(input);
+
+                creditRating = CreditValue(creditScores);
             }
             else
             {
                 MessageBox.Show("Please Insert a numerical value into the credit score box");
             }
+            //applies textbox info to carPrice integer to be used with the payment calculation
             if (!(carAmount.Text == null))
             {
-                creditScores = Convert.ToInt32(input);
+                string input = carAmount.Text;
+                carPrice = Convert.ToInt32(input);
             }
             else
             {
                 MessageBox.Show("Please Insert a numerical value into the credit score box");
             }
+            //applies textbox info to interestRate float to be used with the payment calculation
+            if (!(interestRate.Text == null))
+            {
+                string input = interestRate.Text;
+
+                interestRateN = Convert.ToDouble(input);
+                CalculateInterest(creditRating, carPrice, interestRateN);
+            }
+            else
+            {
+                MessageBox.Show("Please Insert a numerical value into the credit score box");
+            }
+
+
         }
+
+        string CreditValue(int x)
+        {
+            string creditRating = "good";
+
+            if (creditScores >= 720)
+            {
+                creditRating = "great";
+            }
+            else if ((creditScores >= 690) && (creditScores <= 719))
+            {
+                creditRating = "good";
+            }
+            else if ((creditScores >= 660) && (creditScores <= 689))
+            {
+                creditRating = "fair";
+            }
+            else if ((creditScores >= 620) && (creditScores <= 659))
+            {
+                creditRating = "okay";
+            }
+            else if ((creditScores >= 590) && (creditScores <= 619))
+            {
+                creditRating = "belowAverage";
+            }
+            else if ((creditScores >= 500) && (creditScores <= 589))
+            {
+                creditRating = "bad";
+            }
+            else if (creditScores >= 500)
+            {
+                creditRating = "Denied";
+            }
+            return creditRating;
+        }
+
+
+        void CalculateInterest(string x, int y, double j)
+        {
+            switch (x)
+            {
+                case "great":
+                    interestRateN = 6.52;
+                    break;
+                case "good":
+                    interestRateN = 7.36;
+                    break;
+                case "fair":
+                    interestRateN = 8.52;
+
+                    break;
+                case "okay":
+                    interestRateN = 9.75;
+
+                    break;
+                case "belowAverage":
+                    interestRateN = 10.35;
+                    break;
+                case "bad":
+                    interestRateN = 12.75;
+                    break;
+            }
+
+            //calculate payments based off of a 30 month plan
+            payments = ((carPrice / 60) + (interestRateN / 100));
+
+
+            carAmount.Text = Convert.ToString(carPrice);
+            //  interestRate.Text = Convert.ToString(interestRateN.ToString("P", CultureInfo.InvariantCulture));  
+            interestRate.Text = Convert.ToString(interestRateN);
+
+            paymentBox.Text = Convert.ToString(payments);
+        }
+
+
+        //Hides and unhides the details for the cars in the garage
+        private void MyVehicle1_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+            switch (Stats1.Visibility)
+            {
+                case Visibility.Visible:
+                    Stats1.Visibility = Visibility.Hidden;
+                    break;
+                case Visibility.Hidden:
+                    Stats1.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
+
+        private void MyVehicle1_MouseLeave(object sender, MouseEventArgs e)
+        {
+            switch (Stats1.Visibility)
+            {
+                case Visibility.Visible:
+                    Stats1.Visibility = Visibility.Hidden;
+                    break;
+                case Visibility.Hidden:
+                    Stats1.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
+
+
+        private void MyVehicle2_MouseEnter(object sender, MouseEventArgs e)
+        {
+            switch (Stats2.Visibility)
+            {
+                case Visibility.Visible:
+                    Stats2.Visibility = Visibility.Hidden;
+                    break;
+                case Visibility.Hidden:
+                    Stats2.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
+
+        private void MyVehicle2_MouseLeave(object sender, MouseEventArgs e)
+        {
+            switch (Stats2.Visibility)
+            {
+                case Visibility.Visible:
+                    Stats2.Visibility = Visibility.Hidden;
+                    break;
+                case Visibility.Hidden:
+                    Stats2.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
+
+        private void MyVehicle3_MouseEnter(object sender, MouseEventArgs e)
+        {
+            switch (Stats3.Visibility)
+            {
+                case Visibility.Visible:
+                    Stats3.Visibility = Visibility.Hidden;
+                    break;
+                case Visibility.Hidden:
+                    Stats3.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
+
+        private void MyVehicle3_MouseLeave(object sender, MouseEventArgs e)
+        {
+            switch (Stats3.Visibility)
+            {
+                case Visibility.Visible:
+                    Stats3.Visibility = Visibility.Hidden;
+                    break;
+                case Visibility.Hidden:
+                    Stats3.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
+
+        private void SaveCar_Click(object sender, RoutedEventArgs e)
+        {
+            #region Save Vehicle to Text File
+            // path the to txt file where data is saved; will need altering once there are more that one user activity profiles -ERL
+            v1txtPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle1.txt";
+            v2txtPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle2.txt";
+            v3txtPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle3.txt";
+
+            #region Convert data to strings
+            string savMake = Convert.ToString(brand);
+            string savModel = Convert.ToString(make);
+            string savBody = Convert.ToString(body);
+            string savEngine = Convert.ToString(engine);
+            string savColor = Convert.ToString(color);
+            string savYear = Convert.ToString(year);
+            string savPrice = Convert.ToString(carPrice);
+            string savPayments = Convert.ToString(payments);
+            string savMilesGal = Convert.ToString(milesPerGallon);
+            string savMileage = Convert.ToString(mileage);
+            string savPicture = Convert.ToString(carView.Source);
+            #endregion
+
+
+
+            var vehicleData1 = new List<string>();
+            var vehicleData2 = new List<string>();
+            var vehicleData3 = new List<string>();
+
+            if ((savVehicle1.Make == "") || (savVehicle1.Make == null))
+            {
+                CreateVehicle();
+                vehicleData1.Add(savMake);
+                vehicleData1.Add(savModel);
+                vehicleData1.Add(savBody);
+                vehicleData1.Add(savEngine);
+                vehicleData1.Add(savColor);
+                vehicleData1.Add(savYear);
+                vehicleData1.Add(savPrice);
+                vehicleData1.Add(savPayments);
+                vehicleData1.Add(savMilesGal);
+                vehicleData1.Add(savMileage);
+                vehicleData1.Add(savPicture);
+                System.IO.File.WriteAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle1.txt", vehicleData1);
+
+            }
+            else if (savVehicle2.Make == "")
+            {
+                CreateVehicle();
+                vehicleData2.Add(savMake);
+                vehicleData2.Add(savModel);
+                vehicleData2.Add(savBody);
+                vehicleData2.Add(savEngine);
+                vehicleData2.Add(savColor);
+                vehicleData2.Add(savYear);
+                vehicleData2.Add(savPrice);
+                vehicleData2.Add(savPayments);
+                vehicleData2.Add(savMilesGal);
+                vehicleData2.Add(savMileage);
+                vehicleData2.Add(savPicture);
+                System.IO.File.WriteAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle2.txt", vehicleData1);
+
+            }
+            else if (savVehicle3.Make == "")
+            {
+                CreateVehicle();
+                vehicleData3.Add(savMake);
+                vehicleData3.Add(savModel);
+                vehicleData3.Add(savBody);
+                vehicleData3.Add(savEngine);
+                vehicleData3.Add(savColor);
+                vehicleData3.Add(savYear);
+                vehicleData3.Add(savPrice);
+                vehicleData3.Add(savPayments);
+                vehicleData3.Add(savMilesGal);
+                vehicleData3.Add(savMileage);
+                vehicleData3.Add(savPicture);
+                System.IO.File.WriteAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle3.txt", vehicleData1);
+
+            }
+            else
+            {
+                MessageBox.Show(savMake);
+                //   MessageBox.Show("Please Remove a Vehicle From Your Garage");
+            }
+
+            // still needs to add a way to save
+            // all separated by semi-colons and tabs
+            // each row in the window is a line in the string, ending with semicolon and carriage return
+            // final line is the total miles value -ERL
+
+
+            #endregion
+        }
+
+        /* private void InterestRate_TextChanged(object sender, TextChangedEventArgs e)
+         {
+             double valTemp = Convert.ToDouble(interestRate.Text);
+             interestRate.Text = (valTemp.ToString("P", CultureInfo.InvariantCulture));
+         }*/
+
+
+        public void LoadVehicles()
+        {
+            v1txtPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle1.txt";
+            v2txtPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle2.txt";
+            v3txtPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle3.txt";
+
+
+            vehicleData_1.Clear();
+            var carLogFile_1 = File.ReadAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle1.txt");
+            vehicleData_1 = new List<string>(carLogFile_1);
+
+
+            vehicleData_2.Clear();
+            var carLogFile_2 = File.ReadAllLines(v1txtPath);
+            vehicleData_2 = new List<string>(carLogFile_2);
+
+            vehicleData_3.Clear();
+            var carLogFile_3 = File.ReadAllLines(v1txtPath);
+            vehicleData_3 = new List<string>(carLogFile_3);
+
+
+
+
+            //merge loaded data into objects
+            int i = -1;
+            foreach (string line in vehicleData_1)
+            {
+                i++;
+                MergeCarInfo(line, i, 1);
+            }
+
+            i = -1;
+            foreach (string line in vehicleData_2)
+            {
+                i++;
+                MergeCarInfo(line, i, 2);
+            }
+            i = -1;
+            foreach (string line in vehicleData_3)
+            {
+                i++;
+                MergeCarInfo(line, i, 3);
+            }
+        }
+
+        public string tempName;
+
+        private void MergeCarInfo(string x, int y, int car)
+        {
+
+            //vehicle1 data merged
+
+
+            if ((y == 0) && (car == 1))
+            {
+                savVehicle1.Make = x;
+                tempName = x;
+            }
+            else if ((y == 1) && (car == 1))
+            {
+                savVehicle1.Model = x;
+
+                tempName = tempName + " " + x;
+            }
+            else if ((y == 2) && (car == 1))
+            {
+                savVehicle1.Body = x;
+            }
+            else if ((y == 3) && (car == 1))
+            {
+                savVehicle1.Engine = x;
+                carPricing1.Content = x;
+            }
+            else if ((y == 4) && (car == 1))
+            {
+                savVehicle1.Color = x;
+            }
+            else if ((y == 5) && (car == 1))
+            {
+                savVehicle1.Year = Convert.ToInt32(x);
+                Car1Info.Content = x + " " + tempName;
+            }
+            else if ((y == 6) && (car == 1))
+            {
+                savVehicle1.Price = Convert.ToInt32(x);
+                carPricing1.Content = x;
+            }
+            else if ((y == 7) && (car == 1))
+            {
+                savVehicle1.Payments = Convert.ToDouble(x);
+                carPayment1.Content = x;
+            }
+            else if ((y == 8) && (car == 1))
+            {
+                savVehicle1.MilesGal = Convert.ToInt32(x);
+                MilesPerGal1.Content = x;
+            }
+            else if ((y == 9) && (car == 1))
+            {
+                savVehicle1.Mileage = Convert.ToInt32(x);
+                carMileage1.Content = x;
+            }
+            else if ((y == 10) && (car == 1))
+            {
+                MyVehicle1.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + x));
+                MyVehicle1.Visibility = Visibility.Visible;
+            }
+
+
+            //vehicle2 data merged
+
+
+            if ((y == 0) && (car == 1))
+            {
+                savVehicle2.Make = x;
+                tempName = x;
+            }
+            else if ((y == 1) && (car == 1))
+            {
+                savVehicle2.Model = x;
+
+                tempName = tempName + " " + x;
+            }
+            else if ((y == 2) && (car == 1))
+            {
+                savVehicle2.Body = x;
+            }
+            else if ((y == 3) && (car == 1))
+            {
+                savVehicle2.Engine = x;
+                carPricing2.Content = x;
+            }
+            else if ((y == 4) && (car == 1))
+            {
+                savVehicle2.Color = x;
+            }
+            else if ((y == 5) && (car == 1))
+            {
+                savVehicle2.Year = Convert.ToInt32(x);
+                Car2Info.Content = x + " " + tempName;
+            }
+            else if ((y == 6) && (car == 1))
+            {
+                savVehicle2.Price = Convert.ToInt32(x);
+                carPricing2.Content = x;
+            }
+            else if ((y == 7) && (car == 1))
+            {
+                savVehicle2.Payments = Convert.ToDouble(x);
+                carPayment2.Content = x;
+            }
+            else if ((y == 8) && (car == 1))
+            {
+                savVehicle2.MilesGal = Convert.ToInt32(x);
+                MilesPerGal2.Content = x;
+            }
+            else if ((y == 9) && (car == 1))
+            {
+                savVehicle2.Mileage = Convert.ToInt32(x);
+                carMileage2.Content = x;
+            }
+            else if ((y == 10) && (car == 1))
+            {
+                MyVehicle2.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + x));
+                MyVehicle2.Visibility = Visibility.Visible;
+            }
+
+
+            //vehicle3 data merged
+
+
+            if ((y == 0) && (car == 1))
+            {
+                savVehicle3.Make = x;
+                tempName = x;
+            }
+            else if ((y == 1) && (car == 1))
+            {
+                savVehicle3.Model = x;
+
+                tempName = tempName + " " + x;
+            }
+            else if ((y == 2) && (car == 1))
+            {
+                savVehicle3.Body = x;
+            }
+            else if ((y == 3) && (car == 1))
+            {
+                savVehicle3.Engine = x;
+                carPricing3.Content = x;
+            }
+            else if ((y == 4) && (car == 1))
+            {
+                savVehicle3.Color = x;
+            }
+            else if ((y == 5) && (car == 1))
+            {
+                savVehicle3.Year = Convert.ToInt32(x);
+                Car3Info.Content = x + " " + tempName;
+            }
+            else if ((y == 6) && (car == 1))
+            {
+                savVehicle3.Price = Convert.ToInt32(x);
+                carPricing3.Content = x;
+            }
+            else if ((y == 7) && (car == 1))
+            {
+                savVehicle3.Payments = Convert.ToDouble(x);
+                carPayment3.Content = x;
+            }
+            else if ((y == 8) && (car == 1))
+            {
+                savVehicle3.MilesGal = Convert.ToInt32(x);
+                MilesPerGal3.Content = x;
+            }
+            else if ((y == 9) && (car == 1))
+            {
+                savVehicle3.Mileage = Convert.ToInt32(x);
+                carMileage3.Content = x;
+            }
+            else if ((y == 10) && (car == 1))
+            {
+                MyVehicle3.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + x));
+                MyVehicle3.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void UpdateCarDetails()
+        {
+            switch (year)
+            {
+                case 2005:
+                    carYear.Content = Convert.ToString(year);
+                    if(prevMake != make)
+                    {
+                        vPicture = null;
+                    }
+                    carPrice =4813;
+                    break;
+                case 2006:
+                    carYear.Content = Convert.ToString(year);
+                    if (prevMake != make)
+                    {
+                        vPicture = null;
+                    }
+
+                    break;
+                case 2007:
+                    carYear.Content = Convert.ToString(year);
+                    if (prevMake != make)
+                    {
+                        vPicture = null;
+                    }
+                    break;
+                case 2008:
+                    carYear.Content = Convert.ToString(year);
+                    if (prevMake != make)
+                    {
+                        vPicture = null;
+                    }
+                    break;
+                case 2009:
+                    carYear.Content = Convert.ToString(year);
+                    if (prevMake != make)
+                    {
+                        vPicture = null;
+                    }
+                    break;
+                case 2010:
+                    carYear.Content = Convert.ToString(year);
+                    if (prevMake != make)
+                    {
+                        vPicture = null;
+                    }
+                    break;
+                case 2011:
+                    carYear.Content = Convert.ToString(year);
+                    if (prevMake != make)
+                    {
+                        vPicture = null;
+                    }
+                    break;
+                case 2012:
+                    carYear.Content = Convert.ToString(year);
+                    if (prevMake != make)
+                    {
+                        vPicture = null;
+                    }
+                    break;
+                case 2013:
+                    carYear.Content = Convert.ToString(year);
+                    if (prevMake != make)
+                    {
+                        vPicture = null;
+                    }
+                    break;
+                case 2014:
+                    carYear.Content = Convert.ToString(year);
+                    if (prevMake != make)
+                    {
+                        vPicture = null;
+                    }
+                    break;
+                case 2015:
+                    carYear.Content = Convert.ToString(year);
+                    if (prevMake != make)
+                    {
+                        vPicture = null;
+                    }
+                    break;
+                case 2016:
+                    carYear.Content = Convert.ToString(year);
+                    if (prevMake != make)
+                    {
+                        vPicture = null;
+                    }
+                    break;
+                case 2017:
+                    carYear.Content = Convert.ToString(year);
+                    if (prevMake != make)
+                    {
+                        vPicture = null;
+                    }
+                    break;
+                case 2018:
+                    carYear.Content = Convert.ToString(year);
+                    if (prevMake != make)
+                    {
+                        vPicture = null;
+                    }
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            
+                        }
+                    }
+                    else if(brand=="Dodge")
+                    {
+
+                    }
+
+                    break;
+                case 2019:
+                    carYear.Content = Convert.ToString(year);
+                    if (prevMake != make)
+                    {
+                        vPicture = null;
+                    }
+                    break;
+                default:
+
+                break;
+            }
+        }
+        
+        private void UpdateCarList()
+        {
+
+        }
+
+        private void DeleteVehicle(int x)
+        {
+
+
+            switch (x)
+            {
+                case 1:
+                    File.WriteAllText(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle1.txt", String.Empty); break;
+
+                case 2:
+                    File.WriteAllText(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle2.txt", String.Empty);
+                    break;
+
+                case 3:
+                    File.WriteAllText(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle3.txt", String.Empty);
+                    break;
+                default:
+                    break;
+            }
+
+
+        }
+
+
+        public void CreateVehicle()
+        {
+
+            if (savVehicle1.Make == null)
+            {
+
+                savVehicle1.Make = brand;
+                savVehicle1.Model = make;
+                savVehicle1.Body = body;
+                savVehicle1.Engine = engine;
+                savVehicle1.Color = color;
+                savVehicle1.Year = year;
+                savVehicle1.Price = carPrice;
+                savVehicle1.Payments = Convert.ToDouble(paymentBox.Text);
+                savVehicle1.MilesGal = milesPerGallon;
+                savVehicle1.Mileage = mileage;
+                savVehicle1.Picture = vPicture;
+            }
+            else if (savVehicle2.Make == null)
+            {
+                savVehicle2.Make = brand;
+                savVehicle2.Model = make;
+                savVehicle2.Body = body;
+                savVehicle2.Engine = engine;
+                savVehicle2.Color = color;
+                savVehicle2.Year = year;
+                savVehicle2.Price = carPrice;
+                savVehicle2.Payments = Convert.ToDouble(paymentBox.Text);
+                savVehicle2.MilesGal = milesPerGallon;
+                savVehicle2.Mileage = mileage;
+                savVehicle2.Picture = vPicture;
+            }
+            else if (savVehicle3.Make == null)
+            {
+                savVehicle3.Make = brand;
+                savVehicle3.Model = make;
+                savVehicle3.Body = body;
+                savVehicle3.Engine = engine;
+                savVehicle3.Color = color;
+                savVehicle3.Year = year;
+                savVehicle3.Price = carPrice;
+                savVehicle3.Payments = Convert.ToDouble(paymentBox.Text);
+                savVehicle3.MilesGal = milesPerGallon;
+                savVehicle3.Mileage = mileage;
+                savVehicle3.Picture = vPicture;
+            }
+            else
+            {
+                MessageBox.Show("Please Remove a Vehicle From Your Garage");
+            }
+        }
+
+        private void Tab1_Initialized(object sender, EventArgs e)
+        {
+            //check if vehicle 1 has a saved value, if true then print values, if false then hide
+
+            if (savVehicle1.Make != null)
+            {
+                MyVehicle1.Visibility = Visibility.Visible;
+                MilesPerGal1.Content = savVehicle1.MilesGal;
+                carMileage1.Content = savVehicle1.Mileage;
+                carEngine1.Content = savVehicle1.Engine;
+                carColor1.Content = savVehicle1.Mileage;
+                carPricing1.Content = savVehicle1.Price;
+                carPayment1.Content = savVehicle1.Payments;
+
+                MyVehicle1.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + savVehicle1.Picture));
+            }
+            else
+            {
+                MyVehicle1.Visibility = Visibility.Hidden;
+            }
+
+            //check if vehicle 2 has a saved value, if true then print values, if false then hide
+
+            if (savVehicle2.Make != null)
+            {
+                MyVehicle2.Visibility = Visibility.Visible;
+
+
+                MilesPerGal2.Content = savVehicle2.MilesGal;
+                carMileage2.Content = savVehicle2.Mileage;
+                carEngine2.Content = savVehicle2.Engine;
+                carColor2.Content = savVehicle2.Mileage;
+                carPricing2.Content = savVehicle2.Price;
+                carPayment2.Content = savVehicle2.Payments;
+
+                MyVehicle2.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + savVehicle1.Picture));
+            }
+            else
+            {
+                MyVehicle2.Visibility = Visibility.Hidden;
+            }
+            //check if vehicle 3 has a saved value, if true then print values, if false then hide
+            if (savVehicle3.Make != null)
+            {
+                MyVehicle3.Visibility = Visibility.Visible;
+
+
+                MilesPerGal3.Content = savVehicle3.MilesGal;
+                carMileage3.Content = savVehicle3.Mileage;
+                carEngine3.Content = savVehicle3.Engine;
+                carColor3.Content = savVehicle3.Mileage;
+                carPricing3.Content = savVehicle3.Price;
+                carPayment3.Content = savVehicle3.Payments;
+
+                MyVehicle3.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + savVehicle1.Picture));
+            }
+            else
+            {
+                MyVehicle3.Visibility = Visibility.Hidden;
+            }
+        }
+
+
+        private void MyCarColor_Click(object sender, RoutedEventArgs e)
+        {
+            color = "blue";
+        }
+        #region Select Year
+        private void Y2020_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = true;
+            year = 2020;
+            if (brand == "Corolla")
+            {
+                carPrice = 19000;
+                carAmount.Text = Convert.ToString(19000);
+            }
+
+        }
+
+        private void Y2010_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2010;
+
+
+        }
+
+        private void Y2007_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2007;
+
+        }
+
+        private void Y2006_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2006;
+        }
+
+        private void Y2009_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2006;
+
+        }
+
+        private void Y2011_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2006;
+
+        }
+
+        private void Y2012_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2006;
+
+        }
+
+        private void Y2013_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2006;
+
+        }
+
+        private void Y2014_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2006;
+
+        }
+
+        private void Y2015_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2006;
+
+        }
+
+        private void Y2016_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2006;
+
+        }
+
+        private void Y2017_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2006;
+
+        }
+
+        private void Y2018_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2006;
+
+        }
+
+        private void Y2019_Click(object sender, RoutedEventArgs e)
+        {
+            if ((brand == "Toyota") && (make == "Corolla") && (body == "Sedan"))
+            {
+                Color.IsEnabled = true;
+                carPrice = 19000;
+                carAmount.Text = Convert.ToString(carPrice);
+            }
+            year = 2006;
+
+        }
+        #endregion
+
+        #region Select Engine
+        private void MyCarV2_Click(object sender, RoutedEventArgs e)
+        {
+            engine = "v2";
+        }
+
+        private void MyCarV4_Click(object sender, RoutedEventArgs e)
+        {
+            engine = "v4";
+
+        }
+
+        private void MyCarV8_Click(object sender, RoutedEventArgs e)
+        {
+            engine = "v8";
+
+
+        }
+        #endregion
+
+        #region Remove vehicle from txt
+        private void Remove1_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteVehicle(1);
+            LoadVehicles();
+            ReInitialize(1);
+        }
+        private void Remove3_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteVehicle(3);
+            LoadVehicles();
+            ReInitialize(3);
+        }
+
+        private void Remove2_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteVehicle(2);
+            LoadVehicles();
+            ReInitialize(2);
+        }
+        #endregion
+
+        private void ReInitialize(int x)
+        {
+            switch (x)
+            {
+                case 1:
+                    MyVehicle1.Visibility = Visibility.Hidden;
+                    break;
+                case 2:
+                    MyVehicle2.Visibility = Visibility.Hidden;
+                    break;
+                case 3:
+                    MyVehicle3.Visibility = Visibility.Hidden;
+                    break;
+            }
+        }
+
+        private void Tab1_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            LoadVehicles();
+        }
+
+
+
+
+
+
 
         private void LongevityButton_Click(object sender, RoutedEventArgs e)
         {
@@ -739,6 +1787,36 @@ namespace CarJack
                 catch { MessageBox.Show("One or more issues prevented the expected calculation from taking place.  Actual issue not identified.", "Action Failed"); }
             }
             else MessageBox.Show("The calculation cannot complete without a vehicle selected and the activity calculator filled in and saved.  Please correct and try again.", "Unable to Calculate");
+        }
+    }
+    public struct Vehicle
+    {
+        public string Make;
+        public string Model;
+        public string Body;
+        public string Engine;
+        public string Color;
+        public int Year;
+        public int Price;
+        public double Payments;
+        public int MilesGal;
+        public int Mileage;
+        public string Picture;
+
+        public Vehicle(string vmake, string model, string body, string engine, string color, int year, int price, double payments, int milesGal, int mileage, string picture)
+        {
+            Make = vmake;
+            Model = model;
+            Body = body;
+            Engine = engine;
+            Color = color;
+            Year = year;
+            Price = price;
+            Payments = payments;
+            MilesGal = milesGal;
+            Mileage = mileage;
+            Picture = picture;
+
         }
     }
 }
