@@ -65,7 +65,7 @@
         <ImageBrush ImageSource="images/ParkingGarage.jpg"/>
     </Window.Background>
 
-    <TabControl Name="tabControlExt" TabStripPlacement="Left" Margin="0" Padding="0,0,0,0" Background="{x:Null}">
+    <TabControl Name="tabControlExt" TabStripPlacement="Left" Margin="0" Padding="0,0,0,0" SelectionChanged="TabControl_SelectionChanged" Background="{x:Null}" >
         <!--#region tab1(undeclared)-->
         <TabItem x:Name="Tab1" Width="58" Height="64" Background="#FF3C3C3C" BorderBrush="#FF818181" IsSelected="True" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" HorizontalContentAlignment="Stretch">
             <TabItem.Header>
@@ -137,7 +137,7 @@
                     <Label Content="60000" x:Name="carPricing2" HorizontalAlignment="Left" Margin="54,76,0,0" VerticalAlignment="Top" Width="87"/>
                     <Label Content="240/Month" x:Name="carPayment2" HorizontalAlignment="Left" Margin="193,75,-7.8,0" VerticalAlignment="Top" Width="87"/>
                 </Grid>
-                <Grid Margin="471,93,-12,177" x:Name="Stats3" Visibility="Hidden">
+                <Grid Margin="464,93,-5,177" x:Name="Stats3" Visibility="Hidden">
                     <Image HorizontalAlignment="Center" Height="147" Margin="0,0,0.2,-0.2" VerticalAlignment="Top" Width="272" Source="images/CarViewerDetails.png" Opacity="0.65"/>
                     <Label Content="MPG:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0"/>
                     <Label Content="28" x:Name="MilesPerGal3" HorizontalAlignment="Left" Margin="54,25,0,0" VerticalAlignment="Top" Width="87"/>
@@ -174,7 +174,7 @@
 
                 <Grid HorizontalAlignment="Left" Height="230" x:Name="carSelectionGrid" Visibility="Visible"  VerticalAlignment="Top" Width="214" Margin="475,62,0,0">
                     <StackPanel>
-                        <Label x:Name="choiceTitle" Content="Choose A Brand" HorizontalAlignment="Center" Width="96"/>
+                        <Label x:Name="choiceTitle" Content="Find The Right Car For You" HorizontalAlignment="Center" Width="153" Margin="32,0,28.6,0"/>
 
                         <Grid Height="195" Margin="10,0,9.6,0">
                             <TabControl Margin="-37,-2,-49,0" Background="{x:Null}" BorderBrush="{x:Null}" >
@@ -194,16 +194,16 @@
 
                                     </Grid>
                                 </TabItem>
-                                <TabItem Header="Make" x:Name="Make" Margin="-12,0,16.6,-0.2" Background="{x:Null}">
+                                <TabItem Header="Make" x:Name="Make" IsEnabled="False" Margin="-12,0,16.6,-0.2" Background="{x:Null}">
                                     <Grid>
-                                        <Button HorizontalAlignment="Left" x:Name="firstMake" Content="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Corolla"  VerticalAlignment="Top" Width="122" Height="65" BorderBrush="{x:Null}" Opacity="0.85" Click="Button_firstMake" RenderTransformOrigin="0.514,0.495" Margin="0,27,0,0">
+                                        <Button HorizontalAlignment="Left" x:Name="firstMake" Content="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;Corolla"  VerticalAlignment="Top" Width="144" Height="90" BorderBrush="{x:Null}" Opacity="0.85" Click="Button_firstMake" RenderTransformOrigin="0.514,0.495" Margin="0,27,0,0">
                                             <Button.Background>
-                                                <ImageBrush ImageSource="images/ToyotaCorollaWhite.png"/>
+                                                <ImageBrush ImageSource="images/ToyotaCorollaWhite.png" Stretch="Uniform"/>
                                             </Button.Background>
                                         </Button>
                                     </Grid>
                                 </TabItem>
-                                <TabItem Header="Body" x:Name="Body" Margin="-23.6,0,23.8,-0.2" Background="{x:Null}">
+                                <TabItem Header="Body" x:Name="Body" IsEnabled="False" Margin="-23.6,0,23.8,-0.2" Background="{x:Null}">
                                     <Grid Margin="0,0,18.4,0.2">
                                         <Button HorizontalAlignment="Left" x:Name="Sedan"  Content="&#xA;&#xA;&#xA;Sedan" VerticalAlignment="Top" Width="122" Height="65" BorderBrush="{x:Null}" Opacity="0.85" Click="Button_Sedan" RenderTransformOrigin="0.514,0.495" Margin="0,27,0,0">
                                             <Button.Background>
@@ -217,11 +217,32 @@
                                         </Button>
                                     </Grid>
                                 </TabItem>
-                                <TabItem Header="Engine" x:Name="Engine" Margin="-30.8,0,34.6,-0.2" Background="{x:Null}">
-                                    <Grid/>
+                                <TabItem Header="Engine" x:Name="Engine" IsEnabled="False" Margin="-30.8,0,34.6,-0.2" Background="{x:Null}">
+
+                                    <Grid>
+                                        <Button x:Name="engOpt1" Content="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD; 4 Cyl" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,28,0,0" Height="84" Click="EngOpt1_Click">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="images/Corolla/2005/2005-corolla-engine.png" Stretch="Uniform"/>
+                                            </Button.Background>
+                                        </Button>
+                                        <Button x:Name="engOpt2" Content="&#xA;&#xA;&#xA;&#xA; 6 Cyl" IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="80,28,0,0" Height="84" Click="EngOpt2_Click">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="images/Corolla/2005/2005-corolla-engine.png" Stretch="Uniform"/>
+                                            </Button.Background>
+                                        </Button>
+                                        <Button x:Name="engOpt3" Content="&#xA;&#xA;&#xA;&#xA; 8 Cyl" IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="160,28,0,0" Height="84" Click="EngOpt3_Click">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="images/Corolla/2005/2005-corolla-engine.png" Stretch="Uniform"/>
+                                            </Button.Background>
+                                        </Button>
+                                    </Grid>
                                 </TabItem>
-                                <TabItem Header="Color" x:Name="Color" Margin="-40.4,0,27.8,-0.2" Background="{x:Null}">
-                                    <Grid Margin="0,0,18.4,0.2"/>
+                                <TabItem Header="Color" x:Name="Color" IsEnabled="False" Margin="-40.4,0,27.8,-0.2" Background="{x:Null}">
+                                    <Grid Margin="0,-52,18.4,-36.8">
+                                        <Button Content="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Margin="10,90,0,0" Height="39" Background="#FFAE1313"/>
+                                        <Button Content="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Margin="60,90,0,0" Height="39" Background="White"/>
+
+                                    </Grid>
                                 </TabItem>
 
                             </TabControl>
@@ -235,7 +256,7 @@
                                     </TransformGroup>
                                 </Button.RenderTransform>
                             </Button>
-                            <Button Content="" x:Name="y2006" HorizontalAlignment="Left" Margin="-25,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Button_Click">
+                            <Button Content="2006" x:Name="y2006" HorizontalAlignment="Left" Margin="-25,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Y2006_Click">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -245,7 +266,7 @@
                                     </TransformGroup>
                                 </Button.RenderTransform>
                             </Button>
-                            <Button Content="" x:Name="y2007" HorizontalAlignment="Left" Margin="-8,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Button_Click">
+                            <Button Content="2007" x:Name="y2007" HorizontalAlignment="Left" Margin="-8,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Y2007_Click">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -255,7 +276,7 @@
                                     </TransformGroup>
                                 </Button.RenderTransform>
                             </Button>
-                            <Button Content="" x:Name="y2008" HorizontalAlignment="Left" Margin="8,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Button_Click">
+                            <Button Content="2008" x:Name="y2008" HorizontalAlignment="Left" Margin="8,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Y2008_Click">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -265,7 +286,7 @@
                                     </TransformGroup>
                                 </Button.RenderTransform>
                             </Button>
-                            <Button Content="" x:Name="y2009" HorizontalAlignment="Left" Margin="24,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Button_Click">
+                            <Button Content="2009" x:Name="y2009" HorizontalAlignment="Left" Margin="24,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Y2009_Click">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -275,7 +296,7 @@
                                     </TransformGroup>
                                 </Button.RenderTransform>
                             </Button>
-                            <Button Content="2010" x:Name="y2010" HorizontalAlignment="Left" Margin="40,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Button_Click">
+                            <Button Content="2010" x:Name="y2010" HorizontalAlignment="Left" Margin="40,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Y2010_Click">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -285,7 +306,7 @@
                                     </TransformGroup>
                                 </Button.RenderTransform>
                             </Button>
-                            <Button Content="" x:Name="y2011" HorizontalAlignment="Left" Margin="56,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Button_Click">
+                            <Button Content="2011" x:Name="y2011" HorizontalAlignment="Left" Margin="56,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Y2011_Click">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -295,7 +316,7 @@
                                     </TransformGroup>
                                 </Button.RenderTransform>
                             </Button>
-                            <Button Content="" x:Name="y2012" HorizontalAlignment="Left" Margin="72,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Button_Click">
+                            <Button Content="2012" x:Name="y2012" HorizontalAlignment="Left" Margin="72,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Y2012_Click">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -305,7 +326,7 @@
                                     </TransformGroup>
                                 </Button.RenderTransform>
                             </Button>
-                            <Button Content="" x:Name="y2013" HorizontalAlignment="Left" Margin="88,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Button_Click">
+                            <Button Content="2013" x:Name="y2013" HorizontalAlignment="Left" Margin="88,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Y2013_Click">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -315,7 +336,7 @@
                                     </TransformGroup>
                                 </Button.RenderTransform>
                             </Button>
-                            <Button Content="" x:Name="y2014" HorizontalAlignment="Left" Margin="104,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Button_Click">
+                            <Button Content="2014" x:Name="y2014" HorizontalAlignment="Left" Margin="104,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Y2014_Click">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -325,7 +346,7 @@
                                     </TransformGroup>
                                 </Button.RenderTransform>
                             </Button>
-                            <Button Content="2015" x:Name="y2015" HorizontalAlignment="Left" Margin="120,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Button_Click">
+                            <Button Content="2015" x:Name="y2015" HorizontalAlignment="Left" Margin="120,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Y2015_Click">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -335,7 +356,7 @@
                                     </TransformGroup>
                                 </Button.RenderTransform>
                             </Button>
-                            <Button Content="" x:Name="y2016" HorizontalAlignment="Left" Margin="136,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Button_Click">
+                            <Button Content="2016" x:Name="y2016" HorizontalAlignment="Left" Margin="136,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Y2016_Click">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -345,7 +366,7 @@
                                     </TransformGroup>
                                 </Button.RenderTransform>
                             </Button>
-                            <Button Content="" x:Name="y2017" HorizontalAlignment="Left" Margin="152,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Button_Click">
+                            <Button Content="2017" x:Name="y2017" HorizontalAlignment="Left" Margin="152,28,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Y2017_Click">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -355,7 +376,7 @@
                                     </TransformGroup>
                                 </Button.RenderTransform>
                             </Button>
-                            <Button Content="" x:Name="y2018" HorizontalAlignment="Left" Margin="168,28,-3,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Button_Click">
+                            <Button Content="2018" x:Name="y2018" HorizontalAlignment="Left" Margin="168,28,-3,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Y2018_Click">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -365,17 +386,7 @@
                                     </TransformGroup>
                                 </Button.RenderTransform>
                             </Button>
-                            <Button Content="" x:Name="y2019" HorizontalAlignment="Left" Margin="184,28,-19,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Button_Click">
-                                <Button.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform Angle="-90"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Button.RenderTransform>
-                            </Button>
-                            <Button Content="2020" x:Name="y2020" HorizontalAlignment="Left" Margin="200,28,-35,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Button_Click">
+                            <Button Content="2019" x:Name="y2019" HorizontalAlignment="Left" Margin="184,28,-19,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5" Height="17" Click="Y2019_Click">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -390,7 +401,7 @@
 
                     </StackPanel>
                 </Grid>
-                <Grid HorizontalAlignment="Left" Height="102" VerticalAlignment="Top" Width="269" Margin="97,243,0,0">
+                <Grid HorizontalAlignment="Left" Height="102" x:Name="carStats" VerticalAlignment="Top" Width="269" Margin="97,243,0,0">
                     <Label Content="Compatibility &amp; Stats" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                     <Label Content="Miles/Gal:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0"/>
                     <Label Content="28" x:Name="MilesPerGal" HorizontalAlignment="Left" Margin="80,25,0,0" VerticalAlignment="Top" Width="87"/>
@@ -401,7 +412,7 @@
                     <Label Content="Title:" x:Name="CarInfo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="98,10,0,0"/>
                     <Label Content="Year:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="194,26,0,0"/>
                     <Label Content="0" x:Name="carYear" HorizontalAlignment="Left" Margin="225,26.5,0,0" VerticalAlignment="Top" Width="40" Height="25"/>
-                    <Label Content="20000" x:Name="carMileageComp" HorizontalAlignment="Left" Margin="73,40,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="20000" x:Name="CarMileageComp" HorizontalAlignment="Left" Margin="73,40,0,0" VerticalAlignment="Top" Width="87"/>
                     <Label Content="v8" x:Name="carEngine" HorizontalAlignment="Left" Margin="66,50,0,0" VerticalAlignment="Top" Width="87"/>
                     <Label Content="White" x:Name="carColor" HorizontalAlignment="Left" Margin="58,62,0,0" VerticalAlignment="Top" Width="87"/>
                     <Label Content="0" x:Name="carPricing" HorizontalAlignment="Left" Margin="54,76,0,0" VerticalAlignment="Top" Width="87"/>
@@ -420,10 +431,11 @@
                     <TextBox HorizontalAlignment="Left" Height="23" Margin="99,94,0,0" x:Name="carAmount" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
                     <Button Content="Calculate" x:Name="intCalc" HorizontalAlignment="Center" Margin="0,244,0,0" VerticalAlignment="Top" Width="75" Click="IntCalc_Click"/>
                     <Label Content="Payment Amount" HorizontalAlignment="Left" Margin="24,213,0,0" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="126,216,0,0" x:Name="paymentBox" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="126,216,0,0" x:Name="paymentBox" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
 
                 </Grid>
                 <Button x:Name="LongevityButton" Content="Longevity Calculator" HorizontalAlignment="Left" Margin="596,376,0,0" VerticalAlignment="Top" Width="125" Click="LongevityButton_Click"/>
+                <Button Content="Button" HorizontalAlignment="Left" Margin="151,384,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
 
             </Grid>
 
@@ -559,7 +571,6 @@
         </TabItem>
         <!--#endregion-->
         <!--#region tab4(undeclared)-->
-        <TabItem Background="#FF3C3C3C" BorderBrush="#FF818181" Height="64" IsEnabled="False" HorizontalAlignment="Center" VerticalAlignment="Center" Width="58" Margin="0"/>
         <!--#endregion-->
 
     </TabControl>
