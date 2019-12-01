@@ -373,35 +373,35 @@ namespace CarJack
 
             #region Check For Blank Boxes
             bool foundBlankBoxes = false;
-            if (CheckForBlankBoxes(TripMiles1.Text)) { foundBlankBoxes = true; TripMiles1.Text = "0"; }
-            if (CheckForBlankBoxes(TripMiles2.Text)) { foundBlankBoxes = true; TripMiles2.Text = "0"; }
-            if (CheckForBlankBoxes(TripMiles3.Text)) { foundBlankBoxes = true; TripMiles3.Text = "0"; }
-            if (CheckForBlankBoxes(TripMiles4.Text)) { foundBlankBoxes = true; TripMiles4.Text = "0"; }
-            if (CheckForBlankBoxes(TripMiles5.Text)) { foundBlankBoxes = true; TripMiles5.Text = "0"; }
-            if (CheckForBlankBoxes(TripMiles6.Text)) { foundBlankBoxes = true; TripMiles6.Text = "0"; }
-            if (CheckForBlankBoxes(TripMiles7.Text)) { foundBlankBoxes = true; TripMiles7.Text = "0"; }
-            if (CheckForBlankBoxes(TripMiles8.Text)) { foundBlankBoxes = true; TripMiles8.Text = "0"; }
-            if (CheckForBlankBoxes(TripMiles9.Text)) { foundBlankBoxes = true; TripMiles9.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripMiles1.Text)) { foundBlankBoxes = true; TripMiles1.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripMiles2.Text)) { foundBlankBoxes = true; TripMiles2.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripMiles3.Text)) { foundBlankBoxes = true; TripMiles3.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripMiles4.Text)) { foundBlankBoxes = true; TripMiles4.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripMiles5.Text)) { foundBlankBoxes = true; TripMiles5.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripMiles6.Text)) { foundBlankBoxes = true; TripMiles6.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripMiles7.Text)) { foundBlankBoxes = true; TripMiles7.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripMiles8.Text)) { foundBlankBoxes = true; TripMiles8.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripMiles9.Text)) { foundBlankBoxes = true; TripMiles9.Text = "0"; }
 
-            if (CheckForBlankBoxes(TripsPerWeek1.Text)) { foundBlankBoxes = true; TripsPerWeek1.Text = "0"; }
-            if (CheckForBlankBoxes(TripsPerWeek2.Text)) { foundBlankBoxes = true; TripsPerWeek2.Text = "0"; }
-            if (CheckForBlankBoxes(TripsPerWeek3.Text)) { foundBlankBoxes = true; TripsPerWeek3.Text = "0"; }
-            if (CheckForBlankBoxes(TripsPerWeek4.Text)) { foundBlankBoxes = true; TripsPerWeek4.Text = "0"; }
-            if (CheckForBlankBoxes(TripsPerWeek5.Text)) { foundBlankBoxes = true; TripsPerWeek5.Text = "0"; }
-            if (CheckForBlankBoxes(TripsPerWeek6.Text)) { foundBlankBoxes = true; TripsPerWeek6.Text = "0"; }
-            if (CheckForBlankBoxes(TripsPerWeek7.Text)) { foundBlankBoxes = true; TripsPerWeek7.Text = "0"; }
-            if (CheckForBlankBoxes(TripsPerWeek8.Text)) { foundBlankBoxes = true; TripsPerWeek8.Text = "0"; }
-            if (CheckForBlankBoxes(TripsPerWeek9.Text)) { foundBlankBoxes = true; TripsPerWeek9.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripsPerWeek1.Text)) { foundBlankBoxes = true; TripsPerWeek1.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripsPerWeek2.Text)) { foundBlankBoxes = true; TripsPerWeek2.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripsPerWeek3.Text)) { foundBlankBoxes = true; TripsPerWeek3.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripsPerWeek4.Text)) { foundBlankBoxes = true; TripsPerWeek4.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripsPerWeek5.Text)) { foundBlankBoxes = true; TripsPerWeek5.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripsPerWeek6.Text)) { foundBlankBoxes = true; TripsPerWeek6.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripsPerWeek7.Text)) { foundBlankBoxes = true; TripsPerWeek7.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripsPerWeek8.Text)) { foundBlankBoxes = true; TripsPerWeek8.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(TripsPerWeek9.Text)) { foundBlankBoxes = true; TripsPerWeek9.Text = "0"; }
 
-            if (CheckForBlankBoxes(WeeksPerYear1.Text)) { foundBlankBoxes = true; WeeksPerYear1.Text = "0"; }
-            if (CheckForBlankBoxes(WeeksPerYear2.Text)) { foundBlankBoxes = true; WeeksPerYear2.Text = "0"; }
-            if (CheckForBlankBoxes(WeeksPerYear3.Text)) { foundBlankBoxes = true; WeeksPerYear3.Text = "0"; }
-            if (CheckForBlankBoxes(WeeksPerYear4.Text)) { foundBlankBoxes = true; WeeksPerYear4.Text = "0"; }
-            if (CheckForBlankBoxes(WeeksPerYear5.Text)) { foundBlankBoxes = true; WeeksPerYear5.Text = "0"; }
-            if (CheckForBlankBoxes(WeeksPerYear6.Text)) { foundBlankBoxes = true; WeeksPerYear6.Text = "0"; }
-            if (CheckForBlankBoxes(WeeksPerYear7.Text)) { foundBlankBoxes = true; WeeksPerYear7.Text = "0"; }
-            if (CheckForBlankBoxes(WeeksPerYear8.Text)) { foundBlankBoxes = true; WeeksPerYear8.Text = "0"; }
-            if (CheckForBlankBoxes(WeeksPerYear9.Text)) { foundBlankBoxes = true; WeeksPerYear9.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(WeeksPerYear1.Text)) { foundBlankBoxes = true; WeeksPerYear1.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(WeeksPerYear2.Text)) { foundBlankBoxes = true; WeeksPerYear2.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(WeeksPerYear3.Text)) { foundBlankBoxes = true; WeeksPerYear3.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(WeeksPerYear4.Text)) { foundBlankBoxes = true; WeeksPerYear4.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(WeeksPerYear5.Text)) { foundBlankBoxes = true; WeeksPerYear5.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(WeeksPerYear6.Text)) { foundBlankBoxes = true; WeeksPerYear6.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(WeeksPerYear7.Text)) { foundBlankBoxes = true; WeeksPerYear7.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(WeeksPerYear8.Text)) { foundBlankBoxes = true; WeeksPerYear8.Text = "0"; }
+            if (CarJackFunctions.CheckForBlankBoxes(WeeksPerYear9.Text)) { foundBlankBoxes = true; WeeksPerYear9.Text = "0"; }
             if (foundBlankBoxes) { MessageBox.Show("One or more empty boxes was detected in the numberic columns. A value of '0' was entered into the field(s).", "Empty Box Detected"); }
             #endregion
 
@@ -570,13 +570,13 @@ namespace CarJack
             #endregion
 
         }
-
-        private static bool CheckForBlankBoxes(string inputText)
+        /*
+        protected static bool CheckForBlankBoxes(string inputText)
         {
             if (inputText == "") return true;
             return false;
         }
-
+        */
         /// <summary>
         /// Checks for values outside the range of 0 - 52.  Does this as the input is expected to represent a number of weeks in one year.
         /// </summary>
