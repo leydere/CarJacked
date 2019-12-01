@@ -28,7 +28,7 @@ namespace CarJack
         public string prevMake;
         public string body;
         public string prevBody;
-        public string engine;
+        public string engine = "v6";
         public string color = "white";
         public string firstMakeImg = null;
         public int year = 2019;
@@ -37,16 +37,23 @@ namespace CarJack
         public int activityMileage;
         public string vPicture;
 
+        /*  -Originally used to make objects to display saved vehicles, but had issues updating
+            Currently being transitioned to copying data to string lists after reading from file
+
         public Vehicle savVehicle1 = new Vehicle();
         public Vehicle savVehicle2 = new Vehicle();
         public Vehicle savVehicle3 = new Vehicle();
-
+        */
         public string v1txtPath;
         public string v2txtPath;
         public string v3txtPath;
         public List<string> vehicleData_1 = new List<string>();
         public List<string> vehicleData_2 = new List<string>();
         public List<string> vehicleData_3 = new List<string>();
+
+        public List<string> savVehicleData_1 = new List<string>();
+        public List<string> savVehicleData_2 = new List<string>();
+        public List<string> savVehicleData_3 = new List<string>();
 
 
         //interest and payment values
@@ -55,55 +62,97 @@ namespace CarJack
         public int carPrice = -1;
         public double payments;
         public int carMileage = -1;
+        public bool isReady = false;
 
         public MainWindow()
         {
             InitializeComponent();
             LoadVehicles();
+            isReady = true;
 
-        }
 
+                string testFile = "";
+                //check if vehicle 1 has a saved value, if true then print values, if false then hide
+                if ((Tab1.IsSelected) && (isReady == true))
+                {
 
-        void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.Source is TabControl)
-            {
-                choiceTitle.Content = "Choose A " + this.Content;
+                    try
+                    {
+                        testFile = vehicleData_1[0];
+                        MyVehicle1.Visibility = Visibility.Visible;
+                    }
+                    catch
+                    {
+                        MyVehicle1.Visibility = Visibility.Hidden;
+                    }
+                    try
+                    {
+                        testFile = vehicleData_2[0];
+                        MyVehicle2.Visibility = Visibility.Visible;
+                    }
+                    catch
+                    {
+                        MyVehicle2.Visibility = Visibility.Hidden;
+                    }
+                    try
+                    {
+                        testFile = vehicleData_3[0];
+                        MyVehicle3.Visibility = Visibility.Visible;
+                    }
+                    catch
+                    {
+                        MyVehicle3.Visibility = Visibility.Hidden;
+                    }
+                }
             }
-        }
-        /*
-       private void TabControlExt_SelectionChanged(object sender, RoutedEventArgs e)
-       {
 
-            if (ActivityCalc_Tab.IsSelected == true)
-           {
-               Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\Dash.jpg")));
-            }
-            else
-            {
-                Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ParkingGarage.jpg")));
 
-            }
-            
-        }
-        */
+
 
         private void Button_Toyota(object sender, RoutedEventArgs e)
         {
+            //set brand, clear make, and make image invisible
             brand = "Toyota";
-            firstMake.Content = "\n\nCorolla";
-            firstMake.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
+            make = "";
+            carView.Visibility = Visibility.Hidden;
+
+            //set visibility for other options
+            Make.IsEnabled = true;
+            Body.IsEnabled = false;
+            Engine.IsEnabled = false;
+            Color.IsEnabled = false;
+            //setup the button on the make tab
+            firstMake.Content = "\n\n\n\nCorolla";
+            firstMake.Background = new ImageBrush(carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png")));
             HatchBack.Visibility = System.Windows.Visibility.Visible;
+            carStats.Visibility = Visibility.Visible;
+
+            UpdateCarDetails();
         }
         private void Button_Dodge(object sender, RoutedEventArgs e)
         {
             brand = "Dodge";
-            firstMake.Content = "\n\nCharger";
+            carView.Visibility = Visibility.Hidden;
+            make = "";
+            //set IsEnabled for other options
+            Make.IsEnabled = true;
+            Body.IsEnabled = false;
+            Engine.IsEnabled = false;
+            Color.IsEnabled = false;
+            engOpt1.IsEnabled = false;
+            engOpt2.IsEnabled = true;
+            engOpt3.IsEnabled = true;
+
+            //setup the button on the make tab
+            firstMake.Content = "\n\n\n\nCharger";
 
             //Changes brush image for make first button background
 
-            firstMake.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\DodgeChargerWhite.png")));
+            firstMake.Background = new ImageBrush(carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\DodgeChargerWhite.png")));
             HatchBack.Visibility = System.Windows.Visibility.Hidden;
+            carStats.Visibility = Visibility.Visible;
+
+
             UpdateCarDetails();
         }
         private void Button_firstMake(object sender, RoutedEventArgs e)
@@ -111,15 +160,27 @@ namespace CarJack
             if (brand == "Toyota")
             {
                 make = "Corolla";
-                prevMake = brand;
-                Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhite.png")));
-                HatchBack.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png")));
+                carView.Visibility = Visibility.Hidden;
+                Sedan.Background = new ImageBrush(carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png")));
+                HatchBack.Background = new ImageBrush(carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhiteHatch.png")));
                 UpdateCarDetails();
+
+                //set visibility for other options
+                Body.IsEnabled = true;
+                Engine.IsEnabled = false;
+                Color.IsEnabled = false;
             }
             if (brand == "Dodge")
             {
                 make = "Charger";
-                Sedan.Background = new ImageBrush(new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\DodgeChargerWhite.png")));
+                carView.Visibility = Visibility.Hidden;
+                Sedan.Background = new ImageBrush(carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\DodgeChargerWhite.png")));
+                UpdateCarDetails();
+
+                //set visibility for other options
+                Body.IsEnabled = true;
+                Engine.IsEnabled = false;
+                Color.IsEnabled = false;
 
             }
         }
@@ -131,175 +192,212 @@ namespace CarJack
                 switch (year)
                 {
                     case 2005:
-                        make = "Corolla";
                         body = "Sedan";
+                        carView.Visibility = Visibility.Visible;
                         carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
                         vPicture = "\\images\\ToyotaCorollaWhite.png";
-                        carPrice = 4813;
-                        carAmount.Text = Convert.ToString(carPrice);
-                        mileage = 100;
-                        milesPerGallon = 30;
+
+                        //set visibility for other options
+                        Engine.IsEnabled = true;
+                        Color.IsEnabled = false;
+
                         break;
                     case 2006:
-                        make = "Corolla";
+
                         body = "Sedan";
+                        carView.Visibility = Visibility.Visible;
 
                         carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
                         vPicture = "\\images\\ToyotaCorollaWhite.png";
-                        carPrice = 5000;
-                        carAmount.Text = Convert.ToString(carPrice);
-                        mileage = 100;
-                        milesPerGallon = 30;
+
+                        //set visibility for other options
+                        Engine.IsEnabled = true;
+                        Color.IsEnabled = false;
+
                         break;
                     case 2007:
-                        make = "Corolla";
+
                         body = "Sedan";
+                        carView.Visibility = Visibility.Visible;
 
                         carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
                         vPicture = "\\images\\ToyotaCorollaWhite.png";
-                        carPrice = 6000;
-                        carAmount.Text = Convert.ToString(carPrice);
-                        mileage = 100;
-                        milesPerGallon = 30;
+
+                        //set visibility for other options
+                        Engine.IsEnabled = true;
+                        Color.IsEnabled = false;
+
                         break;
                     case 2008:
-                        make = "Corolla";
                         body = "Sedan";
+                        carView.Visibility = Visibility.Visible;
 
                         carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
                         vPicture = "\\images\\ToyotaCorollaWhite.png";
-                        carPrice = 6500;
-                        carAmount.Text = Convert.ToString(carPrice);
-                        mileage = 100;
-                        milesPerGallon = 30;
+
+                        //set visibility for other options
+                        Engine.IsEnabled = true;
+                        Color.IsEnabled = false;
+
                         break;
                     case 2009:
-                        make = "Corolla";
                         body = "Sedan";
+                        carView.Visibility = Visibility.Visible;
 
                         carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
                         vPicture = "\\images\\ToyotaCorollaWhite.png";
-                        carPrice = 8000;
-                        carAmount.Text = Convert.ToString(carPrice);
-                        mileage = 100;
-                        milesPerGallon = 30;
+
+                        //set visibility for other options
+                        Engine.IsEnabled = true;
+                        Color.IsEnabled = false;
+
                         break;
                     case 2010:
-                        make = "Corolla";
                         body = "Sedan";
+                        carView.Visibility = Visibility.Visible;
 
                         carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
                         vPicture = "\\images\\ToyotaCorollaWhite.png";
-                        carPrice = 8500;
-                        carAmount.Text = Convert.ToString(carPrice);
-                        mileage = 100;
-                        milesPerGallon = 30;
+
+                        //set visibility for other options
+                        Engine.IsEnabled = true;
+                        Color.IsEnabled = false;
+
                         break;
                     case 2011:
-                        make = "Corolla";
                         body = "Sedan";
+                        carView.Visibility = Visibility.Visible;
 
                         carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
                         vPicture = "\\images\\ToyotaCorollaWhite.png";
-                        carPrice = 9000;
-                        carAmount.Text = Convert.ToString(carPrice);
-                        mileage = 100;
-                        milesPerGallon = 30;
+
+                        //set visibility for other options
+                        Engine.IsEnabled = true;
+                        Color.IsEnabled = false;
+
                         break;
                     case 2012:
-                        make = "Corolla";
                         body = "Sedan";
+                        carView.Visibility = Visibility.Visible;
 
                         carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
                         vPicture = "\\images\\ToyotaCorollaWhite.png";
-                        carPrice = 10700;
-                        carAmount.Text = Convert.ToString(carPrice);
-                        mileage = 100;
-                        milesPerGallon = 30;
+
+                        //set visibility for other options
+                        Engine.IsEnabled = true;
+                        Color.IsEnabled = false;
+
                         break;
                     case 2013:
-                        make = "Corolla";
                         body = "Sedan";
+                        carView.Visibility = Visibility.Visible;
 
                         carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
                         vPicture = "\\images\\ToyotaCorollaWhite.png";
-                        carPrice = 11500;
-                        carAmount.Text = Convert.ToString(carPrice);
-                        mileage = 100;
-                        milesPerGallon = 30;
+
+                        //set visibility for other options
+                        Engine.IsEnabled = true;
+                        Color.IsEnabled = false;
+
                         break;
                     case 2014:
-                        make = "Corolla";
                         body = "Sedan";
+                        carView.Visibility = Visibility.Visible;
 
                         carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
                         vPicture = "\\images\\ToyotaCorollaWhite.png";
-                        carPrice = 12500;   //needsActualPrice
-                        carAmount.Text = Convert.ToString(carPrice);
-                        mileage = 32448;
-                        milesPerGallon = 30;
+
+                        //set visibility for other options
+                        Engine.IsEnabled = true;
+                        Color.IsEnabled = false;
+
                         break;
                     case 2015:
-                        make = "Corolla";
+
                         body = "Sedan";
+                        carView.Visibility = Visibility.Visible;
 
                         carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
                         vPicture = "\\images\\ToyotaCorollaWhite.png";
-                        carPrice = 13025;   //needsActualPrice
-                        carAmount.Text = Convert.ToString(carPrice);
-                        mileage = 100;
-                        milesPerGallon = 30;
+
+                        //set visibility for other options
+                        Engine.IsEnabled = true;
+                        Color.IsEnabled = false;
+
                         break;
                     case 2016:
-                        make = "Corolla";
+
+                        carView.Visibility = Visibility.Visible;
+
                         carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
                         vPicture = "\\images\\ToyotaCorollaWhite.png";
-                        carPrice = 14130;
-                        carAmount.Text = Convert.ToString(carPrice);
-                        mileage = 100;
-                        milesPerGallon = 30;
+
+                        //set visibility for other options
+                        Engine.IsEnabled = true;
+                        Color.IsEnabled = false;
+
                         break;
                     case 2017:
-                        make = "Corolla";
+
                         body = "Sedan";
+                        carView.Visibility = Visibility.Visible;
 
                         carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
                         vPicture = "\\images\\ToyotaCorollaWhite.png";
-                        carPrice = 14843;   //needsActualPrice
-                        carAmount.Text = Convert.ToString(carPrice);
-                        mileage = 100;
-                        milesPerGallon = 30;
+
+                        //set visibility for other options
+                        Engine.IsEnabled = true;
+                        Color.IsEnabled = false;
+
                         break;
                     case 2018:
-                        make = "Corolla";
+
                         body = "Sedan";
+                        carView.Visibility = Visibility.Visible;
 
                         carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
                         vPicture = "\\images\\ToyotaCorollaWhite.png";
-                        carPrice = 15525;   //needsActualPrice
-                        mileage = 100;
-                        milesPerGallon = 30;
+
+                        //set visibility for other options
+                        Engine.IsEnabled = true;
+                        Color.IsEnabled = false;
+
                         break;
                     case 2019:
-                        make = "Corolla";
+
                         body = "Sedan";
+                        carView.Visibility = Visibility.Visible;
 
                         carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhite.png"));
                         vPicture = "\\images\\ToyotaCorollaWhite.png";
-                        carPrice = 19000;   //needsActualPrice
-                        carAmount.Text = Convert.ToString(carPrice);
-                        mileage = 100;
-                        milesPerGallon = 30;
+
+                        //set visibility for other options
+                        Engine.IsEnabled = true;
+                        Color.IsEnabled = false;
+
                         break;
                     default:
                         break;
-                }
 
+
+                }
+                UpdateCarDetails();
             }
             else
             if (brand == "Dodge" && make == "Charger")
             {
+                body = "Sedan";
+                carView.Visibility = Visibility.Visible;
+
                 carView.Source = new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\DodgeChargerWhite.png"));
+                vPicture = "\\images\\ToyotaCorollaWhite.png";
+
+                //set visibility for other options
+                Engine.IsEnabled = true;
+                Color.IsEnabled = false;
+
+                UpdateCarDetails();
+
             }
         }
 
@@ -307,8 +405,6 @@ namespace CarJack
         {
             if (brand == "Toyota" && make == "Corolla")
             {
-                carView.Source = new BitmapImage(new Uri(@"C:\Users\crazy\source\repos\CarJack5\CarJack\CarJack\images\ToyotaCorollaWhiteHatch.png"));
-
                 Engine.IsEnabled = false;
                 Color.IsEnabled = false;
                 carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\ToyotaCorollaWhiteHatch.png"));
@@ -762,12 +858,7 @@ namespace CarJack
 
         }
 
-        private void Y2005_Click(object sender, RoutedEventArgs e)
-        {
-            Color.IsEnabled = false;
-            year = 2005;
 
-        }
 
         private void InterestCalc_Click(object sender, RoutedEventArgs e)
         {
@@ -906,89 +997,283 @@ namespace CarJack
         }
 
 
+
         //Hides and unhides the details for the cars in the garage
         private void MyVehicle1_MouseEnter(object sender, MouseEventArgs e)
         {
 
-            switch (Stats1.Visibility)
+            string name = "";
+
+            int i = 0;
+            try
             {
-                case Visibility.Visible:
-                    Stats1.Visibility = Visibility.Hidden;
-                    break;
-                case Visibility.Hidden:
-                    Stats1.Visibility = Visibility.Visible;
-                    break;
+                foreach (string line in vehicleData_1)
+                {
+                    if (i <= 1)
+                    {
+                        name = name + " " + line;
+                    }
+                    else if (i == 5)
+                    {
+                        Car1Info.Content = line + " " + name;
+                    }
+                    switch (i)
+                    {
+                        case 3:
+                            carEngine1.Content = line;
+                            break;
+                        case 4:
+                            carColor1.Content = line;
+                            break;
+                        case 6:
+                            carPricing1.Content = line;
+                            break;
+                        case 7:
+                            carPayment1.Content = line;
+                            break;
+                        case 8:
+                            MilesPerGal1.Content = line;
+                            break;
+                        case 9:
+                            carMileage1.Content = line;
+                            break;
+                        case 10:
+                            MyVehicle1.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + line));
+                            break;
+
+                    }
+
+                    i++;
+
+                    switch (Stats1.Visibility)
+                    {
+                        case Visibility.Visible:
+                            Stats1.Visibility = Visibility.Hidden;
+                            break;
+                        case Visibility.Hidden:
+                            Stats1.Visibility = Visibility.Visible;
+                            break;
+                    }
+
+                }
             }
+            catch
+            {
+
+            }
+
+
+            LoadVehicles();
+            UpdateStat3();
         }
 
         private void MyVehicle1_MouseLeave(object sender, MouseEventArgs e)
         {
-            switch (Stats1.Visibility)
+            string testFile = "";
+            try
             {
-                case Visibility.Visible:
-                    Stats1.Visibility = Visibility.Hidden;
-                    break;
-                case Visibility.Hidden:
-                    Stats1.Visibility = Visibility.Visible;
-                    break;
+                testFile = vehicleData_1[0];
+                switch (Stats1.Visibility)
+                {
+                    case Visibility.Visible:
+                        Stats1.Visibility = Visibility.Hidden;
+                        break;
+                    case Visibility.Hidden:
+                        Stats1.Visibility = Visibility.Visible;
+                        break;
+                }
+            }
+            catch
+            {
+
             }
         }
 
 
         private void MyVehicle2_MouseEnter(object sender, MouseEventArgs e)
         {
-            switch (Stats2.Visibility)
+            string name = "";
+
+            int i = 0;
+            try
             {
-                case Visibility.Visible:
-                    Stats2.Visibility = Visibility.Hidden;
-                    break;
-                case Visibility.Hidden:
-                    Stats2.Visibility = Visibility.Visible;
-                    break;
+                foreach (string line in vehicleData_2)
+                {
+                    if (i <= 1)
+                    {
+                        name = name + " " + line;
+                    }
+                    else if (i == 5)
+                    {
+                        Car2Info.Content = line + " " + name;
+                    }
+                    switch (i)
+                    {
+                        case 3:
+                            carEngine2.Content = line;
+                            break;
+                        case 4:
+                            carColor2.Content = line;
+                            break;
+                        case 6:
+                            carPricing2.Content = line;
+                            break;
+                        case 7:
+                            carPayment2.Content = line;
+                            break;
+                        case 8:
+                            MilesPerGal2.Content = line;
+                            break;
+                        case 9:
+                            carMileage2.Content = line;
+                            break;
+                        case 10:
+                            MyVehicle2.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + line));
+                            break;
+                    }
+
+                    i++;
+
+                    switch (Stats3.Visibility)
+                    {
+                        case Visibility.Visible:
+                            Stats2.Visibility = Visibility.Hidden;
+                            break;
+                        case Visibility.Hidden:
+                            Stats2.Visibility = Visibility.Visible;
+                            break;
+                    }
+
+                }
             }
+            catch
+            {
+
+            }
+
+
+            LoadVehicles();
+            UpdateStat3();
         }
 
         private void MyVehicle2_MouseLeave(object sender, MouseEventArgs e)
         {
-            switch (Stats2.Visibility)
+            string testFile = "";
+            try
             {
-                case Visibility.Visible:
-                    Stats2.Visibility = Visibility.Hidden;
-                    break;
-                case Visibility.Hidden:
-                    Stats2.Visibility = Visibility.Visible;
-                    break;
+                testFile = vehicleData_2[0];
+                switch (Stats2.Visibility)
+                {
+                    case Visibility.Visible:
+                        Stats2.Visibility = Visibility.Hidden;
+                        break;
+                    case Visibility.Hidden:
+                        Stats2.Visibility = Visibility.Visible;
+                        break;
+                }
+            }
+            catch
+            {
+
             }
         }
 
         private void MyVehicle3_MouseEnter(object sender, MouseEventArgs e)
         {
-            switch (Stats3.Visibility)
+            string name = "";
+
+            int i = 0;
+            try
             {
-                case Visibility.Visible:
-                    Stats3.Visibility = Visibility.Hidden;
-                    break;
-                case Visibility.Hidden:
-                    Stats3.Visibility = Visibility.Visible;
-                    break;
+                foreach (string line in vehicleData_3)
+                {
+                    if (i <= 1)
+                    {
+                        name = name + " " + line;
+                    }
+                    else if (i == 5)
+                    {
+                        Car3Info.Content = line + " " + name;
+                    }
+                    switch (i)
+                    {
+                        case 3:
+                            carEngine3.Content = line;
+                            break;
+                        case 4:
+                            carColor3.Content = line;
+                            break;
+                        case 6:
+                            carPricing3.Content = line;
+                            break;
+                        case 7:
+                            carPayment3.Content = line;
+                            break;
+                        case 8:
+                            MilesPerGal3.Content = line;
+                            break;
+                        case 9:
+                            carMileage3.Content = line;
+                            break;
+                        case 10:
+                            MyVehicle3.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + line));
+                            break;
+                    }
+
+                    i++;
+
+                    switch (Stats3.Visibility)
+                    {
+                        case Visibility.Visible:
+                            Stats3.Visibility = Visibility.Hidden;
+                            break;
+                        case Visibility.Hidden:
+                            Stats3.Visibility = Visibility.Visible;
+                            break;
+                    }
+
+                }
             }
+            catch
+            {
+
+            }
+
+
+            LoadVehicles();
+            UpdateStat3();
+
         }
 
         private void MyVehicle3_MouseLeave(object sender, MouseEventArgs e)
         {
-            switch (Stats3.Visibility)
+            string testFile = "";
+            try
             {
-                case Visibility.Visible:
-                    Stats3.Visibility = Visibility.Hidden;
-                    break;
-                case Visibility.Hidden:
-                    Stats3.Visibility = Visibility.Visible;
-                    break;
+                testFile = vehicleData_3[0];
+                switch (Stats3.Visibility)
+                {
+                    case Visibility.Visible:
+                        Stats3.Visibility = Visibility.Hidden;
+                        break;
+                    case Visibility.Hidden:
+                        Stats3.Visibility = Visibility.Visible;
+                        break;
+                }
             }
+            catch
+            {
+
+            }
+
         }
 
         private void SaveCar_Click(object sender, RoutedEventArgs e)
         {
+            bool isFile1Free = false;
+            bool isFile2Free = false;
+            bool isFile3Free = false;
+
             #region Save Vehicle to Text File
             // path the to txt file where data is saved; will need altering once there are more that one user activity profiles -ERL
             v1txtPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle1.txt";
@@ -996,28 +1281,34 @@ namespace CarJack
             v3txtPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle3.txt";
 
             #region Convert data to strings
-            string savMake = Convert.ToString(brand);
-            string savModel = Convert.ToString(make);
-            string savBody = Convert.ToString(body);
-            string savEngine = Convert.ToString(engine);
-            string savColor = Convert.ToString(color);
+            string savMake = brand;
+            string savModel = make;
+            string savBody = body;
+            string savEngine = engine;
+            string savColor = color;
             string savYear = Convert.ToString(year);
             string savPrice = Convert.ToString(carPrice);
             string savPayments = Convert.ToString(payments);
             string savMilesGal = Convert.ToString(milesPerGallon);
             string savMileage = Convert.ToString(mileage);
-            string savPicture = Convert.ToString(carView.Source);
+            string savPicture = Convert.ToString(vPicture);
             #endregion
 
-
+            isFile1Free = CheckIfFree(1);
+            MessageBox.Show("is free? " + isFile1Free);
+            isFile2Free = CheckIfFree(2);
+            MessageBox.Show("is free? " + isFile2Free);
+            isFile3Free = CheckIfFree(3);
+            MessageBox.Show("is free? " + isFile3Free);
 
             var vehicleData1 = new List<string>();
             var vehicleData2 = new List<string>();
             var vehicleData3 = new List<string>();
 
-            if ((savVehicle1.Make == "") || (savVehicle1.Make == null))
+            if (isFile1Free == true)
             {
-                CreateVehicle();
+                MessageBox.Show(savMake);
+
                 vehicleData1.Add(savMake);
                 vehicleData1.Add(savModel);
                 vehicleData1.Add(savBody);
@@ -1032,9 +1323,9 @@ namespace CarJack
                 System.IO.File.WriteAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle1.txt", vehicleData1);
 
             }
-            else if (savVehicle2.Make == "")
+            else if (isFile2Free == true)
             {
-                CreateVehicle();
+
                 vehicleData2.Add(savMake);
                 vehicleData2.Add(savModel);
                 vehicleData2.Add(savBody);
@@ -1046,12 +1337,12 @@ namespace CarJack
                 vehicleData2.Add(savMilesGal);
                 vehicleData2.Add(savMileage);
                 vehicleData2.Add(savPicture);
-                System.IO.File.WriteAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle2.txt", vehicleData1);
+                System.IO.File.WriteAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle2.txt", vehicleData2);
 
             }
-            else if (savVehicle3.Make == "")
+            else if (isFile3Free == true)
             {
-                CreateVehicle();
+                //CreateVehicle();
                 vehicleData3.Add(savMake);
                 vehicleData3.Add(savModel);
                 vehicleData3.Add(savBody);
@@ -1063,13 +1354,13 @@ namespace CarJack
                 vehicleData3.Add(savMilesGal);
                 vehicleData3.Add(savMileage);
                 vehicleData3.Add(savPicture);
-                System.IO.File.WriteAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle3.txt", vehicleData1);
+                System.IO.File.WriteAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle3.txt", vehicleData3);
 
             }
             else
             {
-                MessageBox.Show(savMake);
-                //   MessageBox.Show("Please Remove a Vehicle From Your Garage");
+                // MessageBox.Show(savMake);
+                MessageBox.Show("Please Remove a Vehicle From Your Garage");
             }
 
             // still needs to add a way to save
@@ -1079,13 +1370,636 @@ namespace CarJack
 
 
             #endregion
+
+            AddCarToGarage();
         }
 
-        /* private void InterestRate_TextChanged(object sender, TextChangedEventArgs e)
-         {
-             double valTemp = Convert.ToDouble(interestRate.Text);
-             interestRate.Text = (valTemp.ToString("P", CultureInfo.InvariantCulture));
-         }*/
+        private string GetPicture()
+        {
+            string filePath = "";
+
+
+            switch (year)
+            {
+                case 2005:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+
+                            carPrice = 4726;
+                            mileage = 146181;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        //     carStats.Visibility = Visibility.Visible;
+                        carPrice = 6718;
+                        mileage = 137768;
+                        CarMileageComp.Content = Convert.ToString(mileage);
+                        milesPerGallon = 18;
+                        MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                        carPricing.Content = Convert.ToString(carPrice);
+                        carYear.Content = Convert.ToString(year);
+                    }
+                    break;
+                case 2006:
+                    carYear.Content = Convert.ToString(year);
+
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carPrice = 5005;
+                            mileage = 141664;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 4655;
+                            mileage = 137768;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 6718;
+                            mileage = 137768;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+
+                    break;
+                case 2007:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 5131;
+                            mileage = 136393;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 11117;
+                            mileage = 132679;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 7354;
+                            mileage = 132679;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2008:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 6298;
+                            mileage = 130381;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 12491;
+                            mileage = 126875;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 7747;
+                            mileage = 126875;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2009:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carPrice = 6680;
+                            mileage = 123490;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 30;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 12491;
+                            mileage = 126875;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 8371;
+                            mileage = 120221;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 19;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2010:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 6795;
+                            mileage = 116004;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 14663;
+                            mileage = 112993;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 9578;
+                            mileage = 112993;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 19;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2011:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 8104;
+                            mileage = 107756;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 9185;
+                            mileage = 105029;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 12336;
+                            mileage = 105029;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 21;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+
+                    break;
+                case 2012:
+                    carYear.Content = Convert.ToString(year);
+
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 8761;
+                            mileage = 98767;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 9792;
+                            mileage = 96350;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 13657;
+                            mileage = 96350;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 21;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+
+                    break;
+                case 2013:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 9171;
+                            mileage = 89036;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 10790;
+                            mileage = 86956;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 14511;
+                            mileage = 86956;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 21;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2014:
+                    carYear.Content = Convert.ToString(year);
+                    if (make == "Corolla")
+                    {
+                        carStats.Visibility = Visibility.Visible;
+                        carPrice = 10711;
+                        mileage = 78385;
+                        CarMileageComp.Content = Convert.ToString(mileage);
+                        milesPerGallon = 32;
+                        MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                        carPricing.Content = Convert.ToString(carPrice);
+                        carYear.Content = Convert.ToString(year);
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 12117;
+                            mileage = 76672;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 16418;
+                            mileage = 76672;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 21;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2015:
+                    carYear.Content = Convert.ToString(year);
+                    if (make == "Corolla")
+                    {
+                        carStats.Visibility = Visibility.Visible;
+                        carPrice = 10849;
+                        mileage = 67160;
+                        CarMileageComp.Content = Convert.ToString(mileage);
+                        milesPerGallon = 32;
+                        MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                        carPricing.Content = Convert.ToString(carPrice);
+                        carYear.Content = Convert.ToString(year);
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 12117;
+                            mileage = 76672;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 20654;
+                            mileage = 65833;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 21;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2016:
+                    carYear.Content = Convert.ToString(year);
+                    if (make == "Corolla")
+                    {
+                        carStats.Visibility = Visibility.Visible;
+                        carPrice = 12867;
+                        mileage = 55193;
+                        CarMileageComp.Content = Convert.ToString(mileage);
+                        milesPerGallon = 32;
+                        MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                        carPricing.Content = Convert.ToString(carPrice);
+                        carYear.Content = Convert.ToString(year);
+                    }
+
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 16849;
+                            mileage = 54280;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 22221;
+                            mileage = 54280;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 21;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2017:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+                        
+
+                        
+                    }
+                    else if (brand == "Dodge")
+                    {
+
+                    }
+                    break;
+                case 2018:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+
+                    }
+                    else if (brand == "Dodge")
+                    {
+
+                    }
+
+                    break;
+                case 2019:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+
+                    }
+                    else if (brand == "Dodge")
+                    {
+
+                        
+                    }
+                    break;
+                default:
+
+                    break;
+            }
+        
+
+            return filePath;
+        }
+
+        private bool CheckIfFree(int x)
+        {
+            bool isFree = false;
+            string test;
+
+            //Set up readable files
+            v1txtPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle1.txt";
+            v2txtPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle2.txt";
+            v3txtPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle3.txt";
+            switch (x)
+            {
+                case 1:
+
+                    var carLogFile_1 = new List<string>(File.ReadAllLines(v1txtPath));
+                    try
+                    {
+                        test = carLogFile_1[0];
+                    }
+                    catch
+                    {
+                        isFree = true;
+                        MessageBox.Show("is free? " + isFree);
+                        return isFree;
+                    }
+
+                    if (test == "")
+                    {
+                        isFree = true;
+
+                        MessageBox.Show("is free? " + isFree);
+                    }
+                    else
+                    {
+                        isFree = false;
+                    }
+                    break;
+                case 2:
+                    var carLogFile_2 = new List<string>(File.ReadAllLines(v2txtPath));
+                    try
+                    {
+                        test = carLogFile_2[0];
+                    }
+                    catch
+                    {
+                        isFree = true;
+                        return isFree;
+                    }
+
+                    isFree = false;
+                    return isFree;
+
+
+                case 3:
+                    var carLogFile_3 = new List<string>(File.ReadAllLines(v3txtPath));
+                    try
+                    {
+                        test = carLogFile_3[0];
+                    }
+                    catch
+                    {
+                        isFree = true;
+
+                        return isFree;
+                    }
+
+
+                    isFree = false;
+                    return isFree;
+            }
+            return isFree;
+        }
+
+
+
 
 
         public void LoadVehicles()
@@ -1096,21 +2010,33 @@ namespace CarJack
 
 
             vehicleData_1.Clear();
-            var carLogFile_1 = File.ReadAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle1.txt");
+            var carLogFile_1 = File.ReadAllLines(v1txtPath);
             vehicleData_1 = new List<string>(carLogFile_1);
 
 
             vehicleData_2.Clear();
-            var carLogFile_2 = File.ReadAllLines(v1txtPath);
+            var carLogFile_2 = File.ReadAllLines(v2txtPath);
             vehicleData_2 = new List<string>(carLogFile_2);
 
             vehicleData_3.Clear();
-            var carLogFile_3 = File.ReadAllLines(v1txtPath);
+            var carLogFile_3 = File.ReadAllLines(v3txtPath);
             vehicleData_3 = new List<string>(carLogFile_3);
 
 
+            try
+            {
+                MyVehicle1.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + vehicleData_1[10]));
+                MyVehicle2.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + vehicleData_1[10]));
+                MyVehicle3.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + vehicleData_1[10]));
+            }
+            catch
+            {
 
+            }
 
+            
+
+            /*
             //merge loaded data into objects
             int i = -1;
             if (vehicleData_1 != null)
@@ -1132,13 +2058,63 @@ namespace CarJack
                 }
             }
             i = -1;
-            if (vehicleData_3 != null)
+            */
+
+        }
+
+        private void UpdateStat3()
+        {
+            string name = "";
+            int i = 0;
+
+            try
             {
-                foreach (string line in vehicleData_3)
+                if (vehicleData_3[0] != null)
                 {
+                    foreach (string line in vehicleData_3)
+                    {
+                        if (i <= 1)
+                        {
+                            name = name + " " + line;
+                        }
+                        else if (i == 5)
+                        {
+                            Car3Info.Content = line + " " + name;
+                        }
+                        switch (i)
+                        {
+                            case 3:
+                                carEngine3.Content = line;
+                                break;
+                            case 4:
+                                carColor3.Content = line;
+                                break;
+                            case 6:
+                                carPricing3.Content = line;
+                                break;
+                            case 7:
+                                carPayment3.Content = line;
+                                break;
+                            case 8:
+                                MilesPerGal3.Content = line;
+                                break;
+                            case 9:
+                                carMileage3.Content = line;
+                                break;
+                        }
+
+
+                    }
+
                     i++;
-                    MergeCarInfo(line, i, 3);
+                    //MergeCarInfo(line, i, 3);
+
                 }
+            }
+            catch
+            {
+                Stats3.Visibility = Visibility.Hidden;
+
             }
         }
 
@@ -1146,68 +2122,114 @@ namespace CarJack
 
         private void MergeCarInfo(string x, int y, int car)
         {
-
+            string name = "";
+            int i = 0;
             //vehicle1 data merged
 
+            if (car == 1)
+            {
+                if (i <= 1)
+                {
+                    name = name + " " + x;
+                }
+                else if (i == 5)
+                {
+                    Car3Info.Content = x + " " + name;
+                }
+                switch (i)
+                {
+                    case 3:
+                        carEngine3.Content = x;
+                        break;
+                    case 4:
+                        carColor3.Content = x;
+                        break;
+                    case 6:
+                        carPricing3.Content = x;
+                        break;
+                    case 7:
+                        carPayment3.Content = x;
+                        break;
+                    case 8:
+                        MilesPerGal3.Content = x;
+                        break;
+                    case 9:
+                        carMileage3.Content = x;
+                        break;
+                }
 
-            if ((y == 0) && (car == 1))
-            {
-                savVehicle1.Make = x;
-                tempName = x;
-            }
-            else if ((y == 1) && (car == 1))
-            {
-                savVehicle1.Model = x;
 
-                tempName = tempName + " " + x;
             }
-            else if ((y == 2) && (car == 1))
+            else if (car == 2)
             {
-                savVehicle1.Body = x;
+
             }
-            else if ((y == 3) && (car == 1))
+            else if (car == 3)
             {
-                savVehicle1.Engine = x;
-                carPricing1.Content = x;
-            }
-            else if ((y == 4) && (car == 1))
-            {
-                savVehicle1.Color = x;
-            }
-            else if ((y == 5) && (car == 1))
-            {
-                savVehicle1.Year = Convert.ToInt32(x);
-                Car1Info.Content = x + " " + tempName;
-            }
-            else if ((y == 6) && (car == 1))
-            {
-                savVehicle1.Price = Convert.ToInt32(x);
-                carPricing1.Content = x;
-            }
-            else if ((y == 7) && (car == 1))
-            {
-                savVehicle1.Payments = Convert.ToDouble(x);
-                carPayment1.Content = x;
-            }
-            else if ((y == 8) && (car == 1))
-            {
-                savVehicle1.MilesGal = Convert.ToInt32(x);
-                MilesPerGal1.Content = x;
-            }
-            else if ((y == 9) && (car == 1))
-            {
-                savVehicle1.Mileage = Convert.ToInt32(x);
-                carMileage1.Content = x;
-            }
-            else if ((y == 10) && (car == 1))
-            {
-                MyVehicle1.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + x));
-                MyVehicle1.Visibility = Visibility.Visible;
+
             }
 
+
+
+
+            /*  if ((y == 0) && (car == 1))
+              {
+                 // savVehicle1.Make = x;
+                  tempName = x;
+              }
+              else if ((y == 1) && (car == 1))
+              {
+                 savVehicle1.Model = x;
+
+                  tempName = tempName + " " + x;
+              }
+              else if ((y == 2) && (car == 1))
+              {
+                  savVehicle1.Body = x;
+              }
+              else if ((y == 3) && (car == 1))
+              {
+                  savVehicle1.Engine = x;
+                  carPricing1.Content = x;
+              }
+              else if ((y == 4) && (car == 1))
+              {
+                  savVehicle1.Color = x;
+              }
+              else if ((y == 5) && (car == 1))
+              {
+                  savVehicle1.Year = Convert.ToInt32(x);
+                  Car1Info.Content = x + " " + tempName;
+              }
+              else if ((y == 6) && (car == 1))
+              {
+                  savVehicle1.Price = Convert.ToInt32(x);
+                  carPricing1.Content = x;
+              }
+              else if ((y == 7) && (car == 1))
+              {
+                  savVehicle1.Payments = Convert.ToDouble(x);
+                  carPayment1.Content = x;
+              }
+              else if ((y == 8) && (car == 1))
+              {
+                  savVehicle1.MilesGal = Convert.ToInt32(x);
+                  MilesPerGal1.Content = x;
+              }
+              else if ((y == 9) && (car == 1))
+              {
+                  savVehicle1.Mileage = Convert.ToInt32(x);
+                  carMileage1.Content = x;
+              }
+              else if ((y == 10) && (car == 1))
+              {
+                 // MyVehicle1.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + x));
+                  //MyVehicle1.Visibility = Visibility.Visible;
+              }
+              */
 
             //vehicle2 data merged
-
+            /*
 
             if ((y == 0) && (car == 2))
             {
@@ -1260,8 +2282,8 @@ namespace CarJack
             }
             else if ((y == 10) && (car == 2))
             {
-                MyVehicle2.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + x));
-                MyVehicle2.Visibility = Visibility.Visible;
+               // MyVehicle2.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + x));
+                // MyVehicle2.Visibility = Visibility.Visible;
             }
 
 
@@ -1319,10 +2341,11 @@ namespace CarJack
             }
             else if ((y == 10) && (car == 3))
             {
-                MyVehicle3.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + x));
-                MyVehicle3.Visibility = Visibility.Visible;
-            }
+               // MyVehicle3.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + x));
+                //MyVehicle3.Visibility = Visibility.Visible;
+            }*/
         }
+
 
         private void UpdateCarDetails()
         {
@@ -1330,134 +2353,650 @@ namespace CarJack
             {
                 case 2005:
                     carYear.Content = Convert.ToString(year);
-                    if(prevMake != make)
+                    if (brand == "Toyota")
                     {
-                        vPicture = null;
+                        if (make == "Corolla")
+                        {
+
+                            carPrice = 4726;
+                            mileage = 146181;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                        }
                     }
-                    carPrice =4813;
+                    else if (brand == "Dodge")
+                    {
+                        //     carStats.Visibility = Visibility.Visible;
+                        carPrice = 6718;
+                        mileage = 137768;
+                        CarMileageComp.Content = Convert.ToString(mileage);
+                        milesPerGallon = 18;
+                        MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                        carPricing.Content = Convert.ToString(carPrice);
+                        carYear.Content = Convert.ToString(year);
+                    }
                     break;
                 case 2006:
                     carYear.Content = Convert.ToString(year);
-                    if (prevMake != make)
+
+                    if (brand == "Toyota")
                     {
-                        vPicture = null;
+                        if (make == "Corolla")
+                        {
+                            carPrice = 5005;
+                            mileage = 141664;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 4655;
+                            mileage = 137768;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 6718;
+                            mileage = 137768;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
                     }
 
                     break;
                 case 2007:
                     carYear.Content = Convert.ToString(year);
-                    if (prevMake != make)
-                    {
-                        vPicture = null;
-                    }
-                    break;
-                case 2008:
-                    carYear.Content = Convert.ToString(year);
-                    if (prevMake != make)
-                    {
-                        vPicture = null;
-                    }
-                    break;
-                case 2009:
-                    carYear.Content = Convert.ToString(year);
-                    if (prevMake != make)
-                    {
-                        vPicture = null;
-                    }
-                    break;
-                case 2010:
-                    carYear.Content = Convert.ToString(year);
-                    if (prevMake != make)
-                    {
-                        vPicture = null;
-                    }
-                    break;
-                case 2011:
-                    carYear.Content = Convert.ToString(year);
-                    if (prevMake != make)
-                    {
-                        vPicture = null;
-                    }
-                    break;
-                case 2012:
-                    carYear.Content = Convert.ToString(year);
-                    if (prevMake != make)
-                    {
-                        vPicture = null;
-                    }
-                    break;
-                case 2013:
-                    carYear.Content = Convert.ToString(year);
-                    if (prevMake != make)
-                    {
-                        vPicture = null;
-                    }
-                    break;
-                case 2014:
-                    carYear.Content = Convert.ToString(year);
-                    if (prevMake != make)
-                    {
-                        vPicture = null;
-                    }
-                    break;
-                case 2015:
-                    carYear.Content = Convert.ToString(year);
-                    if (prevMake != make)
-                    {
-                        vPicture = null;
-                    }
-                    break;
-                case 2016:
-                    carYear.Content = Convert.ToString(year);
-                    if (prevMake != make)
-                    {
-                        vPicture = null;
-                    }
-                    break;
-                case 2017:
-                    carYear.Content = Convert.ToString(year);
-                    if (prevMake != make)
-                    {
-                        vPicture = null;
-                    }
-                    break;
-                case 2018:
-                    carYear.Content = Convert.ToString(year);
-                    if (prevMake != make)
-                    {
-                        vPicture = null;
-                    }
                     if (brand == "Toyota")
                     {
                         if (make == "Corolla")
                         {
-                            
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 5131;
+                            mileage = 136393;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
                         }
                     }
-                    else if(brand=="Dodge")
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 11117;
+                            mileage = 132679;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 7354;
+                            mileage = 132679;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2008:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 6298;
+                            mileage = 130381;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 12491;
+                            mileage = 126875;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 7747;
+                            mileage = 126875;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2009:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carPrice = 6680;
+                            mileage = 123490;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 30;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 12491;
+                            mileage = 126875;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 8371;
+                            mileage = 120221;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 19;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2010:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 6795;
+                            mileage = 116004;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 14663;
+                            mileage = 112993;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 9578;
+                            mileage = 112993;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 19;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2011:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 8104;
+                            mileage = 107756;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 9185;
+                            mileage = 105029;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 12336;
+                            mileage = 105029;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 21;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+
+                    break;
+                case 2012:
+                    carYear.Content = Convert.ToString(year);
+
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 8761;
+                            mileage = 98767;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 9792;
+                            mileage = 96350;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 13657;
+                            mileage = 96350;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 21;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+
+                    break;
+                case 2013:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 9171;
+                            mileage = 89036;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 29;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 10790;
+                            mileage = 86956;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 14511;
+                            mileage = 86956;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 21;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2014:
+                    carYear.Content = Convert.ToString(year);
+                    if (make == "Corolla")
                     {
 
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 10711;
+                            mileage = 78385;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 32;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                    if (body != "Hatch")
+                        {
+                            vPicture = "\\images\\Corolla\\2014\\White2014Corolla.png";
+                        }
+                        else
+                        {
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 12117;
+                            mileage = 76672;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                            vPicture = "\\images\\Corolla\\2014\\White2014Corolla.png";
+
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 16418;
+                            mileage = 76672;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 21;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2015:
+                    carYear.Content = Convert.ToString(year);
+                    if (make == "Corolla")
+                    {
+                        carStats.Visibility = Visibility.Visible;
+                        carPrice = 10849;
+                        mileage = 67160;
+                        CarMileageComp.Content = Convert.ToString(mileage);
+                        milesPerGallon = 32;
+                        MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                        carPricing.Content = Convert.ToString(carPrice);
+                        carYear.Content = Convert.ToString(year);
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 12117;
+                            mileage = 76672;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 20654;
+                            mileage = 65833;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 21;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2016:
+                    carYear.Content = Convert.ToString(year);
+                    if (make == "Corolla")
+                    {
+                        carStats.Visibility = Visibility.Visible;
+                        carPrice = 12867;
+                        mileage = 55193;
+                        CarMileageComp.Content = Convert.ToString(mileage);
+                        milesPerGallon = 32;
+                        MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                        carPricing.Content = Convert.ToString(carPrice);
+                        carYear.Content = Convert.ToString(year);
+                    }
+
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 16849;
+                            mileage = 54280;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 22221;
+                            mileage = 54280;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 21;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2017:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 13664;
+                            mileage = 42485;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 32;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 19261;
+                            mileage = 42010;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 25114;
+                            mileage = 42010;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 31;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    break;
+                case 2018:
+                    carYear.Content = Convert.ToString(year);
+                    if (brand == "Toyota")
+                    {
+                        if (make == "Corolla")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 15785;
+                            mileage = 29075;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 31;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 22234;
+                            mileage = 29062;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 26281;
+                            mileage = 29062;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 23;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
                     }
 
                     break;
                 case 2019:
                     carYear.Content = Convert.ToString(year);
-                    if (prevMake != make)
+                    if (brand == "Toyota")
                     {
-                        vPicture = null;
+                        if (make == "Corolla")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 4813;
+                            mileage = 14886;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 32;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                    }
+                    else if (brand == "Dodge")
+                    {
+                        if (engine == "6 Cyl ")
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carView.Visibility = Visibility.Visible;
+                            carPrice = 24912;
+                            mileage = 15363;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 18;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
+                        else
+                        {
+                            carStats.Visibility = Visibility.Visible;
+                            carPrice = 29839;
+                            mileage = 15363;
+                            CarMileageComp.Content = Convert.ToString(mileage);
+                            milesPerGallon = 23;
+                            MilesPerGal.Content = Convert.ToString(milesPerGallon);
+                            carPricing.Content = Convert.ToString(carPrice);
+                            carYear.Content = Convert.ToString(year);
+                        }
                     }
                     break;
                 default:
 
-                break;
+                    break;
             }
         }
-        
-        private void UpdateCarList()
-        {
 
-        }
 
+        //remove vehicle data from vheicle .txt file
         private void DeleteVehicle(int x)
         {
 
@@ -1466,7 +3005,7 @@ namespace CarJack
             {
                 case 1:
                     File.WriteAllText(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle1.txt", String.Empty); break;
-                  
+
 
                 case 2:
                     File.WriteAllText(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle2.txt", String.Empty);
@@ -1481,123 +3020,7 @@ namespace CarJack
 
 
         }
-
-
-        public void CreateVehicle()
-        {
-
-            if (savVehicle1.Make == null)
-            {
-
-                savVehicle1.Make = brand;
-                savVehicle1.Model = make;
-                savVehicle1.Body = body;
-                savVehicle1.Engine = engine;
-                savVehicle1.Color = color;
-                savVehicle1.Year = year;
-                savVehicle1.Price = carPrice;
-                savVehicle1.Payments = Convert.ToDouble(paymentBox.Text);
-                savVehicle1.MilesGal = milesPerGallon;
-                savVehicle1.Mileage = mileage;
-                savVehicle1.Picture = vPicture;
-            }
-            else if (savVehicle2.Make == null)
-            {
-                savVehicle2.Make = brand;
-                savVehicle2.Model = make;
-                savVehicle2.Body = body;
-                savVehicle2.Engine = engine;
-                savVehicle2.Color = color;
-                savVehicle2.Year = year;
-                savVehicle2.Price = carPrice;
-                savVehicle2.Payments = Convert.ToDouble(paymentBox.Text);
-                savVehicle2.MilesGal = milesPerGallon;
-                savVehicle2.Mileage = mileage;
-                savVehicle2.Picture = vPicture;
-            }
-            else if (savVehicle3.Make == null)
-            {
-                savVehicle3.Make = brand;
-                savVehicle3.Model = make;
-                savVehicle3.Body = body;
-                savVehicle3.Engine = engine;
-                savVehicle3.Color = color;
-                savVehicle3.Year = year;
-                savVehicle3.Price = carPrice;
-                savVehicle3.Payments = Convert.ToDouble(paymentBox.Text);
-                savVehicle3.MilesGal = milesPerGallon;
-                savVehicle3.Mileage = mileage;
-                savVehicle3.Picture = vPicture;
-            }
-            else
-            {
-                MessageBox.Show("Please Remove a Vehicle From Your Garage");
-            }
-        }
-
-        private void Tab1_Initialized(object sender, EventArgs e)
-        {
-            //check if vehicle 1 has a saved value, if true then print values, if false then hide
-
-            if (savVehicle1.Make != null)
-            {
-                MyVehicle1.Visibility = Visibility.Visible;
-                MilesPerGal1.Content = savVehicle1.MilesGal;
-                carMileage1.Content = savVehicle1.Mileage;
-                carEngine1.Content = savVehicle1.Engine;
-                carColor1.Content = savVehicle1.Mileage;
-                carPricing1.Content = savVehicle1.Price;
-                carPayment1.Content = savVehicle1.Payments;
-
-                MyVehicle1.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + savVehicle1.Picture));
-            }
-            else
-            {
-                MyVehicle1.Visibility = Visibility.Hidden;
-            }
-
-            //check if vehicle 2 has a saved value, if true then print values, if false then hide
-
-            if (savVehicle2.Make != null)
-            {
-                MyVehicle2.Visibility = Visibility.Visible;
-
-
-                MilesPerGal2.Content = savVehicle2.MilesGal;
-                carMileage2.Content = savVehicle2.Mileage;
-                carEngine2.Content = savVehicle2.Engine;
-                carColor2.Content = savVehicle2.Mileage;
-                carPricing2.Content = savVehicle2.Price;
-                carPayment2.Content = savVehicle2.Payments;
-
-                MyVehicle2.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + savVehicle1.Picture));
-            }
-            else
-            {
-                MyVehicle2.Visibility = Visibility.Hidden;
-            }
-            //check if vehicle 3 has a saved value, if true then print values, if false then hide
-            if (savVehicle3.Make != null)
-            {
-                MyVehicle3.Visibility = Visibility.Visible;
-
-
-                MilesPerGal3.Content = savVehicle3.MilesGal;
-                carMileage3.Content = savVehicle3.Mileage;
-                carEngine3.Content = savVehicle3.Engine;
-                carColor3.Content = savVehicle3.Mileage;
-                carPricing3.Content = savVehicle3.Price;
-                carPayment3.Content = savVehicle3.Payments;
-
-                MyVehicle3.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + savVehicle1.Picture));
-            }
-            else
-            {
-                MyVehicle3.Visibility = Visibility.Hidden;
-            }
-        }
-
-
+        
         private void MyCarColor_Click(object sender, RoutedEventArgs e)
         {
             color = "blue";
@@ -1607,11 +3030,46 @@ namespace CarJack
         {
             Color.IsEnabled = true;
             year = 2020;
+
             if (brand == "Corolla")
             {
                 carPrice = 19000;
                 carAmount.Text = Convert.ToString(19000);
             }
+            UpdateCarDetails();
+
+
+        }
+
+
+
+        private void Y2005_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2005;
+            UpdateCarDetails();
+
+        }
+        private void Y2006_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2006;
+            UpdateCarDetails();
+
+        }
+        private void Y2007_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2007;
+            UpdateCarDetails();
+
+        }
+
+        private void Y2009_Click(object sender, RoutedEventArgs e)
+        {
+            Color.IsEnabled = false;
+            year = 2009;
+            UpdateCarDetails();
 
         }
 
@@ -1619,83 +3077,72 @@ namespace CarJack
         {
             Color.IsEnabled = false;
             year = 2010;
+            UpdateCarDetails();
 
-
-        }
-
-        private void Y2007_Click(object sender, RoutedEventArgs e)
-        {
-            Color.IsEnabled = false;
-            year = 2007;
-
-        }
-
-        private void Y2006_Click(object sender, RoutedEventArgs e)
-        {
-            Color.IsEnabled = false;
-            year = 2006;
-        }
-
-        private void Y2009_Click(object sender, RoutedEventArgs e)
-        {
-            Color.IsEnabled = false;
-            year = 2006;
 
         }
 
         private void Y2011_Click(object sender, RoutedEventArgs e)
         {
             Color.IsEnabled = false;
-            year = 2006;
+            year = 2011;
+            UpdateCarDetails();
 
         }
 
         private void Y2012_Click(object sender, RoutedEventArgs e)
         {
             Color.IsEnabled = false;
-            year = 2006;
+            year = 2012;
+            UpdateCarDetails();
 
         }
 
         private void Y2013_Click(object sender, RoutedEventArgs e)
         {
             Color.IsEnabled = false;
-            year = 2006;
+            year = 2013;
+            UpdateCarDetails();
 
         }
 
         private void Y2014_Click(object sender, RoutedEventArgs e)
         {
             Color.IsEnabled = false;
-            year = 2006;
+            year = 2014;
+            UpdateCarDetails();
 
         }
 
         private void Y2015_Click(object sender, RoutedEventArgs e)
         {
             Color.IsEnabled = false;
-            year = 2006;
+            year = 2015;
+            UpdateCarDetails();
 
         }
 
         private void Y2016_Click(object sender, RoutedEventArgs e)
         {
             Color.IsEnabled = false;
-            year = 2006;
+            year = 2016;
+            UpdateCarDetails();
 
         }
 
         private void Y2017_Click(object sender, RoutedEventArgs e)
         {
             Color.IsEnabled = false;
-            year = 2006;
+            year = 2017;
+            UpdateCarDetails();
 
         }
 
         private void Y2018_Click(object sender, RoutedEventArgs e)
         {
             Color.IsEnabled = false;
-            year = 2006;
+            year = 2018;
+            UpdateCarDetails();
 
         }
 
@@ -1707,7 +3154,8 @@ namespace CarJack
                 carPrice = 19000;
                 carAmount.Text = Convert.ToString(carPrice);
             }
-            year = 2006;
+            year = 2019;
+            UpdateCarDetails();
 
         }
         #endregion
@@ -1735,9 +3183,27 @@ namespace CarJack
         #region Remove vehicle from txt
         private void Remove1_Click(object sender, RoutedEventArgs e)
         {
+
+            /*    if ((savVehicle1.Make != null)||(savVehicle1.Make != ""))
+                {
+
+                    savVehicle1.Make = "";
+                    savVehicle1.Model = null ;
+                    savVehicle1.Body = null;
+                    savVehicle1.Engine = null;
+                    savVehicle1.Color = null;
+                    savVehicle1.Year = 0;
+                    savVehicle1.Price = 0;
+                    savVehicle1.Payments = 0;
+                    savVehicle1.MilesGal = 0;
+                    savVehicle1.Mileage = 0;
+                    savVehicle1.Picture = null;
+
+                }   */
             DeleteVehicle(1);
             LoadVehicles();
             ReInitialize(1);
+
         }
         private void Remove3_Click(object sender, RoutedEventArgs e)
         {
@@ -1783,11 +3249,11 @@ namespace CarJack
 
         private void LongevityButton_Click(object sender, RoutedEventArgs e)
         {
-            if (carPrice != -1 && carMileage != -1 && TotalBlock.Text != "")
+            if (carPrice != -1 && mileage != -1 && TotalBlock.Text != "")
             {
                 try
                 {
-                    float remainingMiles = 250000 - Convert.ToSingle(carMileage);
+                    float remainingMiles = 250000 - Convert.ToSingle(mileage);
                     float yearsLongevity = remainingMiles / Convert.ToSingle(TotalBlock.Text);
                     float annualCostValue = Convert.ToSingle(carPrice) / yearsLongevity;
                     string printLongevity = Math.Round(yearsLongevity, 1).ToString();
@@ -1796,9 +3262,125 @@ namespace CarJack
                 }
                 catch { MessageBox.Show("One or more issues prevented the expected calculation from taking place.  Actual issue not identified.", "Action Failed"); }
             }
-            else MessageBox.Show("The calculation cannot complete without a vehicle selected and the activity calculator filled in and saved.  Please correct and try again.", "Unable to Calculate");
+            else MessageBox.Show("Price" + carPrice + "mileage" + carMileage + "Total" + TotalBlock.Text + "\nThe calculation cannot complete without a vehicle selected and the activity calculator filled in and saved.  Please correct and try again.", "Unable to Calculate");
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //   MessageBox.Show(Convert.ToString(savVehicle1.Make));
+        }
+
+        private void Y2010_Click_1(object sender, RoutedEventArgs e)
+        {
+            carStats.Visibility = Visibility.Visible;
+            carView.Visibility = Visibility.Visible;
+            year = 2010;
+            UpdateCarDetails();
+        }
+
+        private void Y2008_Click(object sender, RoutedEventArgs e)
+        {
+            carStats.Visibility = Visibility.Visible;
+            carView.Visibility = Visibility.Visible;
+            year = 2008;
+            UpdateCarDetails();
+        }
+
+        private void EngOpt1_Click(object sender, RoutedEventArgs e)
+        {
+            engine = "4 Cyl";
+            carEngine.Content = engine;
+            Color.IsEnabled = true;
+        }
+
+        private void EngOpt2_Click(object sender, RoutedEventArgs e)
+        {
+            engine = "6 Cyl";
+            carEngine.Content = engine;
+            Color.IsEnabled = true;
+        }
+        private void EngOpt3_Click(object sender, RoutedEventArgs e)
+        {
+            engine = "8 Cyl";
+            carEngine.Content = engine;
+            Color.IsEnabled = true;
+
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string testFile = "";
+            //check if vehicle 1 has a saved value, if true then print values, if false then hide
+            if ((Tab1.IsSelected)&&(isReady==true))
+            {
+
+                try
+                {
+                    testFile = vehicleData_1[0];
+                    MyVehicle1.Visibility = Visibility.Visible;
+                }
+                catch
+                {
+                    MyVehicle1.Visibility = Visibility.Hidden;
+                }
+                try
+                {
+                    testFile = vehicleData_2[0];
+                    MyVehicle2.Visibility = Visibility.Visible;
+                }
+                catch
+                {
+                    MyVehicle2.Visibility = Visibility.Hidden;
+                }
+                try
+                {
+                    testFile = vehicleData_3[0];
+                    MyVehicle3.Visibility = Visibility.Visible;
+                }
+                catch
+                {
+                    MyVehicle3.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+        private void AddCarToGarage()
+        {
+            string testFile = "";
+            //check if vehicle 1 has a saved value, if true then print values, if false then hide
+
+                try
+                {
+                    testFile = vehicleData_1[0];
+                    MyVehicle1.Visibility = Visibility.Visible;
+                }
+                catch
+                {
+                    MyVehicle1.Visibility = Visibility.Hidden;
+                }
+                try
+                {
+                    testFile = vehicleData_2[0];
+                    MyVehicle2.Visibility = Visibility.Visible;
+                }
+                catch
+                {
+                    MyVehicle2.Visibility = Visibility.Hidden;
+                }
+                try
+                {
+                    testFile = vehicleData_3[0];
+                    MyVehicle3.Visibility = Visibility.Visible;
+                }
+                catch
+                {
+                    MyVehicle3.Visibility = Visibility.Hidden;
+                }
+            
+        }
+
     }
+}
+    /*
     public struct Vehicle
     {
         public string Make;
@@ -1829,4 +3411,4 @@ namespace CarJack
 
         }
     }
-}
+    */
