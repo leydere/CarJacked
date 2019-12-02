@@ -417,7 +417,7 @@
                     <Label Content="White" x:Name="carColor" HorizontalAlignment="Left" Margin="58,62,0,0" VerticalAlignment="Top" Width="87"/>
                     <Label Content="0" x:Name="carPricing" HorizontalAlignment="Left" Margin="54,76,0,0" VerticalAlignment="Top" Width="87"/>
                     <Button x:Name="interestCalc" Content="Interest Calc" HorizontalAlignment="Left" Margin="194,81,0,2" Width="75" Click="InterestCalc_Click"/>
-                    <Button x:Name="SaveCar" Content="Add To Cars" HorizontalAlignment="Left" Margin="194,57,0,0" VerticalAlignment="Top" Width="75" Click="SaveCar_Click"/>
+                    <Button x:Name="SaveCar" Content="Add To Cars" Margin="194,57,0,0" VerticalAlignment="Top" Click="SaveCar_Click"/>
                     <Image x:Name="ComCheck" HorizontalAlignment="Left" Height="42" Visibility="Hidden" VerticalAlignment="Top" Width="42" Margin="194,-11,0,0" Source="images/checkmark.png"/>
 
                 </Grid>
@@ -435,8 +435,8 @@
                     <TextBox HorizontalAlignment="Left" Height="23" Margin="126,216,0,0" x:Name="paymentBox" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
 
                 </Grid>
+                <Image HorizontalAlignment="Left" Height="85" Margin="580,351,-9,-18" VerticalAlignment="Top" Width="161" Source="images/CarViewerDetails.png"/>
                 <Button x:Name="LongevityButton" Content="Longevity Calculator" HorizontalAlignment="Left" Margin="597,376,0,0" VerticalAlignment="Top" Width="125" Click="LongevityButton_Click"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="151,384,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
 
             </Grid>
 

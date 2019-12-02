@@ -3279,10 +3279,6 @@ namespace CarJack
             else MessageBox.Show("Price" + carPrice + "mileage" + carMileage + "Total" + TotalBlock.Text + "\nThe calculation cannot complete without a vehicle selected and the activity calculator filled in and saved.  Please correct and try again.", "Unable to Calculate");
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            //   MessageBox.Show(Convert.ToString(savVehicle1.Make));
-        }
 
         private void Y2010_Click_1(object sender, RoutedEventArgs e)
         {
