@@ -36,6 +36,7 @@ namespace CarJack
         public int milesPerGallon;
         public int activityMileage;
         public string vPicture;
+        public double estLongevity;
 
         /*  -Originally used to make objects to display saved vehicles, but had issues updating
             Currently being transitioned to copying data to string lists after reading from file
@@ -113,6 +114,7 @@ namespace CarJack
         {
             //set brand, clear make, and make image invisible
             brand = "Toyota";
+            CarInfo.Content = brand;
             make = "";
             carView.Visibility = Visibility.Hidden;
 
@@ -132,6 +134,7 @@ namespace CarJack
         private void Button_Dodge(object sender, RoutedEventArgs e)
         {
             brand = "Dodge";
+            CarInfo.Content = brand;
             carView.Visibility = Visibility.Hidden;
             make = "";
             //set IsEnabled for other options
@@ -173,6 +176,7 @@ namespace CarJack
             if (brand == "Dodge")
             {
                 make = "Charger";
+
                 carView.Visibility = Visibility.Hidden;
                 Sedan.Background = new ImageBrush(carView.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\DodgeChargerWhite.png")));
                 UpdateCarDetails();
@@ -183,6 +187,8 @@ namespace CarJack
                 Color.IsEnabled = false;
 
             }
+            CarInfo.Content = brand + " " + make;
+
         }
 
         private void Button_Sedan(object sender, RoutedEventArgs e)
@@ -1295,11 +1301,8 @@ namespace CarJack
             #endregion
 
             isFile1Free = CheckIfFree(1);
-            MessageBox.Show("is free? " + isFile1Free);
             isFile2Free = CheckIfFree(2);
-            MessageBox.Show("is free? " + isFile2Free);
             isFile3Free = CheckIfFree(3);
-            MessageBox.Show("is free? " + isFile3Free);
 
             var vehicleData1 = new List<string>();
             var vehicleData2 = new List<string>();
@@ -1307,8 +1310,6 @@ namespace CarJack
 
             if (isFile1Free == true)
             {
-                MessageBox.Show(savMake);
-
                 vehicleData1.Add(savMake);
                 vehicleData1.Add(savModel);
                 vehicleData1.Add(savBody);
@@ -1321,7 +1322,7 @@ namespace CarJack
                 vehicleData1.Add(savMileage);
                 vehicleData1.Add(savPicture);
                 System.IO.File.WriteAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle1.txt", vehicleData1);
-
+                MessageBox.Show("Car added to Garage./nGarage will add car after reopening.");
             }
             else if (isFile2Free == true)
             {
@@ -1338,7 +1339,7 @@ namespace CarJack
                 vehicleData2.Add(savMileage);
                 vehicleData2.Add(savPicture);
                 System.IO.File.WriteAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle2.txt", vehicleData2);
-
+                MessageBox.Show("Car added to Garage./nGarage will add car after reopening.");
             }
             else if (isFile3Free == true)
             {
@@ -1355,7 +1356,7 @@ namespace CarJack
                 vehicleData3.Add(savMileage);
                 vehicleData3.Add(savPicture);
                 System.IO.File.WriteAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle3.txt", vehicleData3);
-
+                MessageBox.Show("Car added to Garage./nGarage will add car after reopening.");
             }
             else
             {
@@ -1921,7 +1922,7 @@ namespace CarJack
 
                     break;
             }
-        
+
 
             return filePath;
         }
@@ -3259,6 +3260,19 @@ namespace CarJack
                     string printLongevity = Math.Round(yearsLongevity, 1).ToString();
                     string printCostValue = Math.Round(annualCostValue, 2).ToString();
                     MessageBox.Show("With an assumed maximum mileage of 250,000:\r\rThis vehicle will last " + printLongevity + " years.\r\rThe annual cost:value is $" + printCostValue + ".", "Longevity/Cost Projections");
+                    estLongevity = Math.Round(yearsLongevity, 1);
+
+                    if (estLongevity > 4.9)
+                    {
+                        ComCheck.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\checkmark.png"));
+                        ComCheck.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        ComCheck.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\images\xMark.png"));
+
+                        ComCheck.Visibility = Visibility.Visible;
+                    }
                 }
                 catch { MessageBox.Show("One or more issues prevented the expected calculation from taking place.  Actual issue not identified.", "Action Failed"); }
             }
@@ -3378,6 +3392,18 @@ namespace CarJack
             
         }
 
+        
+        private void RedCar_Click(object sender, RoutedEventArgs e)
+        {
+            carColor.Content = "Red";
+            color = "Red";
+        }
+
+        private void WhiteCare_Click(object sender, RoutedEventArgs e)
+        {
+            carColor.Content = "White";
+            color = "White";
+        }
     }
 }
     /*

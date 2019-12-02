@@ -1,0 +1,11 @@
+Toyota
+Corolla
+Sedan
+4 Cyl
+white
+2015
+10849
+180.0652
+32
+67160
+\images\ToyotaCorollaWhite.png

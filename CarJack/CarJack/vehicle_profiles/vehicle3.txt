@@ -1,0 +1,11 @@
+Toyota
+Corolla
+Sedan
+4 Cyl
+Red
+2010
+6795
+113.0652
+29
+116004
+\images\ToyotaCorollaWhite.png
