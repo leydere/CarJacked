@@ -2,10 +2,10 @@ Toyota
 Corolla
 Sedan
 4 Cyl
-white
-2015
-10849
-180.0652
-32
-67160
-\images\ToyotaCorollaWhite.png
+Red
+2013
+9171
+80.9552
+29
+89036
+/images/Corolla/2013/Red2013Corolla.png

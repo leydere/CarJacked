@@ -1,11 +1,11 @@
-Dodge
-Charger
+Toyota
+Corolla
 Sedan
-8 Cyl
-White
-2015
-20654
-0
-21
-65833
-\images\ToyotaCorollaWhite.png
+4 Cyl
+Red
+2019
+19348
+171.4972
+32
+14886
+/images/Corolla/2017/Red2017Corolla.png

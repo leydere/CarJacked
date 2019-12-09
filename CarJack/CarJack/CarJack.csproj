@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CarJackFunctions.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -90,9 +91,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\bear1.png">
@@ -148,11 +146,8 @@
   <ItemGroup>
     <Folder Include="images\Charger\2005\" />
     <Folder Include="images\Charger\2010\" />
-    <Folder Include="images\Charger\2015\" />
     <Folder Include="images\Charger\2019\" />
     <Folder Include="images\Corolla\2010\" />
-    <Folder Include="images\Corolla\2015\" />
-    <Folder Include="images\Corolla\2019\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\Corolla\2005\2005-corolla-engine.png" />
@@ -165,6 +160,40 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\garage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Corolla\2019\Red2019Corolla.png" />
+    <Resource Include="images\Corolla\2019\Red2019CorollaHatch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Corolla\2015\Red2015Corolla.png" />
+    <Resource Include="images\Corolla\2015\White2015Corolla.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Corolla\2017\Red2017Corolla.png" />
+    <Resource Include="images\Corolla\2017\Red2017CorollaHatch.png" />
+    <Resource Include="images\Corolla\2017\White2017Corolla.png" />
+    <Resource Include="images\Corolla\2017\White2017CorollaHatch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Corolla\2013\Red2013Corolla.png" />
+    <Resource Include="images\Corolla\2014\White2014Corolla.png" />
+    <Resource Include="images\Corolla\2016\Red2016Corolla.png" />
+    <Resource Include="images\Corolla\2016\White2016Corolla.png" />
+    <Resource Include="images\Corolla\2018\Red2018Corolla.png" />
+    <Resource Include="images\Corolla\2018\White2018Corolla.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Charger\2007\White2007Charger.png" />
+    <Resource Include="images\Charger\2008\White2008Charger.png" />
+    <Resource Include="images\Charger\2009\White2009Charger.png" />
+    <Resource Include="images\Charger\2011\White2011Charger.png" />
+    <Resource Include="images\Charger\2012\White2012Charger.png" />
+    <Resource Include="images\Charger\2014\White2014Charger.png" />
+    <Resource Include="images\Charger\2015\White2015Charger.png" />
+    <Resource Include="images\Charger\2016\White2016Charger.png" />
+    <Resource Include="images\Charger\2017\White2017Charger.png" />
+    <Resource Include="images\Charger\2018\White2018Charger.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
