@@ -60,9 +60,9 @@ namespace CarJack
         //interest and payment values
         public int creditScores = 750;
         public double interestRateN = 7.5;
-        public int carPrice = -1;
+        public int carPrice = 0;
         public double payments;
-        public int carMileage = -1;
+        public int carMileage = 0;
         public bool isReady = false;
 
         public MainWindow()
@@ -70,7 +70,6 @@ namespace CarJack
             InitializeComponent();
             LoadVehicles();
             isReady = true;
-
 
                 string testFile = "";
                 //check if vehicle 1 has a saved value, if true then print values, if false then hide
@@ -892,7 +891,7 @@ namespace CarJack
             string creditRating = "good";
 
             //applies textbox info to creditScore integer to be used with the payment calculation 
-            if (creditScore.Text != "")
+            if ((creditScore.Text != "")&&(Convert.ToInt32(creditScore.Text) <801)&&(Convert.ToInt32(creditScore.Text) >500))
             {
                 string input = creditScore.Text;
                 creditScores = Convert.ToInt32(input);
@@ -901,30 +900,27 @@ namespace CarJack
             }
             else
             {
-                MessageBox.Show("Please Insert a numerical value into the credit score box");
+                MessageBox.Show("Please Insert a numerical value between 500 and 800 into the credit score box");
             }
             //applies textbox info to carPrice integer to be used with the payment calculation
-            if (!(carAmount.Text == null))
+            try
             {
-                string input = carAmount.Text;
-                carPrice = Convert.ToInt32(input);
-            }
-            else
-            {
-                MessageBox.Show("Please Insert a numerical value into the credit score box");
-            }
-            //applies textbox info to interestRate float to be used with the payment calculation
-            if (!(interestRate.Text == null))
-            {
-                string input = interestRate.Text;
+                if (((Convert.ToInt32(carAmount.Text) > 0)) && (carAmount.Text != ""))
+                {
+                    string input = carAmount.Text;
+                    carPrice = Convert.ToInt32(input);
 
-                interestRateN = Convert.ToDouble(input);
-                CalculateInterest(creditRating, carPrice, interestRateN);
+
+            //applies textbox info to interestRate float to be used with the payment calculation
+                    CalculateInterest(creditRating);
+                }
+               
             }
-            else
+            catch
             {
-                MessageBox.Show("Please Insert a numerical value into the credit score box");
+                MessageBox.Show("Please Insert a numerical value into the Car Amount box");
             }
+
 
 
         }
@@ -957,15 +953,15 @@ namespace CarJack
             {
                 creditRating = "bad";
             }
-            else if (creditScores >= 500)
+            else if (creditScores <= 500)
             {
-                creditRating = "Denied";
+                creditRating = "denied";
             }
             return creditRating;
         }
 
 
-        void CalculateInterest(string x, int y, double j)
+        void CalculateInterest(string x)
         {
             switch (x)
             {
@@ -991,8 +987,8 @@ namespace CarJack
                     break;
             }
 
-            //calculate payments based off of a 30 month plan
-            payments = ((carPrice / 60) + (interestRateN / 100));
+            //calculate payments based off of a 60 month plan
+            payments = ((carPrice / 120) + ((carPrice / 120)*(interestRateN / 100)));
 
 
             carAmount.Text = Convert.ToString(carPrice);
@@ -1300,9 +1296,9 @@ namespace CarJack
             string savPicture = Convert.ToString(vPicture);
             #endregion
 
-            isFile1Free = CheckIfFree(1);
-            isFile2Free = CheckIfFree(2);
-            isFile3Free = CheckIfFree(3);
+            isFile1Free = CarJackFunctions.CheckIfFree(1);
+            isFile2Free = CarJackFunctions.CheckIfFree(2);
+            isFile3Free = CarJackFunctions.CheckIfFree(3);
 
             var vehicleData1 = new List<string>();
             var vehicleData2 = new List<string>();

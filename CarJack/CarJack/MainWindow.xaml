@@ -162,7 +162,7 @@
         </TabItem>
         <!--#endregion-->
         <!--#region tab2(Anthony's fancything)-->
-        <TabItem Width="58" Height="64" Background="#FF3C3C3C" BorderBrush="#FF818181" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
+        <TabItem x:Name="CarFinder" Width="58" Height="64" Background="#FF3C3C3C" BorderBrush="#FF818181" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
             <TabItem.Header>
                 <Image Height="60" Source="images/SteeringWheel.png"/>
             </TabItem.Header>
@@ -429,7 +429,7 @@
                     <Label Content="Interest Rate" HorizontalAlignment="Left" Margin="24,62,0,0" VerticalAlignment="Top"/>
                     <TextBox HorizontalAlignment="Left"  Height="23" IsReadOnly="True" Margin="99,66,0,0" x:Name="interestRate" TextWrapping="Wrap" Text="7.8" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
                     <Label Content="Car Amount" HorizontalAlignment="Left" Margin="24,90,0,0" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="99,94,0,0" x:Name="carAmount" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="99,94,0,0" x:Name="carAmount" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
                     <Button Content="Calculate" x:Name="intCalc" HorizontalAlignment="Center" Margin="0,244,0,0" VerticalAlignment="Top" Width="75" Click="IntCalc_Click"/>
                     <Label Content="Payment Amount" HorizontalAlignment="Left" Margin="24,213,0,0" VerticalAlignment="Top"/>
                     <TextBox HorizontalAlignment="Left" Height="23" Margin="126,216,0,0" x:Name="paymentBox" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
