@@ -9,40 +9,70 @@ namespace CarJackFunctions_UnitTest
     {
 
         [TestMethod]
-        public void CreditValue_ReturnBad()
+        public void CreditValue_ReturnBad_LowerEdge()
         {
             string expected = "bad";
-            Assert.AreEqual(expected, CreditValue(501));
+            Assert.AreEqual(expected, CreditValue(500));
         }
         [TestMethod]
-        public void CreditValue_ReturnBelowAverage()
+        public void CreditValue_ReturnBad_UpperEdge()
+        {
+            string expected = "bad";
+            Assert.AreEqual(expected, CreditValue(589));
+        }
+        [TestMethod]
+        public void CreditValue_ReturnBelowAverage_LowerEdge()
         {
             string expected = "belowAverage";
-            Assert.AreEqual(expected, CreditValue(600));
+            Assert.AreEqual(expected, CreditValue(590));
         }
         [TestMethod]
-        public void CreditValue_ReturnOkay()
+        public void CreditValue_ReturnBelowAverage_UpperEdge()
+        {
+            string expected = "belowAverage";
+            Assert.AreEqual(expected, CreditValue(619));
+        }
+        [TestMethod]
+        public void CreditValue_ReturnOkay_LowerEdge()
         {
             string expected = "okay";
-            Assert.AreEqual(expected, CreditValue(637));
+            Assert.AreEqual(expected, CreditValue(620));
         }
         [TestMethod]
-        public void CreditValue_ReturnFair()
+        public void CreditValue_ReturnOkay_UpperEdge()
+        {
+            string expected = "okay";
+            Assert.AreEqual(expected, CreditValue(659));
+        }
+        [TestMethod]
+        public void CreditValue_ReturnFair_LowerEdge()
         {
             string expected = "fair";
-            Assert.AreEqual(expected, CreditValue(672));
+            Assert.AreEqual(expected, CreditValue(660));
         }
         [TestMethod]
-        public void CreditValue_ReturnGood()
+        public void CreditValue_ReturnFair_UpperEdge()
+        {
+            string expected = "fair";
+            Assert.AreEqual(expected, CreditValue(689));
+        }
+        [TestMethod]
+        public void CreditValue_ReturnGood_LowerEdge()
         {
             string expected = "good";
-            Assert.AreEqual(expected, CreditValue(715));
+            Assert.AreEqual(expected, CreditValue(690));
+        }
+        [TestMethod]
+        public void CreditValue_ReturnGood_UpperEdge()
+        {
+            string expected = "good";
+            Assert.AreEqual(expected, CreditValue(719));
         }
         [TestMethod]
         public void CreditValue_ReturnGreat()
         {
             string expected = "great";
-            Assert.AreEqual(expected, CreditValue(730));
+            Assert.AreEqual(expected, CreditValue(720));
         }
         [TestMethod]
         public void CalculateInterest_ReturnThreeHunTwentyEight()
