@@ -60,9 +60,9 @@ namespace CarJack
         //interest and payment values
         public int creditScores = 750;
         public double interestRateN = 7.5;
-        public int carPrice = -1;
+        public int carPrice = 0;
         public double payments;
-        public int carMileage = -1;
+        public int carMileage = 0;
         public bool isReady = false;
 
         public MainWindow()
@@ -70,7 +70,6 @@ namespace CarJack
             InitializeComponent();
             LoadVehicles();
             isReady = true;
-
 
                 string testFile = "";
                 //check if vehicle 1 has a saved value, if true then print values, if false then hide
@@ -672,122 +671,8 @@ namespace CarJack
             #endregion
 
         }
-        /*
-        private static bool CheckForBlankBoxes(string inputText)
-        {
-            if (inputText == "") return true;
-            return false;
-        }
-        
-        /// <summary>
-        /// Checks for values outside the range of 0 - 52.  Does this as the input is expected to represent a number of weeks in one year.
-        /// </summary>
-        /// <param name="inputText">Input to be checked.  From weeks per year column.</param>
-        /// <returns>Returns true if found, false if not.</returns>
-        private static bool CheckForZeroThrough52(string inputText)
-        {
-            if (Int32.Parse(inputText) < 0 || Int32.Parse(inputText) > 52) return true;
-            return false;
-        }
-        
-        /// <summary>
-        /// Checks for values greater than or equal to 1000.  Does this as large trips of this length are out of the ordinary.
-        /// </summary>
-        /// <param name="inputText">Input to be checked.  From the trip miles column.</param>
-        /// <returns>Returns true if found, false if not.</returns>
-        private static bool CheckForUnreasonablyLargeValue(string inputText)
-        {
-            if (Int32.Parse(inputText) >= 1000) return true;
-            return false;
-        }
-        
-        /// <summary>
-        /// Checks for values greater than or equal to 100.  Does this as large trips of this length are out of the ordinary.
-        /// </summary>
-        /// <param name="inputText">Input to be checked.  From the trip miles column.</param>
-        /// <returns>Returns true if found, false if not.</returns>
-        private static bool CheckForLargeValue(string inputText)
-        {
-            if (Int32.Parse(inputText) >= 100) return true;
-            return false;
-        }
-        
-        /// <summary>
-        /// Checks if an input is a negative number.  Checks for since a negative number would be an illogical input.
-        /// </summary>
-        /// <param name="inputText">Input to be checked for negative. From one of the three numeric columns on the activity calculator tab.</param>
-        /// <returns>Returns true if negative value found.  Returns false otherwise.</returns>
-        private static bool CheckForNegativeValues(string inputText)
-        {
-            if (Int32.Parse(inputText) < 0) return true;
-            return false;
-        }
-        
-        /// <summary>
-        /// Checks if a string can be parsed as a whole number.  Used to ensure input is of the correct type for further use.
-        /// </summary>
-        /// <param name="inputText">String that will parse attempt will be made on. From one of the three numeric columns on the activity calculator tab.</param>
-        /// <returns>Returns true a string cannot be parsed to int.  Returns false otherwise.</returns>
-        private static bool CheckForWholeNumbers(string inputText)
-        {
-            try { Int32.Parse(inputText); }
-            catch { return true; }
-            return false;
-        }
-        
-        /// <summary>
-        /// Checks strings for semicolons.  If found trims out and notifies user with a popup window.  Used to ensure user does 
-        /// not break txt file reader that separates data with semi colons. -ERL
-        /// </summary>
-        /// <param name="inputText">String that is to be checked for semicolons.</param>
-        /// <returns>Original input string, with semicolons removed if found.</returns>
-        private static string TrimSemiColons(string inputText)
-        {
-            inputText = inputText.Replace(";", "");
-            return inputText;
-        }
-        
-        /// <summary>
-        /// Checks string for semicolons.  Return boolean value used to determine if popup window and trim function should be called.
-        /// </summary>
-        /// <param name="inputText">String to check for semicolons.</param>
-        /// <returns>True if found. False if not found.</returns>
-        private static bool CheckForSemiColons(string inputText)
-        {
-            if (inputText.Contains(';')) { return true; }
-            return false;
-        }
-        
-        /// <summary>
-        /// Multiplies the user string inputs and returns result as an int.  Used in calculation of annual years driven.
-        /// Checks for empty string and ignores rows with them.
-        /// Tries to convert to int.  If fails should return zero.
-        /// </summary>
-        /// <param name="miles">User supplied miles per trip value.</param>
-        /// <param name="trips">User supplied trips per week value.</param>
-        /// <param name="weeks">User supplied weeks per year value.</param>
-        /// <returns>Value returned signifies miles driven for that particular trip in a given year.</returns>
-        private static int MultiplyActivityBoxes(string miles, string trips, string weeks)
-        {
-            int numMiles = 0;
-            int numTrips = 0;
-            int numWeeks = 0;
 
-            if (miles != "" && trips != "" && weeks != "")
-            {
-                try
-                {
-                    numMiles = Int32.Parse(miles);
-                    numTrips = Int32.Parse(trips);
-                    numWeeks = Int32.Parse(weeks);
-                }
-                catch { }
-            }
-
-            int total = numMiles * numTrips * numWeeks;
-            return total;
-        }
-        */
+        // moved several functions to CarJackFunctions.cs to accommodate unit testing -ERL
         #endregion
 
         /// <summary>
@@ -897,7 +782,7 @@ namespace CarJack
             string creditRating = "good";
 
             //applies textbox info to creditScore integer to be used with the payment calculation 
-            if (creditScore.Text != "")
+            if ((creditScore.Text != "")&&(Convert.ToInt32(creditScore.Text) <801)&&(Convert.ToInt32(creditScore.Text) >500))
             {
                 string input = creditScore.Text;
                 creditScores = Convert.ToInt32(input);
@@ -906,30 +791,27 @@ namespace CarJack
             }
             else
             {
-                MessageBox.Show("Please Insert a numerical value into the credit score box");
+                MessageBox.Show("Please Insert a numerical value between 500 and 800 into the credit score box");
             }
             //applies textbox info to carPrice integer to be used with the payment calculation
-            if (!(carAmount.Text == null))
+            try
             {
-                string input = carAmount.Text;
-                carPrice = Convert.ToInt32(input);
-            }
-            else
-            {
-                MessageBox.Show("Please Insert a numerical value into the credit score box");
-            }
-            //applies textbox info to interestRate float to be used with the payment calculation
-            if (!(interestRate.Text == null))
-            {
-                string input = interestRate.Text;
+                if (((Convert.ToInt32(carAmount.Text) > 0)) && (carAmount.Text != ""))
+                {
+                    string input = carAmount.Text;
+                    carPrice = Convert.ToInt32(input);
 
-                interestRateN = Convert.ToDouble(input);
-                CalculateInterest(creditRating, carPrice, interestRateN);
+
+            //applies textbox info to interestRate float to be used with the payment calculation
+                    CalculateInterest(creditRating);
+                }
+               
             }
-            else
+            catch
             {
-                MessageBox.Show("Please Insert a numerical value into the credit score box");
+                MessageBox.Show("Please Insert a numerical value into the Car Amount box");
             }
+
 
 
         }
@@ -962,15 +844,15 @@ namespace CarJack
             {
                 creditRating = "bad";
             }
-            else if (creditScores >= 500)
+            else if (creditScores <= 500)
             {
-                creditRating = "Denied";
+                creditRating = "denied";
             }
             return creditRating;
         }
 
 
-        void CalculateInterest(string x, int y, double j)
+        void CalculateInterest(string x)
         {
             switch (x)
             {
@@ -996,8 +878,8 @@ namespace CarJack
                     break;
             }
 
-            //calculate payments based off of a 30 month plan
-            payments = ((carPrice / 60) + (interestRateN / 100));
+            //calculate payments based off of a 60 month plan
+            payments = ((carPrice / 120) + ((carPrice / 120)*(interestRateN / 100)));
 
 
             carAmount.Text = Convert.ToString(carPrice);
@@ -1305,9 +1187,9 @@ namespace CarJack
             string savPicture = Convert.ToString(vPicture);
             #endregion
 
-            isFile1Free = CheckIfFree(1);
-            isFile2Free = CheckIfFree(2);
-            isFile3Free = CheckIfFree(3);
+            isFile1Free = CarJackFunctions.CheckIfFree(1);
+            isFile2Free = CarJackFunctions.CheckIfFree(2);
+            isFile3Free = CarJackFunctions.CheckIfFree(3);
 
             var vehicleData1 = new List<string>();
             var vehicleData2 = new List<string>();
@@ -3284,10 +3166,6 @@ namespace CarJack
             else MessageBox.Show("Price" + carPrice + "mileage" + carMileage + "Total" + TotalBlock.Text + "\nThe calculation cannot complete without a vehicle selected and the activity calculator filled in and saved.  Please correct and try again.", "Unable to Calculate");
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            //   MessageBox.Show(Convert.ToString(savVehicle1.Make));
-        }
 
         private void Y2010_Click_1(object sender, RoutedEventArgs e)
         {
