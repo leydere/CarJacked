@@ -1,0 +1,11 @@
+Dodge
+Charger
+Sedan
+v6
+white
+2007
+7354
+64.9772
+18
+132679
+\images\Charger\2007\White2007Charger.png

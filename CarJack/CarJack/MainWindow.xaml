@@ -240,7 +240,7 @@
                                 <TabItem Header="Color" x:Name="Color" IsEnabled="False" Margin="-40.4,0,27.8,-0.2" Background="{x:Null}">
                                     <Grid Margin="0,-52,18.4,-36.8">
                                         <Button x:Name="RedCar" Content="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Margin="10,90,0,0" Height="39" Background="#FFAE1313" Click="RedCar_Click"/>
-                                        <Button x:Name="WhiteCar" Content="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Margin="60,90,0,0" Height="39" Background="White" Click="WhiteCare_Click"/>
+                                        <Button x:Name="WhiteCar" Content="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Margin="60,90,0,0" Height="39" Background="White" Click="WhiteCar_Click"/>
 
                                     </Grid>
                                 </TabItem>
