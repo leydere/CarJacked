@@ -12,37 +12,37 @@ namespace CarJackFunctions_UnitTest
         public void CreditValue_ReturnBad()
         {
             string expected = "bad";
-            Assert.AreEqual(expected, CreditValue(501));
+            Assert.AreEqual(expected, CreditStandingByScore(501));
         }
         [TestMethod]
         public void CreditValue_ReturnBelowAverage()
         {
             string expected = "belowAverage";
-            Assert.AreEqual(expected, CreditValue(600));
+            Assert.AreEqual(expected, CreditStandingByScore(600));
         }
         [TestMethod]
         public void CreditValue_ReturnOkay()
         {
             string expected = "okay";
-            Assert.AreEqual(expected, CreditValue(637));
+            Assert.AreEqual(expected, CreditStandingByScore(637));
         }
         [TestMethod]
         public void CreditValue_ReturnFair()
         {
             string expected = "fair";
-            Assert.AreEqual(expected, CreditValue(672));
+            Assert.AreEqual(expected, CreditStandingByScore(672));
         }
         [TestMethod]
         public void CreditValue_ReturnGood()
         {
             string expected = "good";
-            Assert.AreEqual(expected, CreditValue(715));
+            Assert.AreEqual(expected, CreditStandingByScore(715));
         }
         [TestMethod]
         public void CreditValue_ReturnGreat()
         {
             string expected = "great";
-            Assert.AreEqual(expected, CreditValue(730));
+            Assert.AreEqual(expected, CreditStandingByScore(730));
         }
         [TestMethod]
         public void CalculateInterest_ReturnThreeHunTwentyEight()
