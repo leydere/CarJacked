@@ -741,13 +741,6 @@ namespace CarJack
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-
-
         private void InterestCalc_Click(object sender, RoutedEventArgs e)
         {
             if (carSelectionGrid.Visibility == Visibility.Visible)
