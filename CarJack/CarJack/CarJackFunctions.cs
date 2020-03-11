@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using CarJack;
 
-namespace CarJack //
+namespace CarJack
 {
     public class CarJackFunctions
     {
@@ -15,34 +15,28 @@ namespace CarJack //
         public string CreditValue(int x)
         {
             
-            string creditRating = "good";
-
             if (x >= 720)
             {
-                creditRating = "great";
+                return "great";
             }
             else if ((x >= 690) && (x <= 719))
             {
-                creditRating = "good";
+                return "good";
             }
             else if ((x >= 660) && (x <= 689))
             {
-                creditRating = "fair";
+                return "fair";
             }
             else if ((x >= 620) && (x <= 659))
             {
-                creditRating = "okay";
+                return "okay";
             }
             else if ((x >= 590) && (x <= 619))
             {
-                creditRating = "belowAverage";
+                return "belowAverage";
             }
-            else if ((x >= 500) && (x <= 589))
-            {
-                creditRating = "bad";
-            }
+            else return "bad";
             
-            return creditRating;
         }
         /// <summary>
         /// <returns>Value returned signifies miles driven for that particular trip in a given year.</returns>
