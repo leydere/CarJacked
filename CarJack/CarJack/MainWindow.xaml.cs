@@ -772,7 +772,7 @@ namespace CarJack
                 string input = creditScore.Text;
                 creditScores = Convert.ToInt32(input);
 
-                creditRating = CreditValue(creditScores);
+                creditRating = CarJackFunctions.CreditStandingByScore(creditScores);
             }
             else
             {
@@ -800,42 +800,6 @@ namespace CarJack
 
 
         }
-
-        string CreditValue(int x)
-        {
-            string creditRating = "good";
-
-            if (creditScores >= 720)
-            {
-                creditRating = "great";
-            }
-            else if ((creditScores >= 690) && (creditScores <= 719))
-            {
-                creditRating = "good";
-            }
-            else if ((creditScores >= 660) && (creditScores <= 689))
-            {
-                creditRating = "fair";
-            }
-            else if ((creditScores >= 620) && (creditScores <= 659))
-            {
-                creditRating = "okay";
-            }
-            else if ((creditScores >= 590) && (creditScores <= 619))
-            {
-                creditRating = "belowAverage";
-            }
-            else if ((creditScores >= 500) && (creditScores <= 589))
-            {
-                creditRating = "bad";
-            }
-            else if (creditScores <= 500)
-            {
-                creditRating = "denied";
-            }
-            return creditRating;
-        }
-
 
         void CalculateInterest(string x)
         {

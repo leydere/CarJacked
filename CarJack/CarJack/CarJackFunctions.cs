@@ -8,7 +8,7 @@ namespace CarJack
     public class CarJackFunctions
     {
 
-        public string CreditStandingByScore(int x)
+        public static string CreditStandingByScore(int x)
         {
             
             if (x >= 720)
