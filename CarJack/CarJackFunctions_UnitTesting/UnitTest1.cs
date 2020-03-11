@@ -9,40 +9,70 @@ namespace CarJackFunctions_UnitTest
     {
 
         [TestMethod]
-        public void CreditValue_ReturnBad()
+        public void CreditValue_ReturnBad_LowerEdge()
         {
             string expected = "bad";
-            Assert.AreEqual(expected, CreditValue(501));
+            Assert.AreEqual(expected, CreditValue(500));
         }
         [TestMethod]
-        public void CreditValue_ReturnBelowAverage()
+        public void CreditValue_ReturnBad_UpperEdge()
+        {
+            string expected = "bad";
+            Assert.AreEqual(expected, CreditValue(589));
+        }
+        [TestMethod]
+        public void CreditValue_ReturnBelowAverage_LowerEdge()
         {
             string expected = "belowAverage";
-            Assert.AreEqual(expected, CreditValue(600));
+            Assert.AreEqual(expected, CreditValue(590));
         }
         [TestMethod]
-        public void CreditValue_ReturnOkay()
+        public void CreditValue_ReturnBelowAverage_UpperEdge()
+        {
+            string expected = "belowAverage";
+            Assert.AreEqual(expected, CreditValue(619));
+        }
+        [TestMethod]
+        public void CreditValue_ReturnOkay_LowerEdge()
         {
             string expected = "okay";
-            Assert.AreEqual(expected, CreditValue(637));
+            Assert.AreEqual(expected, CreditValue(620));
         }
         [TestMethod]
-        public void CreditValue_ReturnFair()
+        public void CreditValue_ReturnOkay_UpperEdge()
+        {
+            string expected = "okay";
+            Assert.AreEqual(expected, CreditValue(659));
+        }
+        [TestMethod]
+        public void CreditValue_ReturnFair_LowerEdge()
         {
             string expected = "fair";
-            Assert.AreEqual(expected, CreditValue(672));
+            Assert.AreEqual(expected, CreditValue(660));
         }
         [TestMethod]
-        public void CreditValue_ReturnGood()
+        public void CreditValue_ReturnFair_UpperEdge()
+        {
+            string expected = "fair";
+            Assert.AreEqual(expected, CreditValue(689));
+        }
+        [TestMethod]
+        public void CreditValue_ReturnGood_LowerEdge()
         {
             string expected = "good";
-            Assert.AreEqual(expected, CreditValue(715));
+            Assert.AreEqual(expected, CreditValue(690));
+        }
+        [TestMethod]
+        public void CreditValue_ReturnGood_UpperEdge()
+        {
+            string expected = "good";
+            Assert.AreEqual(expected, CreditValue(719));
         }
         [TestMethod]
         public void CreditValue_ReturnGreat()
         {
             string expected = "great";
-            Assert.AreEqual(expected, CreditValue(730));
+            Assert.AreEqual(expected, CreditValue(720));
         }
         [TestMethod]
         public void CalculateInterest_ReturnThreeHunTwentyEight()
@@ -73,7 +103,7 @@ namespace CarJackFunctions_UnitTest
         {
             double expected = 312.4176;
 
-            Assert.AreEqual(expected, CalculateInterest("good",35000));
+            Assert.AreEqual(expected, CalculateInterest("good", 35000));
         }
         [TestMethod]
         public void CalculateInterest_ReturnThreeHunNine()
@@ -101,5 +131,105 @@ namespace CarJackFunctions_UnitTest
             Assert.AreEqual(expected, CheckIfFree(3));
         }
 
+        // Unit tests copied from UnitTesting_MasterBranch -ERL
+
+        [TestMethod]
+        public void CheckForBlankBoxes_BlankFound()
+        {
+            Assert.IsTrue(CheckForBlankBoxes(""));
+        }
+        [TestMethod]
+        public void CheckForBlankBoxes_BlankNotFound()
+        {
+            Assert.IsFalse(CheckForBlankBoxes("_"));
+        }
+        [TestMethod]
+        public void CheckForZeroThrough52_InRangeLow()
+        {
+            Assert.IsFalse(CheckForZeroThrough52("0"));
+        }
+        [TestMethod]
+        public void CheckForZeroThrough52_InRangeHigh()
+        {
+            Assert.IsFalse(CheckForZeroThrough52("52"));
+        }
+        [TestMethod]
+        public void CheckForZeroThrough52_OutsideOfRangeLow()
+        {
+            Assert.IsTrue(CheckForZeroThrough52("-1"));
+        }
+        [TestMethod]
+        public void CheckForZeroThrough52_OutsideOfRangeHigh()
+        {
+            Assert.IsTrue(CheckForZeroThrough52("53"));
+        }
+        [TestMethod]
+        public void CheckForUnreasonablyLargeValue_True()
+        {
+            Assert.IsTrue(CheckForUnreasonablyLargeValue("1000"));
+        }
+        [TestMethod]
+        public void CheckForUnreasonablyLargeValue_False()
+        {
+            Assert.IsFalse(CheckForUnreasonablyLargeValue("999"));
+        }
+        [TestMethod]
+        public void CheckForLargeValue_True()
+        {
+            Assert.IsTrue(CheckForLargeValue("100"));
+        }
+        [TestMethod]
+        public void CheckForLargeValue_False()
+        {
+            Assert.IsFalse(CheckForLargeValue("99"));
+        }
+        [TestMethod]
+        public void CheckForNegativeValues_NegativeValueFound()
+        {
+            Assert.IsTrue(CheckForNegativeValues("-1"));
+        }
+        [TestMethod]
+        public void CheckForNegativeValues_NoNegativeValueFound()
+        {
+            Assert.IsFalse(CheckForNegativeValues("0"));
+        }
+        [TestMethod]
+        public void CheckForWholeNumbers_NonWholeNumberFound()
+        {
+            Assert.IsTrue(CheckForWholeNumbers("1i"));
+        }
+        [TestMethod]
+        public void CheckForWholeNumbers_WholeNumberFound()
+        {
+            Assert.IsFalse(CheckForWholeNumbers("1"));
+        }
+        [TestMethod]
+        public void TrimSemiColons_ReturnWithoutSemiColons()
+        {
+            string expected = "Donatello Leonardo";
+            Assert.AreEqual(expected, TrimSemiColons("Donatello; Leonardo;"));
+        }
+        [TestMethod]
+        public void CheckForSemiColons_SemiColonsFound()
+        {
+            Assert.IsTrue(CheckForSemiColons("Donatello; Leonardo;"));
+        }
+        [TestMethod]
+        public void CheckForSemiColons_NoSemiColonsFound()
+        {
+            Assert.IsFalse(CheckForSemiColons("Donatello Leonardo"));
+        }
+        [TestMethod]
+        public void MultiplyActivityBoxes_AllBlankInputs_ReturnZero()
+        {
+            int expected = 0;
+            Assert.AreEqual(expected, MultiplyActivityBoxes("", "", ""));
+        }
+        [TestMethod]
+        public void MultiplyActivityBoxes_PositiveIntegerInputs_ReturnSix()
+        {
+            int expected = 6;
+            Assert.AreEqual(expected, MultiplyActivityBoxes("1", "2", "3"));
+        }
     }
 }
