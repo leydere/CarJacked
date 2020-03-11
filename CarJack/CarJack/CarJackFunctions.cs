@@ -67,6 +67,7 @@ namespace CarJack
         }
 
 
+
         public static bool CheckIfFree(int x)
         {
             bool isFree = false;

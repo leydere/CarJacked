@@ -783,11 +783,10 @@ namespace CarJack
             {
                 if (((Convert.ToInt32(carAmount.Text) > 0)) && (carAmount.Text != ""))
                 {
-                    string input = carAmount.Text;
-                    carPrice = Convert.ToInt32(input);
+                    carPrice = Convert.ToInt32(carAmount.Text);
 
 
-            //applies textbox info to interestRate float to be used with the payment calculation
+                    //applies textbox info to interestRate float to be used with the payment calculation
                     CalculateInterest(creditRating);
                 }
                
