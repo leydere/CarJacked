@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29403.142
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarJack", "CarJack\CarJack.csproj", "{0ED9B365-27DC-40B9-BC77-8BA0DF14223D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarJackFunctions_UnitTesting", "CarJackFunctions_UnitTesting\CarJackFunctions_UnitTesting.csproj", "{443E200B-DB82-4F2A-B1BF-C62D5C0E8251}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarJack_UnitTesting", "CarJackFunctions_UnitTesting\CarJack_UnitTesting.csproj", "{443E200B-DB82-4F2A-B1BF-C62D5C0E8251}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
