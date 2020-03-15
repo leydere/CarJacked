@@ -765,6 +765,7 @@ namespace CarJack
         {
 
             string creditRating = "good";
+            CreditScores creditscores = new CreditScores();
 
             //applies textbox info to creditScore integer to be used with the payment calculation 
             if ((creditScore.Text != "")&&(Convert.ToInt32(creditScore.Text) <801)&&(Convert.ToInt32(creditScore.Text) >500))
@@ -772,7 +773,7 @@ namespace CarJack
                 string input = creditScore.Text;
                 creditScores = Convert.ToInt32(input);
 
-                creditRating = CarJackFunctions.CreditStandingByScore(creditScores);
+                creditRating = creditscores.CreditStandingByScore(creditScores);
             }
             else
             {
@@ -787,7 +788,13 @@ namespace CarJack
 
 
                     //applies textbox info to interestRate float to be used with the payment calculation
-                    CalculateInterest(creditRating);
+                    interestRateN = creditscores.CalculateInterest(creditRating);
+                    
+                    //calculate payments based off of a 60 month plan
+                    payments = ((carPrice / 120) + ((carPrice / 120) * (interestRateN / 100)));
+                    carAmount.Text = Convert.ToString(carPrice);
+                    interestRate.Text = Convert.ToString(interestRateN);
+                    paymentBox.Text = Convert.ToString(payments);
                 }
                
             }
@@ -800,42 +807,7 @@ namespace CarJack
 
         }
 
-        void CalculateInterest(string x)
-        {
-            switch (x)
-            {
-                case "great":
-                    interestRateN = 6.52;
-                    break;
-                case "good":
-                    interestRateN = 7.36;
-                    break;
-                case "fair":
-                    interestRateN = 8.52;
 
-                    break;
-                case "okay":
-                    interestRateN = 9.75;
-
-                    break;
-                case "belowAverage":
-                    interestRateN = 10.35;
-                    break;
-                case "bad":
-                    interestRateN = 12.75;
-                    break;
-            }
-
-            //calculate payments based off of a 60 month plan
-            payments = ((carPrice / 120) + ((carPrice / 120)*(interestRateN / 100)));
-
-
-            carAmount.Text = Convert.ToString(carPrice);
-            //  interestRate.Text = Convert.ToString(interestRateN.ToString("P", CultureInfo.InvariantCulture));  
-            interestRate.Text = Convert.ToString(interestRateN);
-
-            paymentBox.Text = Convert.ToString(payments);
-        }
 
 
 

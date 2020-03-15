@@ -8,32 +8,7 @@ namespace CarJack
     public class CarJackFunctions
     {
 
-        public static string CreditStandingByScore(int x)
-        {
-            
-            if (x >= 720)
-            {
-                return "great";
-            }
-            else if ((x >= 690) && (x <= 719))
-            {
-                return "good";
-            }
-            else if ((x >= 660) && (x <= 689))
-            {
-                return "fair";
-            }
-            else if ((x >= 620) && (x <= 659))
-            {
-                return "okay";
-            }
-            else if ((x >= 590) && (x <= 619))
-            {
-                return "belowAverage";
-            }
-            else return "bad";
-            
-        }
+
 
         public static bool CheckIfFree(int x)
         {
