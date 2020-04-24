@@ -1,19 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Resources;
-using System.Windows.Shapes;
 
 namespace CarJack
 {
@@ -38,16 +30,10 @@ namespace CarJack
         public string vPicture;
         public double estLongevity;
 
-        /*  -Originally used to make objects to display saved vehicles, but had issues updating
-            Currently being transitioned to copying data to string lists after reading from file
-
-        public Vehicle savVehicle1 = new Vehicle();
-        public Vehicle savVehicle2 = new Vehicle();
-        public Vehicle savVehicle3 = new Vehicle();
-        */
         public string v1txtPath;
         public string v2txtPath;
         public string v3txtPath;
+
         public List<string> vehicleData_1 = new List<string>();
         public List<string> vehicleData_2 = new List<string>();
         public List<string> vehicleData_3 = new List<string>();
@@ -55,8 +41,7 @@ namespace CarJack
         public List<string> savVehicleData_1 = new List<string>();
         public List<string> savVehicleData_2 = new List<string>();
         public List<string> savVehicleData_3 = new List<string>();
-
-
+        
         //interest and payment values
         public int creditScores = 750;
         public double interestRateN = 7.5;
@@ -1251,12 +1236,6 @@ namespace CarJack
                 MessageBox.Show("Please Remove a Vehicle From Your Garage");
             }
 
-            // still needs to add a way to save
-            // all separated by semi-colons and tabs
-            // each row in the window is a line in the string, ending with semicolon and carriage return
-            // final line is the total miles value -ERL
-
-
             #endregion
 
             AddCarToGarage();
@@ -1275,7 +1254,6 @@ namespace CarJack
                     {
                         if (make == "Corolla")
                         {
-
                             carPrice = 4726;
                             mileage = 146181;
                             CarMileageComp.Content = Convert.ToString(mileage);
@@ -1287,7 +1265,6 @@ namespace CarJack
                     }
                     else if (brand == "Dodge")
                     {
-                        //     carStats.Visibility = Visibility.Visible;
                         carPrice = 6718;
                         mileage = 137768;
                         CarMileageComp.Content = Convert.ToString(mileage);
@@ -1886,10 +1863,6 @@ namespace CarJack
             return isFree;
         }
 
-
-
-
-
         public void LoadVehicles()
         {
             v1txtPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Vehicle_profiles\\vehicle1.txt";
@@ -1921,33 +1894,6 @@ namespace CarJack
             {
 
             }
-
-            
-
-            /*
-            //merge loaded data into objects
-            int i = -1;
-            if (vehicleData_1 != null)
-            {
-                foreach (string line in vehicleData_1)
-                {
-                    i++;
-                    MergeCarInfo(line, i, 1);
-                }
-            }
-
-            i = -1;
-            if (vehicleData_2 != null)
-            {
-                foreach (string line in vehicleData_2)
-                {
-                    i++;
-                    MergeCarInfo(line, i, 2);
-                }
-            }
-            i = -1;
-            */
-
         }
 
         private void UpdateStat3()
@@ -1995,8 +1941,6 @@ namespace CarJack
                     }
 
                     i++;
-                    //MergeCarInfo(line, i, 3);
-
                 }
             }
             catch
@@ -2056,182 +2000,6 @@ namespace CarJack
             {
 
             }
-
-
-
-
-            /*  if ((y == 0) && (car == 1))
-              {
-                 // savVehicle1.Make = x;
-                  tempName = x;
-              }
-              else if ((y == 1) && (car == 1))
-              {
-                 savVehicle1.Model = x;
-
-                  tempName = tempName + " " + x;
-              }
-              else if ((y == 2) && (car == 1))
-              {
-                  savVehicle1.Body = x;
-              }
-              else if ((y == 3) && (car == 1))
-              {
-                  savVehicle1.Engine = x;
-                  carPricing1.Content = x;
-              }
-              else if ((y == 4) && (car == 1))
-              {
-                  savVehicle1.Color = x;
-              }
-              else if ((y == 5) && (car == 1))
-              {
-                  savVehicle1.Year = Convert.ToInt32(x);
-                  Car1Info.Content = x + " " + tempName;
-              }
-              else if ((y == 6) && (car == 1))
-              {
-                  savVehicle1.Price = Convert.ToInt32(x);
-                  carPricing1.Content = x;
-              }
-              else if ((y == 7) && (car == 1))
-              {
-                  savVehicle1.Payments = Convert.ToDouble(x);
-                  carPayment1.Content = x;
-              }
-              else if ((y == 8) && (car == 1))
-              {
-                  savVehicle1.MilesGal = Convert.ToInt32(x);
-                  MilesPerGal1.Content = x;
-              }
-              else if ((y == 9) && (car == 1))
-              {
-                  savVehicle1.Mileage = Convert.ToInt32(x);
-                  carMileage1.Content = x;
-              }
-              else if ((y == 10) && (car == 1))
-              {
-                 // MyVehicle1.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + x));
-                  //MyVehicle1.Visibility = Visibility.Visible;
-              }
-              */
-
-            //vehicle2 data merged
-            /*
-
-            if ((y == 0) && (car == 2))
-            {
-                savVehicle2.Make = x;
-                tempName = x;
-            }
-            else if ((y == 1) && (car == 2))
-            {
-                savVehicle2.Model = x;
-
-                tempName = tempName + " " + x;
-            }
-            else if ((y == 2) && (car == 2))
-            {
-                savVehicle2.Body = x;
-            }
-            else if ((y == 3) && (car == 2))
-            {
-                savVehicle2.Engine = x;
-                carPricing2.Content = x;
-            }
-            else if ((y == 4) && (car == 2))
-            {
-                savVehicle2.Color = x;
-            }
-            else if ((y == 5) && (car == 2))
-            {
-                savVehicle2.Year = Convert.ToInt32(x);
-                Car2Info.Content = x + " " + tempName;
-            }
-            else if ((y == 6) && (car == 2))
-            {
-                savVehicle2.Price = Convert.ToInt32(x);
-                carPricing2.Content = x;
-            }
-            else if ((y == 7) && (car == 2))
-            {
-                savVehicle2.Payments = Convert.ToDouble(x);
-                carPayment2.Content = x;
-            }
-            else if ((y == 8) && (car == 2))
-            {
-                savVehicle2.MilesGal = Convert.ToInt32(x);
-                MilesPerGal2.Content = x;
-            }
-            else if ((y == 9) && (car == 2))
-            {
-                savVehicle2.Mileage = Convert.ToInt32(x);
-                carMileage2.Content = x;
-            }
-            else if ((y == 10) && (car == 2))
-            {
-               // MyVehicle2.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + x));
-                // MyVehicle2.Visibility = Visibility.Visible;
-            }
-
-
-            //vehicle3 data merged
-
-
-            if ((y == 0) && (car == 3))
-            {
-                savVehicle3.Make = x;
-                tempName = x;
-            }
-            else if ((y == 1) && (car == 3))
-            {
-                savVehicle3.Model = x;
-
-                tempName = tempName + " " + x;
-            }
-            else if ((y == 2) && (car == 3))
-            {
-                savVehicle3.Body = x;
-            }
-            else if ((y == 3) && (car == 3))
-            {
-                savVehicle3.Engine = x;
-                carPricing3.Content = x;
-            }
-            else if ((y == 4) && (car == 3))
-            {
-                savVehicle3.Color = x;
-            }
-            else if ((y == 5) && (car == 3))
-            {
-                savVehicle3.Year = Convert.ToInt32(x);
-                Car3Info.Content = x + " " + tempName;
-            }
-            else if ((y == 6) && (car == 3))
-            {
-                savVehicle3.Price = Convert.ToInt32(x);
-                carPricing3.Content = x;
-            }
-            else if ((y == 7) && (car == 3))
-            {
-                savVehicle3.Payments = Convert.ToDouble(x);
-                carPayment3.Content = x;
-            }
-            else if ((y == 8) && (car == 3))
-            {
-                savVehicle3.MilesGal = Convert.ToInt32(x);
-                MilesPerGal3.Content = x;
-            }
-            else if ((y == 9) && (car == 3))
-            {
-                savVehicle3.Mileage = Convert.ToInt32(x);
-                carMileage3.Content = x;
-            }
-            else if ((y == 10) && (car == 3))
-            {
-               // MyVehicle3.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + x));
-                //MyVehicle3.Visibility = Visibility.Visible;
-            }*/
         }
 
 
@@ -2256,7 +2024,6 @@ namespace CarJack
                     }
                     else if (brand == "Dodge")
                     {
-                        //     carStats.Visibility = Visibility.Visible;
                         carPrice = 6718;
                         mileage = 137768;
                         CarMileageComp.Content = Convert.ToString(mileage);
@@ -2651,7 +2418,6 @@ namespace CarJack
                             carPricing.Content = Convert.ToString(carPrice);
                             carYear.Content = Convert.ToString(year);
                             vPicture = "\\images\\Corolla\\2014\\White2014Corolla.png";
-
                         }
                         else
                         {
@@ -3071,27 +2837,9 @@ namespace CarJack
         #region Remove vehicle from txt
         private void Remove1_Click(object sender, RoutedEventArgs e)
         {
-
-            /*    if ((savVehicle1.Make != null)||(savVehicle1.Make != ""))
-                {
-
-                    savVehicle1.Make = "";
-                    savVehicle1.Model = null ;
-                    savVehicle1.Body = null;
-                    savVehicle1.Engine = null;
-                    savVehicle1.Color = null;
-                    savVehicle1.Year = 0;
-                    savVehicle1.Price = 0;
-                    savVehicle1.Payments = 0;
-                    savVehicle1.MilesGal = 0;
-                    savVehicle1.Mileage = 0;
-                    savVehicle1.Picture = null;
-
-                }   */
             DeleteVehicle(1);
             LoadVehicles();
             ReInitialize(1);
-
         }
         private void Remove3_Click(object sender, RoutedEventArgs e)
         {
@@ -3128,12 +2876,6 @@ namespace CarJack
         {
             LoadVehicles();
         }
-
-
-
-
-
-
 
         private void LongevityButton_Click(object sender, RoutedEventArgs e)
         {
@@ -3289,35 +3031,3 @@ namespace CarJack
         }
     }
 }
-    /*
-    public struct Vehicle
-    {
-        public string Make;
-        public string Model;
-        public string Body;
-        public string Engine;
-        public string Color;
-        public int Year;
-        public int Price;
-        public double Payments;
-        public int MilesGal;
-        public int Mileage;
-        public string Picture;
-
-        public Vehicle(string vmake, string model, string body, string engine, string color, int year, int price, double payments, int milesGal, int mileage, string picture)
-        {
-            Make = vmake;
-            Model = model;
-            Body = body;
-            Engine = engine;
-            Color = color;
-            Year = year;
-            Price = price;
-            Payments = payments;
-            MilesGal = milesGal;
-            Mileage = mileage;
-            Picture = picture;
-
-        }
-    }
-    */
